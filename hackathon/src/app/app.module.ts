@@ -36,6 +36,11 @@ import { AppHackerTeamInvitationComponent } from './shared/app-hacker-team-invit
 import { AppHackerInvitationComponent } from './shared/app-hacker-invitation/app-hacker-invitation.component';
 import { AppSearchListComponent } from './shared/app-search-list/app-search-list.component';
 import { AppSearchDisplayComponent } from './shared/app-search-display/app-search-display.component';
+import { AdminStateService } from './store/services/admin-state.service';
+import { HackerStateService } from './store/services/hacker-state.service';
+import { IdeaStateService } from './store/services/idea-state.service';
+import { LoginStateService } from './store/services/login-state.service';
+import { NewsStateService } from './store/services/news-state.service';
 
 export function instrumentOptions() {
   return {
@@ -83,6 +88,11 @@ export function instrumentOptions() {
   ],
   providers: [
     CmsStateService,
+    AdminStateService,
+    HackerStateService,
+    IdeaStateService,
+    LoginStateService,
+    NewsStateService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
