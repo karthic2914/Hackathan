@@ -1,10 +1,13 @@
 # Hackathon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+This project demonstrate the basic feature of a Hackathon event.
 
-## Development server
+## Front end development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Rest API server
+Run `ng build` for generating build for client code, then Run `npm run-script server`. Navigate to `http://localhost:3000/`.
 
 ## Code scaffolding
 
