@@ -25,6 +25,8 @@
     "@ngrx/store": "^4.1.1",
     "@ngrx/store-devtools": "^4.1.1",
     "@ngrx/store-log-monitor": "^3.0.2",
+    "bootstrap": "^3.3.7",
+    "angular-font-awesome": "^3.1.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
