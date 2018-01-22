@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import User from './User'
 import uniqueValidator from 'mongoose-unique-validator'
+import {TEAM_TYPE} from '../utils/constant';
 
 const IdeaSchema = new mongoose.Schema({
   teamName: {type: String, required: true, unique: true},
@@ -10,7 +11,7 @@ const IdeaSchema = new mongoose.Schema({
   createdBy: {type: mongoose.Schema.ObjectId, ref: User},
   members: [String],
   isApproved: {type: Boolean, default: false},
-  teamType: {type: String, enum: ['Solo', 'Team']}
+  teamType: {type: String, enum: TEAM_TYPE}
 }, {timestamp: true});
 
 IdeaSchema.plugin(uniqueValidator);
