@@ -5,7 +5,8 @@ import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 import Promise from 'bluebird'
 import dotenv from 'dotenv'
-
+import {createAdminUser, createHackerUser} from './server/utils/bootstrapData';
+import {auth} from './server/routes';
 
 const app = express();
 dotenv.config();
@@ -14,12 +15,18 @@ mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGO_DB_URL, (err) => {
   if (err) {
     console.log("Mongo error: ", err);
+  } else {
+    createAdminUser();
+    if (process.env.environment === 'development') {
+      createHackerUser();
+    }
   }
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use('/user', auth);
 app.use(express.static(__dirname + '/dist'));
 
 app.get('*', (req, res) => {
