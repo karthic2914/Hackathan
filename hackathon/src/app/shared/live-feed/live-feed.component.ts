@@ -12,4 +12,7 @@ export class LiveFeedComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick() {
+
+  }
 }

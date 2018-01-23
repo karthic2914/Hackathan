@@ -30,6 +30,8 @@ import { IdeaStateService } from './store/services/idea-state.service';
 import { LoginStateService } from './store/services/login-state.service';
 import { NewsStateService } from './store/services/news-state.service';
 import { VideoDetailsComponent } from './shared/video-details/video-details.component';
+import { LiveFeedComponent } from './shared/live-feed/live-feed.component';
+import { LiveFeedDetailsComponent } from './shared/live-feed-details/live-feed-details.component';
 
 export function instrumentOptions() {
   return {
@@ -50,7 +52,9 @@ export function instrumentOptions() {
     LoginComponent,
     NavigationComponent,
     VideoComponent,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    LiveFeedComponent,
+    LiveFeedDetailsComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
