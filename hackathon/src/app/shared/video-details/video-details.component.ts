@@ -14,4 +14,10 @@ export class VideoDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+selectDiv() {
+  document.querySelector('.container').scrollIntoView({
+    behavior : 'smooth'
+  });
+}
+
 }
