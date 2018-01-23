@@ -19,31 +19,31 @@ export const cmsJSON = {
       {
         title: 'Hackers',
         imgUrl: '/../../assets/images/hacker1.png',
-        routerLink: 'hackers',
+        routerLink: '/hackers',
         submenu: [{
           title: 'Post an idea',
           imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
+          routerLink: '/hackers'
         }, {
           title: 'Invitation to team',
           imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
+          routerLink: '/hackers/invitationToTeam'
         }, {
           title: 'Invitation from team',
           imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
+          routerLink: '/hackers/invitationFromTeam'
         }, {
-          title: 'Invitation to hackers',
+          title: 'Invitation to hacker',
           imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
+          routerLink: '/hackers/invitationToHacker'
         }, {
           title: 'Initation from hacker',
           imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
+          routerLink: '/hackers/invitationFromHacker'
         }, {
           title: 'Profile',
           imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
+          routerLink: '/hackers/profile'
         }]
       },
       {
@@ -53,15 +53,15 @@ export const cmsJSON = {
         submenu: [{
           title: 'Idea Approval',
           imgUrl: '/../../assets/images/admin1.png',
-          routerLink: 'admin'
+          routerLink: '/admin'
         }, {
           title: 'Logs',
           imgUrl: '/../../assets/images/admin1.png',
-          routerLink: 'admin'
+          routerLink: '/admin/logs'
         }, {
           title: 'Publish News',
           imgUrl: '/../../assets/images/admin1.png',
-          routerLink: 'admin'
+          routerLink: '/admin/publishNews'
         }]
       }
     ],

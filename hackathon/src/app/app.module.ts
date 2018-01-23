@@ -34,6 +34,17 @@ import { LiveFeedComponent } from './shared/live-feed/live-feed.component';
 import { LiveFeedDetailsComponent } from './shared/live-feed-details/live-feed-details.component';
 import { HackathonBannerComponent } from './shared/hackathon-banner/hackathon-banner.component';
 import { HackathonBannerDetailsComponent } from './shared/hackathon-banner-details/hackathon-banner-details.component';
+import { IdeaFormComponent } from './shared/idea-form/idea-form.component';
+import { HackerInvitationComponent } from './shared/hacker-invitation/hacker-invitation.component';
+import { HackerTeamInvitationComponent } from './shared/hacker-team-invitation/hacker-team-invitation.component';
+import { InvitationFromTeamComponent } from './hackathon/hackers/invitation-from-team/invitation-from-team.component';
+import { InvitationToTeamComponent } from './hackathon/hackers/invitation-to-team/invitation-to-team.component';
+import { InvitationToHackerComponent } from './hackathon/hackers/invitation-to-hacker/invitation-to-hacker.component';
+import { InvitationFromHackerComponent } from './hackathon/hackers/invitation-from-hacker/invitation-from-hacker.component';
+import { ProfileComponent } from './hackathon/hackers/profile/profile.component';
+import { IdeaApprovalComponent } from './hackathon/admin/idea-approval/idea-approval.component';
+import { LogsComponent } from './hackathon/admin/logs/logs.component';
+import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-news.component';
 
 export function instrumentOptions() {
   return {
@@ -58,7 +69,18 @@ export function instrumentOptions() {
     LiveFeedComponent,
     LiveFeedDetailsComponent,
     HackathonBannerComponent,
-    HackathonBannerDetailsComponent
+    HackathonBannerDetailsComponent,
+    IdeaFormComponent,
+    HackerInvitationComponent,
+    HackerTeamInvitationComponent,
+    InvitationFromTeamComponent,
+    InvitationToTeamComponent,
+    InvitationToHackerComponent,
+    InvitationFromHackerComponent,
+    ProfileComponent,
+    IdeaApprovalComponent,
+    LogsComponent,
+    PublishNewsComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
