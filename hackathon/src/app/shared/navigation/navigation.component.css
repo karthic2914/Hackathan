@@ -1,0 +1,115 @@
+.img {
+    width: 44px;
+    height: 36px;
+}
+
+img{
+    width:55px;
+  }
+  img:nth-child(1){
+    width:44px
+  }
+  .cd-slider-nav {
+      text-align: center;
+    }
+    
+    .cd-slider-nav ul {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .cd-slider-nav ul li {
+      display: inline-block;
+      margin: 80px 40px;
+    }
+    
+    .cd-slider-nav ul li a {
+      text-decoration: none;
+    }
+    
+    .cd-slider-nav ul li h6 {
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 400;
+      color: #fff;
+      margin-top: 15px;
+    }
+    
+    .cd-slider-nav ul .selected h6 {
+      color: #ffbb05;
+      text-decoration: none;
+    }
+    
+    .cd-slider-nav .image-icon {
+      margin: 0 auto;
+      margin-bottom: 15px;
+      display: block;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 50%;
+      text-align: center;
+      margin: 0px;
+      padding: 0px;
+      background-color: #ffbb05;
+    }
+    
+    .cd-slider-nav .image-icon:hover {
+      background-color: #fff;
+      -moz-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      -webkit-transition: all 0.2s linear;
+    }
+    
+    /* button {
+      background-color: #ffbb05;
+      border: 1px solid #ffbb05;
+      border-radius: 50%;
+      margin: 50px;
+      width: 120px;
+    }
+  
+    button:hover{
+      background-color: #fff;
+      color: #000000; 
+      border:1px solid #fff;
+    } */
+  
+    .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+  
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #000000;
+      min-width: 166px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      margin-left:-35px;
+  }
+  
+  .dropdown-content a {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ffbb05}
+  
+  .dropdown:hover .dropdown-content {
+      display: block;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.75);
+  } 

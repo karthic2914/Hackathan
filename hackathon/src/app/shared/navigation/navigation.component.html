@@ -1,0 +1,25 @@
+<div class="overlay"></div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <section class="cd-hero col-md-12 col-sm-12 col-xs-12">
+    <div class="cd-slider-nav">
+      <nav>
+        <span class="cd-marker item-1"></span>
+        <ul>
+          <li *ngFor="let nav of cms.navigation" class="selected">
+            <div class="dropdown">
+              <a routerLink='{{nav.routerLink}}'>
+                <div class="image-icon">
+                  <img class="img" src="{{nav.imgUrl}}">
+                </div>
+                <h6>{{nav.title}}</h6>
+              </a>
+             <div class="dropdown-content" *ngIf="nav.submenu">
+                 <a *ngFor="let submenu of nav.submenu" routerLink = "{{submenu.routerLink}}">{{submenu.title}}</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</div>

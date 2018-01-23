@@ -1,0 +1,17 @@
+
+.hackimg {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+figcaption {
+  text-align: center;
+}
+.banner {
+  cursor: pointer;
+}
+.margin-top {
+  margin-top: 0.5px;
+}

@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <section>
+    <div class="content first-content">
+      <div class="primary-button card-deck mb-3 text-center">
+        <div>
+          <a class="banner" *ngFor="let banner of cms.bannerContent" (click) = "selectDiv(banner)">
+            <figure>
+              <img class="hackimg" src="{{banner.imageUrl}}">
+              <figcaption>
+                {{banner.title}}
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+       <!-- <div *ngFor="let banner of cms.bannerContent" [ngClass]="banner.className">
+          <p>
+            {{banner.description}}
+          </p>
+        </div> -->
+        <!-- -->
+
+        <div *ngFor="let banner of cms.bannerContent" [ngClass]="banner.className" class="cd-full-width first-slide col-md-12 col-sm-12 col-xs-12 margin-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content first-content margin-top">
+                            <h4> {{banner.title}}</h4>
+                            <p> {{banner.description}}</p>
+                        </div>
+                    </div>
+                </div>                  
+            </div>
+        </div>
+        <!-- -->
+      </div>
+    </div>
+  </section>
+</div>

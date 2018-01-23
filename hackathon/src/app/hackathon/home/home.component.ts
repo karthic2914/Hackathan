@@ -1,3 +1,4 @@
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../store/models/hackathon-store.model';
@@ -10,7 +11,6 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
   private subscription: Subscription;
 
   private  cms: any;
@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppStore>) {
     this.subscription = this.store.subscribe((stores: AppStore) => {
       this.cms = stores.cms;
-      console.log('cms' + JSON.stringify(this.cms));
     });
   }
 
