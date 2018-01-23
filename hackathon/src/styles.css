@@ -1,14 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-/* 
-
-Newline Template
-
-http://www.templatemo.com/tm-503-newline
-
-*/
+@import url("https://fonts.googleapis.com/css?family=Muli");
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Muli', sans-serif;
 }
 
 p {
