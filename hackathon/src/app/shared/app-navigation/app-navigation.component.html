@@ -1,3 +1,62 @@
-<p>
-  app-navigation works!
-</p>
+<div class="overlay"></div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <!-- <app-app-video></app-app-video>   -->
+  <section class="cd-hero col-md-12 col-sm-12 col-xs-12">
+    <div class="cd-slider-nav">
+      <nav>
+        <span class="cd-marker item-1"></span>
+        <ul>
+          <li class="selected"><a routerLink='home'><div class="image-icon"><img src={{homeText.home.src}}></div><h6>{{homeText.home.name}}</h6></a></li>
+          <li><a (click)="isSelected($event)" routerLink = "{{homeText.idea.url}}"><div class="image-icon">
+            <img src = {{homeText.idea.src}}></div><h6>{{homeText.idea.name}}</h6></a>
+          </li>
+          <li><a routerLink = "{{homeText.news.url}}"><div class="image-icon">
+            <img src = {{homeText.news.src}}></div><h6>{{homeText.news.name}}</h6></a>
+          </li>
+          <li *ngIf = isHacker>
+            <div class="dropdown">
+              <a routerLink = "{{homeText.hacker.url}}">
+              <div class="image-icon">
+                <img src = {{homeText.hacker.src}}></div><h6>{{homeText.hacker.name}}</h6></a>
+                <div class="dropdown-content">
+                    <a routerLink = "./app-idea-form">Post an idea</a>
+                    <a routerLink = "./app-hacker-team-invitation">Invitation from Teams</a>
+                    <a routerLink = "./app-hacker-invitation">Request to Team</a>
+                    <!-- <a routerLink = "./">Profile</a> -->
+                </div>
+            </div>
+          </li>
+          <!-- <li routerLinkActive = 'Active'><a href="#0"><div class="image-icon">
+            <img [ngStyle]="{'width':'55px'}" src="/../../assets/images/admin1.png"></div><h6>Organizer</h6></a>
+          </li> -->
+          <li *ngIf = isAdmin>
+              <div class="dropdown">
+                <a routerLink = "{{homeText.admin.url}}">
+                <div class="image-icon">
+                  <img src = {{homeText.admin.src}}></div><h6>{{homeText.admin.name}}</h6></a>
+                  <div class="dropdown-content">
+                      <a href="#">Approval</a>
+                      <a href="#">Master Log</a>
+                      <a href="#">Publish News</a>
+                  </div>
+              </div>
+            </li>
+        </ul>
+      </nav> 
+    </div>
+  </section>
+</div>
+<router-outlet></router-outlet>
+<!-- <div class="col-md-12">
+  <div class="col-md-2 col-sm-12 col-xs-12">
+      <button type = "button" class = "btn btn-primary">Read more</button>    
+  </div>
+  <div class="col-md-10">
+        <app-app-live-feed></app-app-live-feed>  
+      <div class="heading col-md-9 col-sm-5 col-xs-12">
+          <h1>HACKATHON</h1>
+          <span>Welcome To Hackathon</span>
+      </div>    
+  </div>
+</div> -->
+ 

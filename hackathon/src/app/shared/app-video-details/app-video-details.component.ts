@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeComponent } from '../../hackathon/home/home.component'
 
 @Component({
   selector: 'app-app-video-details',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-video-details.component.css']
 })
 export class AppVideoDetailsComponent implements OnInit {
-
-  constructor() { }
+text:any;
+  constructor(private homecomponent : HomeComponent) { }
 
   ngOnInit() {
+    this.text = this.homecomponent.cms.videoDetails;
+    console.log(this.text);
   }
 
 }
