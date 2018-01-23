@@ -48,6 +48,33 @@ export const cmsJSON = {
           title: 'Read more'
         }
       }
+    },
+    banner: {
+      bannerContent: [{
+        title: '2017',
+        className: 'first',
+        imageUrl: '/../../assets/images/2017.jpg',
+        description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
+        Please tell your friends about templatemo and this is a way to help back. Thank you. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
+        feugiat`
+      }, {
+        title: '2017',
+        className: 'second',
+        imageUrl: '/../../assets/images/2016.jpg',
+        description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
+        Please tell your friends about templatemo and this is a way to help back. Thank you. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
+        feugiat`
+      }, {
+        title: '2017',
+        className: 'third',
+        imageUrl: '/../../assets/images/2015.jpg',
+        description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
+        Please tell your friends about templatemo and this is a way to help back. Thank you. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
+        feugiat`
+      }]
     }
   }
 };

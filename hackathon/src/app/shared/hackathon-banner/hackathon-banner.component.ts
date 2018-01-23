@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-hackathon-banner',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hackathon-banner.component.css']
 })
 export class HackathonBannerComponent implements OnInit {
+
+  @Input() cms: any;
 
   constructor() { }
 

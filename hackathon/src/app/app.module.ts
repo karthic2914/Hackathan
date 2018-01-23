@@ -32,6 +32,8 @@ import { NewsStateService } from './store/services/news-state.service';
 import { VideoDetailsComponent } from './shared/video-details/video-details.component';
 import { LiveFeedComponent } from './shared/live-feed/live-feed.component';
 import { LiveFeedDetailsComponent } from './shared/live-feed-details/live-feed-details.component';
+import { HackathonBannerComponent } from './shared/hackathon-banner/hackathon-banner.component';
+import { HackathonBannerDetailsComponent } from './shared/hackathon-banner-details/hackathon-banner-details.component';
 
 export function instrumentOptions() {
   return {
@@ -54,7 +56,9 @@ export function instrumentOptions() {
     VideoComponent,
     VideoDetailsComponent,
     LiveFeedComponent,
-    LiveFeedDetailsComponent
+    LiveFeedDetailsComponent,
+    HackathonBannerComponent,
+    HackathonBannerDetailsComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppStore>) {
     this.subscription = this.store.subscribe((stores: AppStore) => {
       this.cms = stores.cms;
-      console.log('cms' + JSON.stringify(this.cms));
     });
   }
 
