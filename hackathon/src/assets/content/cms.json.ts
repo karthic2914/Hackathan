@@ -28,7 +28,8 @@ export const cmsJSON = {
       }
     ],
     videos: {
-      videoUrl: '',
+      mp4Format: '/../../assets/videos/video.mp4',
+      orgFormat: '/../../assets/videos/video.ogg',
       videoDescription: ''
     }
   }
