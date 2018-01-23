@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./live-feed.component.css']
 })
 export class LiveFeedComponent implements OnInit {
+  private show: Boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
-
+  onClick() {
+    this.show = !this.show;
+  }
 }
