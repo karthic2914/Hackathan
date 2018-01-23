@@ -46,6 +46,8 @@ import { IdeaApprovalComponent } from './hackathon/admin/idea-approval/idea-appr
 import { LogsComponent } from './hackathon/admin/logs/logs.component';
 import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-news.component';
 import { HttpModule } from '@angular/http';
+import { SearchDisplayComponent } from './shared/search-display/search-display.component';
+import { SearchListComponent } from './shared/search-list/search-list.component';
 
 export function instrumentOptions() {
   return {
@@ -81,7 +83,9 @@ export function instrumentOptions() {
     ProfileComponent,
     IdeaApprovalComponent,
     LogsComponent,
-    PublishNewsComponent
+    PublishNewsComponent,
+    SearchDisplayComponent,
+    SearchListComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

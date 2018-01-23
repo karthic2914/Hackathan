@@ -24,4 +24,15 @@ export class HackerStateService {
     });
   }
 
+  public searchHackers(value) { // set the node url here
+      this.http.post('http://localhost:3000//hackers/approval', value).toPromise().then((response: any) => {
+        console.log(response);
+    });
+  }
+
+  public requestHacker(value) { // set the node url here
+      this.http.post('http://localhost:3000//hackers/approval', value).toPromise().then((response: any) => {
+        console.log(response);
+    });
+  }
 }
