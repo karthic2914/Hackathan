@@ -33,9 +33,21 @@ export const cmsJSON = {
       }
     ],
     videos: {
-      mp4Format: '/../../assets/videos/video.mp4',
-      orgFormat: '/../../assets/videos/video.ogg',
-      videoDescription: ''
+      url: {
+        mp4Format: '/../../assets/videos/video.mp4',
+        orgFormat: '/../../assets/videos/video.ogg'
+      },
+      description: {
+        heading: 'Header',
+        title: 'Welcome to Hackathon',
+        description: 'blah... blah... blah...',
+        discoverMorebutton: {
+          title: 'Discover More'
+        },
+        readMorebutton: {
+          title: 'Read more'
+        }
+      }
     }
   }
 };
