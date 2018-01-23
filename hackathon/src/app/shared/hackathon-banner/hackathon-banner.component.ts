@@ -14,4 +14,10 @@ export class HackathonBannerComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectDiv(banner) {
+    document.querySelector('.' + banner.className).scrollIntoView({
+      behavior : 'smooth'
+    });
+  }
+
 }

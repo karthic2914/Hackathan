@@ -25,15 +25,11 @@ export const cmsJSON = {
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: 'hackers'
         }, {
-          title: 'Invitation from team',
-          imgUrl: '/../../assets/images/hacker1.png',
-          routerLink: 'hackers'
-        }, {
           title: 'Invitation to team',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: 'hackers'
         }, {
-          title: 'Profile',
+          title: 'Invitation from team',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: 'hackers'
         }, {
@@ -42,6 +38,10 @@ export const cmsJSON = {
           routerLink: 'hackers'
         }, {
           title: 'Initation from hacker',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
+        }, {
+          title: 'Profile',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: 'hackers'
         }]
@@ -92,7 +92,7 @@ export const cmsJSON = {
         consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
         feugiat`
       }, {
-        title: '2017',
+        title: '2016',
         className: 'second',
         imageUrl: '/../../assets/images/2016.jpg',
         description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
@@ -100,7 +100,7 @@ export const cmsJSON = {
         consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
         feugiat`
       }, {
-        title: '2017',
+        title: '2015',
         className: 'third',
         imageUrl: '/../../assets/images/2015.jpg',
         description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
