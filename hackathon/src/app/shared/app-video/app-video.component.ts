@@ -11,5 +11,8 @@ export class AppVideoComponent implements OnInit {
 
   ngOnInit() {
   }
+  // selectDiv(){
+    
+  // }
 
 }
