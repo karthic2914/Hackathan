@@ -1,31 +1,35 @@
-export const  cmsJSON = {          
-        'home':{
-            'name':"Welcome",
-            'url':'home',
-            'src':'/../../assets/images/home-icon.png'           
-        },
-        'idea':{
-            'name':'Ideas',
-            'url':'ideas',
-            'src':'/../../assets/images/idea-icon4.png'
-        },
-        'news':{
-            'name':'News',
-            'url':'news',
-            'src':"/../../assets/images/news.png"
-        },
-        'hacker':{
-            'name':'Hacker',
-            'url':'hackers',
-            'src':"/../../assets/images/hacker1.png"
-        },
-        'admin':{
-            'name':'Organiser',
-            'url':'admin',
-            'src':"/../../assets/images/admin1.png"
-        },
-        'videoDetails':{
-            'header':"Let’s Talk More About Hackathon",
-            'paragraph':"A hackathon (also known as a hack day, hackfest or codefest) is a design sprint-like event in which computer programmers and others involved in software development, including graphic designers, interface designers, project managers, and others, often including subject-matter-experts, collaborate intensively on software projects."
-        }
+export const cmsJSON = {
+  home: {
+    navigation: [
+      {
+        title: 'Home',
+        imgUrl: '/../../assets/images/home-icon.png',
+        routerLink: '/'
+      },
+      {
+        title: 'Idea',
+        imgUrl: '/../../assets/images/idea-icon4.png',
+        routerLink: '/ideas'
+      },
+      {
+        title: 'News',
+        imgUrl: '/../../assets/images/news.png',
+        routerLink: '/news'
+      },
+      {
+        title: 'Hackers',
+        imgUrl: '/../../assets/images/hacker1.png',
+        routerLink: 'hackers'
+      },
+      {
+        title: 'Admin',
+        imgUrl: '/../../assets/images/admin1.png',
+        routerLink: '/admin'
+      }
+    ],
+    videos: {
+      videoUrl: '',
+      videoDescription: ''
     }
+  }
+};
