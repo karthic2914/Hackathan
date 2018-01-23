@@ -4,17 +4,22 @@
     <div class="cd-slider-nav">
       <nav>
         <span class="cd-marker item-1"></span>
-        <ul >
+        <ul>
           <li *ngFor="let nav of cms.navigation" class="selected">
-            <a routerLink='{{nav.routerLink}}'>
-              <div class="image-icon">
-                <img class="img" src="{{nav.imgUrl}}"></div>
-                <h6>{{nav.title}}</h6> 
+            <div class="dropdown">
+              <a routerLink='{{nav.routerLink}}'>
+                <div class="image-icon">
+                  <img class="img" src="{{nav.imgUrl}}">
+                </div>
+                <h6>{{nav.title}}</h6>
               </a>
-            </li>
+             <div class="dropdown-content" *ngIf="nav.submenu">
+                 <a *ngFor="let submenu of nav.submenu" routerLink = "{{submenu.routerLink}}">{{submenu.title}}</a>
+              </div>
+            </div>
+          </li>
         </ul>
-      </nav> 
+      </nav>
     </div>
   </section>
 </div>
- 

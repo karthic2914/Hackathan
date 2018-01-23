@@ -1,22 +1,24 @@
-<section>
-  <div class="content first-content">
-    <div class="primary-button card-deck mb-3 text-center">
-      <div>
-        <a id="2017" *ngFor="let banner of cms.bannerContent">
-          <figure>
-            <img class="hackimg" src="{{banner.imageUrl}}">
-            <figcaption>
-              {{banner.title}}
-            </figcaption>
-          </figure>
-        </a>
-      </div>
-      <br/>
-      <div *ngFor="let banner of cms.bannerContent" class="{{banner.className}}">
-        <p>
-          {{banner.description}}
-        </p>
+<div class="col-md-12">
+  <section>
+    <div class="content first-content">
+      <div class="primary-button card-deck mb-3 text-center">
+        <div>
+          <a id="2017" *ngFor="let banner of cms.bannerContent">
+            <figure>
+              <img class="hackimg" src="{{banner.imageUrl}}">
+              <figcaption>
+                {{banner.title}}
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+        <br/>
+        <div *ngFor="let banner of cms.bannerContent" class="{{banner.className}}">
+          <p>
+            {{banner.description}}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

@@ -24,12 +24,45 @@ export const cmsJSON = {
           title: 'Post an idea',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: 'hackers'
+        }, {
+          title: 'Invitation from team',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
+        }, {
+          title: 'Invitation to team',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
+        }, {
+          title: 'Profile',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
+        }, {
+          title: 'Invitation to hackers',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
+        }, {
+          title: 'Initation from hacker',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
         }]
       },
       {
         title: 'Admin',
         imgUrl: '/../../assets/images/admin1.png',
-        routerLink: '/admin'
+        routerLink: '/admin',
+        submenu: [{
+          title: 'Idea Approval',
+          imgUrl: '/../../assets/images/admin1.png',
+          routerLink: 'admin'
+        }, {
+          title: 'Logs',
+          imgUrl: '/../../assets/images/admin1.png',
+          routerLink: 'admin'
+        }, {
+          title: 'Publish News',
+          imgUrl: '/../../assets/images/admin1.png',
+          routerLink: 'admin'
+        }]
       }
     ],
     videos: {
