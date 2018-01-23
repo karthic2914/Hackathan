@@ -19,7 +19,12 @@ export const cmsJSON = {
       {
         title: 'Hackers',
         imgUrl: '/../../assets/images/hacker1.png',
-        routerLink: 'hackers'
+        routerLink: 'hackers',
+        submenu: [{
+          title: 'Post an idea',
+          imgUrl: '/../../assets/images/hacker1.png',
+          routerLink: 'hackers'
+        }]
       },
       {
         title: 'Admin',

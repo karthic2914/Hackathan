@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER  } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
@@ -28,6 +29,7 @@ import { HackerStateService } from './store/services/hacker-state.service';
 import { IdeaStateService } from './store/services/idea-state.service';
 import { LoginStateService } from './store/services/login-state.service';
 import { NewsStateService } from './store/services/news-state.service';
+import { VideoDetailsComponent } from './shared/video-details/video-details.component';
 
 export function instrumentOptions() {
   return {
@@ -47,13 +49,15 @@ export function instrumentOptions() {
     AdminComponent,
     LoginComponent,
     NavigationComponent,
-    VideoComponent
+    VideoComponent,
+    VideoDetailsComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
     StoreLogMonitorModule,
     HackathonStoreModule.forRoot(),
     BrowserModule,
+    FormsModule,
     AngularFontAwesomeModule,
     AppRoutingModule
   ],
