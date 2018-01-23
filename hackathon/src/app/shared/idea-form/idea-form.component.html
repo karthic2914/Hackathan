@@ -3,34 +3,32 @@
     <div class="content first-content">
       <div class="primary-button card-deck mb-3 text-center">
 
-        <form>
+        <form #postAnIdea="ngForm" (ngSubmit)="onSubmit(postAnIdea.value)">
           <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Team Name</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+              <input type="text" class="form-control form-control-sm" name="teamName" ngModel>
             </div>
           </div>
           <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Idea Title</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+              <input type="text" class="form-control form-control-sm" id="colFormLabelSm"  name="ideaTitle" ngModel>
             </div>
           </div>
           <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Category</label>
             <div class="col-sm-4">
               <select class="form-control">
-                <option>Choose category</option>
-                <option>Angular</option>
-                <option>Java</option>
-                <option>NodeJS</option>
+                <option name="">Choose category</option>
+                <option name="angular">Angular</option>
+                <option name="java">Java</option>
+                <option name="nodeJs">NodeJS</option>
               </select>
             </div>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-
-
       </div>
     </div>
   </section>

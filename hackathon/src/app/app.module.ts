@@ -45,6 +45,7 @@ import { ProfileComponent } from './hackathon/hackers/profile/profile.component'
 import { IdeaApprovalComponent } from './hackathon/admin/idea-approval/idea-approval.component';
 import { LogsComponent } from './hackathon/admin/logs/logs.component';
 import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-news.component';
+import { HttpModule } from '@angular/http';
 
 export function instrumentOptions() {
   return {
@@ -89,7 +90,8 @@ export function instrumentOptions() {
     BrowserModule,
     FormsModule,
     AngularFontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [
     CmsStateService,
