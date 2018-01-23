@@ -18,7 +18,7 @@ import { SignUpComponent } from './hackathon/login/sign-up/sign-up.component';
 import { HackathonStoreModule } from './store/hackathon.store.module';
 import { startupServiceFactory } from './store/services/startup.service';
 import { CmsStateService } from './store/services/cms-state.service';
-import { AppNavigationComponent } from './shared/app-navigation/app-navigation.component';
+/*import { AppNavigationComponent } from './shared/app-navigation/app-navigation.component';
 import { AppVideoComponent } from './shared/app-video/app-video.component';
 import { AppVideoDetailsComponent } from './shared/app-video-details/app-video-details.component';
 import { AppHackathonBannerComponent } from './shared/app-hackathon-banner/app-hackathon-banner.component';
@@ -35,7 +35,9 @@ import { AppIdeaFormComponent } from './shared/app-idea-form/app-idea-form.compo
 import { AppHackerTeamInvitationComponent } from './shared/app-hacker-team-invitation/app-hacker-team-invitation.component';
 import { AppHackerInvitationComponent } from './shared/app-hacker-invitation/app-hacker-invitation.component';
 import { AppSearchListComponent } from './shared/app-search-list/app-search-list.component';
-import { AppSearchDisplayComponent } from './shared/app-search-display/app-search-display.component';
+import { AppSearchDisplayComponent } from './shared/app-search-display/app-search-display.component'; */
+
+import { NavigationComponent } from './shared/navigation/navigation.component';
 import { AdminStateService } from './store/services/admin-state.service';
 import { HackerStateService } from './store/services/hacker-state.service';
 import { IdeaStateService } from './store/services/idea-state.service';
@@ -59,24 +61,7 @@ export function instrumentOptions() {
     HackersComponent,
     AdminComponent,
     LoginComponent,
-    AppNavigationComponent,
-    AppVideoComponent,
-    AppVideoDetailsComponent,
-    AppHackathonBannerComponent,
-    AppHackathonBannerDetailsComponent,
-    AppLiveFeedComponent,
-    AppLiveFeedDetailsComponent,
-    AppPanelExpandComponent,
-    AppPanelPaginationComponent,
-    AppAwaitingIdeasListComponent,
-    AppMasterListComponent,
-    AppPublishListComponent,
-    AppPublishFormComponent,
-    AppIdeaFormComponent,
-    AppHackerTeamInvitationComponent,
-    AppHackerInvitationComponent,
-    AppSearchListComponent,
-    AppSearchDisplayComponent
+    NavigationComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

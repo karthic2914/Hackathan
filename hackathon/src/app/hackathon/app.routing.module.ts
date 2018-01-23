@@ -7,7 +7,6 @@ import { IdeasComponent } from './ideas/ideas.component';
 import { NewsComponent } from './news/news.component';
 import { HackersComponent } from './hackers/hackers.component';
 import { AdminComponent } from './admin/admin.component';
-import { AppPublishFormComponent } from '../shared/app-publish-form/app-publish-form.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,8 +14,7 @@ const routes: Routes = [
     { path: 'ideas', component: IdeasComponent },
     { path: 'news', component: NewsComponent },
     { path: 'hackers', component: HackersComponent },
-    { path: 'admin', component: AdminComponent },
-    {path:'ideas-publish',component:AppPublishFormComponent}
+    { path: 'admin', component: AdminComponent }
   ];
 
 @NgModule({
