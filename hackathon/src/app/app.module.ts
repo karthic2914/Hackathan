@@ -48,7 +48,9 @@ import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-new
 import { HttpModule } from '@angular/http';
 import { SearchDisplayComponent } from './shared/search-display/search-display.component';
 import { SearchListComponent } from './shared/search-list/search-list.component';
-
+import { MasterListComponent } from './shared/master-list/master-list.component';
+import { DataTableModule } from "angular2-datatable";
+ 
 export function instrumentOptions() {
   return {
     monitor: useLogMonitor({ visible: true, position: 'right' })
@@ -85,7 +87,8 @@ export function instrumentOptions() {
     LogsComponent,
     PublishNewsComponent,
     SearchDisplayComponent,
-    SearchListComponent
+    SearchListComponent,
+    MasterListComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
@@ -95,7 +98,8 @@ export function instrumentOptions() {
     FormsModule,
     AngularFontAwesomeModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    DataTableModule
   ],
   providers: [
     CmsStateService,
