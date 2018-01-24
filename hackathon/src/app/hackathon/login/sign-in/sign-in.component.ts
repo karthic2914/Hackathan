@@ -32,4 +32,10 @@ export class SignInComponent implements OnInit {
           });
 
     }
+
+
+    navigate() {
+        console.log('click recived')
+        this.router.navigate(['/signUp']);
+    }
 }

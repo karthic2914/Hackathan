@@ -37,3 +37,14 @@
     -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
+.floatingPanel{
+    margin-top: 20px;
+    float: right;
+}
+.toptext {
+    display: inline-block;
+    font-size: 13px;
+    text-decoration: none;
+    margin-right: 35px;
+    cursor: pointer;
+}
