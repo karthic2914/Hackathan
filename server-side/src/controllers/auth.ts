@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { login, signUp } from '../controllers/authController';
+import { login, signUp } from '../services/authService';
 
 export let auth = (req: Request, res: Response) => {
     login(req.body.data, function (err: any, user: any) {
