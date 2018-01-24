@@ -25,7 +25,7 @@ export const cmsJSON = {
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: '/hackers'
         }, {
-          title: 'Invitation to team',
+          title: 'Request to team',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: '/hackers/invitationToTeam'
         }, {
@@ -33,7 +33,7 @@ export const cmsJSON = {
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: '/hackers/invitationFromTeam'
         }, {
-          title: 'Invitation to hacker',
+          title: 'Request to hacker',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: '/hackers/invitationToHacker'
         }, {
@@ -71,7 +71,7 @@ export const cmsJSON = {
         orgFormat: '/../../assets/videos/video.ogg'
       },
       description: {
-        heading: 'Header',
+        heading: 'Hackathon',
         title: 'Welcome to Hackathon',
         description: 'blah... blah... blah...',
         discoverMorebutton: {
@@ -109,5 +109,6 @@ export const cmsJSON = {
         feugiat`
       }]
     }
+    
   }
 };
