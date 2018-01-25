@@ -2,6 +2,7 @@ import { auth, signup } from './controllers/auth';
 import { postBlog, getBlogs, updateblog } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
+import { postAnIdea } from './controllers/hacker';
 
 export class Routes {
 
@@ -18,6 +19,6 @@ export class Routes {
         app.put('/blog', updateblog);
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);
+        app.post('/hacker/postAnIdea', postAnIdea);
     }
-
 }
