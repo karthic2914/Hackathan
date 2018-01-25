@@ -20,9 +20,9 @@ export class Routes {
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);
         app.post('/hacker/postAnIdea', postAnIdea);
-        // app.get('/hacker/requestToTeam', functionNameComeHere);
-        // app.post('/hacker/requestToTeam/search', functionNameComeHere);
-        // app.post('/hacker/requestToTeam/request', functionNameComeHere);
+        app.get('/hacker/requestToTeam', getAllIdea);
+        app.post('/hacker/requestToTeam/search', searchIdea);
+        app.post('/hacker/requestToTeam/request', postTeamReq);
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);
         // app.post('/hacker/requestToHacker/request', functionNameComeHere);
