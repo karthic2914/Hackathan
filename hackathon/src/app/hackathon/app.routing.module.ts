@@ -18,7 +18,8 @@ import { ProfileComponent } from './hackers/profile/profile.component';
 import { IdeaApprovalComponent } from './admin/idea-approval/idea-approval.component';
 import { LogsComponent } from './admin/logs/logs.component';
 import { PublishNewsComponent } from './admin/publish-news/publish-news.component';
-import {NotAuthorize} from './auth/not-authorize.service';
+import { NotAuthorize } from './auth/not-authorize.service';
+import { ReadMoreComponent } from '../shared/read-more/read-more.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'signup', component: SignUpComponent, canActivate: [NotAuthorize]},
     { path: 'ideas', component: IdeasComponent },
     { path: 'news', component: NewsComponent },
+    { path: 'read_news', component: ReadMoreComponent },
     { path: 'hackers', component: HackersComponent,
     children: [
       { path: '', component: IdeaFormComponent },
