@@ -3,6 +3,7 @@ import { postBlog, getBlogs, updateblog } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
 import { postAnIdea } from './controllers/hacker/postAnIdea';
+import { getIdea, ideaSearch, teamReq  } from './controllers/hacker/requestToTeam';
 
 export class Routes {
 
@@ -20,9 +21,9 @@ export class Routes {
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);
         app.post('/hacker/postAnIdea', postAnIdea);
-        app.get('/hacker/requestToTeam', getAllIdea);
-        app.post('/hacker/requestToTeam/search', searchIdea);
-        app.post('/hacker/requestToTeam/request', postTeamReq);
+        app.get('/hacker/requestToTeam', getIdea);
+        app.post('/hacker/requestToTeam/search', ideaSearch);
+        app.post('/hacker/requestToTeam/request', teamReq);
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);
         // app.post('/hacker/requestToHacker/request', functionNameComeHere);
