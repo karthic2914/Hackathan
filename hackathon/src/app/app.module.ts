@@ -49,12 +49,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchDisplayComponent } from './shared/search-display/search-display.component';
 import { SearchListComponent } from './shared/search-list/search-list.component';
 import { MasterListComponent } from './shared/master-list/master-list.component';
-import { DataTableModule } from "angular2-datatable";
-import { ApiService } from "./store/services/api.service";
+import { DataTableModule } from 'angular2-datatable';
+import { ApiService } from './store/services/api.service';
 import { UserStateService } from './store/services/user-state.service';
 import { JwtService } from './store/services/jwt.service';
 import { NotAuthorize } from './hackathon/auth/not-authorize.service';
 import { IsAuthDirective } from './shared/is-auth.directive';
+import { PublishListComponent } from './shared/publish-list/publish-list.component';
+import { PublishFormComponent } from './shared/publish-form/publish-form.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 export function instrumentOptions() {
   return {
@@ -93,7 +96,9 @@ export function instrumentOptions() {
     SearchDisplayComponent,
     SearchListComponent,
     MasterListComponent,
-    IsAuthDirective
+    IsAuthDirective,
+    PublishListComponent,
+    PublishFormComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
@@ -104,9 +109,10 @@ export function instrumentOptions() {
     AngularFontAwesomeModule,
     AppRoutingModule,
     HttpModule,
-    DataTableModule
+    DataTableModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [
     CmsStateService,
