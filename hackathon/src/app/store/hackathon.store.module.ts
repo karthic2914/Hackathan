@@ -6,10 +6,12 @@ import { ActionReducer, combineReducers } from '@ngrx/store';
 import { AppStore } from './models/hackathon-store.model';
 import { cmsReducer  } from './reducers/cms.reducer';
 import { userReducer } from './reducers/user.reducer';
+import { logsReducer } from './reducers/logs.reducer'
 
 export const rootReducer = {
-  cms: cmsReducer,
-  user: userReducer
+  cms : cmsReducer,
+  user : userReducer,
+  logs :logsReducer
 };
 
 
