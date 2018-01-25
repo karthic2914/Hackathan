@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER  } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
@@ -18,9 +18,8 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
 import { VideoComponent } from './shared/video/video.component';
 
 import { AppRoutingModule } from './hackathon/app.routing.module';
-import { LoginComponent } from './hackathon/login/login.component';
-import { SignInComponent } from './hackathon/login/sign-in/sign-in.component';
-import { SignUpComponent } from './hackathon/login/sign-up/sign-up.component';
+import { SignInComponent } from './hackathon/auth/sign-in/sign-in.component';
+import { SignUpComponent } from './hackathon/auth/sign-up/sign-up.component';
 import { HackathonStoreModule } from './store/hackathon.store.module';
 import { startupServiceFactory } from './store/services/startup.service';
 import { CmsStateService } from './store/services/cms-state.service';
@@ -46,11 +45,17 @@ import { IdeaApprovalComponent } from './hackathon/admin/idea-approval/idea-appr
 import { LogsComponent } from './hackathon/admin/logs/logs.component';
 import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-news.component';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SearchDisplayComponent } from './shared/search-display/search-display.component';
 import { SearchListComponent } from './shared/search-list/search-list.component';
 import { MasterListComponent } from './shared/master-list/master-list.component';
 import { DataTableModule } from "angular2-datatable";
- 
+import { ApiService } from "./store/services/api.service";
+import { UserStateService } from './store/services/user-state.service';
+import { JwtService } from './store/services/jwt.service';
+import { NotAuthorize } from './hackathon/auth/not-authorize.service';
+import { IsAuthDirective } from './shared/is-auth.directive';
+
 export function instrumentOptions() {
   return {
     monitor: useLogMonitor({ visible: true, position: 'right' })
@@ -67,7 +72,6 @@ export function instrumentOptions() {
     NewsComponent,
     HackersComponent,
     AdminComponent,
-    LoginComponent,
     NavigationComponent,
     VideoComponent,
     VideoDetailsComponent,
@@ -88,7 +92,8 @@ export function instrumentOptions() {
     PublishNewsComponent,
     SearchDisplayComponent,
     SearchListComponent,
-    MasterListComponent
+    MasterListComponent,
+    IsAuthDirective
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
@@ -100,6 +105,8 @@ export function instrumentOptions() {
     AppRoutingModule,
     HttpModule,
     DataTableModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     CmsStateService,
@@ -114,7 +121,11 @@ export function instrumentOptions() {
       useFactory: startupServiceFactory,
       deps: [CmsStateService],
       multi: true
-  }
+    },
+    ApiService,
+    UserStateService,
+    JwtService,
+    NotAuthorize
   ],
   bootstrap: [AppComponent]
 })

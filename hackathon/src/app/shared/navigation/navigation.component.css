@@ -113,3 +113,27 @@ img{
     z-index: 1;
     background-color: rgba(0,0,0,0.75);
   } 
+
+  .topdiv{
+    margin-top: 0px;
+    float: right;
+    border-top: 5px solid  #ffbb05;
+    z-index: 99100;  
+    position: absolute;  
+  }
+
+  .topdiv button{
+    margin-right: 10px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    background-color: #ffbb05;
+    display: inline-block;
+    font-size: 13px;
+    padding: 12px 18px;
+    border-radius: 0px 0px 3px 3px;
+    border : 0px;
+    text-decoration: none;
+    outline: none;
+    margin-bottom: 0px;
+  }
