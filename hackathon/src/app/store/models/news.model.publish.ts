@@ -3,4 +3,6 @@ export interface IdeaPub {
     newsTitle: String;
     newsDescription: String;
     newsAction: boolean;
+    title: string;
+    description: string;
 }
