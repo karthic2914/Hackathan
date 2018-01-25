@@ -1,35 +1,35 @@
 <div class="col-md-12 margin-top">
   <section>
-    <div class="content first-content">
+    <div class="content ">
       <div class="primary-button card-deck mb-3 text-center">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="hackerProfileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="teamname">Team Name</label>
+          <input type="text" id="teamname" formControlName="teamName" class="form-control">
+          <span *ngIf="!hackerProfileForm.get('teamName').valid && hackerProfileForm.get('teamName').touched" class="help-block">Please enter a valid Team Name</span>
+        </div>
+        <div class="form-group">
+          <label for="ideatitle">Idea Title</label>
+          <input type="text" id="ideatitle" formControlName="title" class="form-control">
+          <span *ngIf="!hackerProfileForm.get('title').valid && hackerProfileForm.get('title').touched" class="help-block">Please enter a valid Idea Title</span>
+        </div>
+        <div [froalaEditor] formControlName="description">
+          Hello, Froala!
+          <span *ngIf="!hackerProfileForm.get('description').valid && hackerProfileForm.get('description').touched" class="help-block">Please enter a valid Idea</span>
+        </div>
+        <span *ngIf="!hackerProfileForm.valid && hackerProfileForm.touched" class="help-block">Please enter a valid Data!</span>
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-default" (click)="clear()">Clear</button>
 
-        <form #postAnIdea="ngForm" (ngSubmit)="onSubmit(postAnIdea.value)">
-          <div class="form-group row">
-            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Team Name</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control form-control-sm" name="teamName" ngModel>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Idea Title</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control form-control-sm" id="colFormLabelSm"  name="ideaTitle" ngModel>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Category</label>
-            <div class="col-sm-4">
-              <select class="form-control">
-                <option name="">Choose category</option>
-                <option name="angular">Angular</option>
-                <option name="java">Java</option>
-                <option name="nodeJs">NodeJS</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-      </div>
+      </form>
     </div>
-  </section>
+  </div>
+</div>
+</div>
+</div>
+</section>
 </div>

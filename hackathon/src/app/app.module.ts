@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccordionModule } from 'ngx-bootstrap';
+
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
@@ -58,6 +60,9 @@ import { IsAuthDirective } from './shared/is-auth.directive';
 import { PublishListComponent } from './shared/publish-list/publish-list.component';
 import { PublishFormComponent } from './shared/publish-form/publish-form.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NewsCardComponent } from './shared/news-card/news-card.component';
+import { ReadMoreComponent } from './shared/read-more/read-more.component';
 
 export function instrumentOptions() {
   return {
@@ -98,7 +103,10 @@ export function instrumentOptions() {
     MasterListComponent,
     IsAuthDirective,
     PublishListComponent,
-    PublishFormComponent
+    PublishFormComponent,
+    FooterComponent,
+    NewsCardComponent,
+    ReadMoreComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
@@ -112,7 +120,8 @@ export function instrumentOptions() {
     DataTableModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [
     CmsStateService,

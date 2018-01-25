@@ -4,11 +4,12 @@ import { Store } from '@ngrx/store';
 import { AppStore } from '../../store/models/hackathon-store.model';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-read-more',
+  templateUrl: './read-more.component.html',
+  styleUrls: ['./read-more.component.css']
 })
-export class NewsComponent implements OnInit, OnDestroy {
+export class ReadMoreComponent implements OnInit, OnDestroy {
+
   private subscription: Subscription;
 
   private  cms: any;
@@ -25,4 +26,5 @@ export class NewsComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
 }
