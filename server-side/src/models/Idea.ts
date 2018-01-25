@@ -14,6 +14,17 @@ const IdeaSchema = new mongoose.Schema({
     teamType: {type: String, enum: TEAM_TYPE}
 }, {timestamps: true});
 
+export interface IdeaModel extends mongoose.Document {
+    teamName: string;
+    title: string;
+    technologyTags: string[];
+    description: string;
+    createdBy: typeof mongoose.Schema.Types.ObjectId;
+    members: string[];
+    isApproved: boolean;
+    teamType: string;
+}
+
 IdeaSchema.plugin(uniqueValidator);
 
 export default mongoose.model('Idea', IdeaSchema);
