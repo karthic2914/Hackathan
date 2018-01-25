@@ -2,7 +2,7 @@ import { default as User } from '../models/User';
 import { parseErrors } from '../utils/errorParser';
 
 export const login = (credential: any, callback: any) => {
-    User.findOne({email: credential.email}).then((user: any) => {
+    User.findOne({username: credential.username}).then((user: any) => {
         if (!user || !user.isValidPassword(credential.password)) {
             return callback({errors: {global: 'no user found'}}, undefined);
         }

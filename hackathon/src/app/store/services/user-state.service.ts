@@ -37,7 +37,7 @@ export class UserStateService {
     return this.apiService.post('user/auth', {data: data})
       .then((data: any) => {
         this.store.dispatch(this.userLoggedIn({user: JWT(data.user.token)}));
-        this.setAuth(data);
+        this.setAuth(data.user.token);
         return data;
       })
       .catch((err: any) => Promise.reject(err));
@@ -56,7 +56,19 @@ export class UserStateService {
       .catch((err: any) => Promise.reject(err));
   }
 
+  populateUser() {
+    if (this.jwtService.getToken()) {
+      this.store.dispatch(this.userLoggedIn({user: JWT(this.jwtService.getToken())}));
+    } else {
+      this.purgeAuth();
+    }
+  }
+
   purgeAuth() {
     this.jwtService.destroyToken();
+    this.store.dispatch({
+      type: 'USER_LOGGED_OUT',
+      payload: {}
+    });
   }
 }
