@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class HackerStateService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  public postAnIdea(value) { // set the node url here
-      this.http.post('http://localhost:3000//hackers/approval', value).toPromise().then((response: any) => {
-        console.log(response);
-    });
+  public postAnIdea(value) {
+    this.http.post('http://localhost:3000/hacker/postAnIdea', value).subscribe(
+      (data: any) =>  {
+        console.log(data);
+      }
+    );
   }
 
   public invitationFromTeam() { // set the node url here

@@ -18,7 +18,7 @@ import { ProfileComponent } from './hackers/profile/profile.component';
 import { IdeaApprovalComponent } from './admin/idea-approval/idea-approval.component';
 import { LogsComponent } from './admin/logs/logs.component';
 import { PublishNewsComponent } from './admin/publish-news/publish-news.component';
-import {NotAuthorize} from "./auth/not-authorize.service";
+import {NotAuthorize} from './auth/not-authorize.service';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
