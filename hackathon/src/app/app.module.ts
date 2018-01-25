@@ -48,6 +48,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchDisplayComponent } from './shared/search-display/search-display.component';
 import { SearchListComponent } from './shared/search-list/search-list.component';
+import { MasterListComponent } from './shared/master-list/master-list.component';
+import { DataTableModule } from "angular2-datatable";
 import { ApiService } from "./store/services/api.service";
 import { UserStateService } from './store/services/user-state.service';
 import { JwtService } from './store/services/jwt.service';
@@ -90,6 +92,7 @@ export function instrumentOptions() {
     PublishNewsComponent,
     SearchDisplayComponent,
     SearchListComponent,
+    MasterListComponent,
     IsAuthDirective
   ],
   imports: [
@@ -101,6 +104,7 @@ export function instrumentOptions() {
     AngularFontAwesomeModule,
     AppRoutingModule,
     HttpModule,
+    DataTableModule
     HttpClientModule,
     ReactiveFormsModule
   ],
