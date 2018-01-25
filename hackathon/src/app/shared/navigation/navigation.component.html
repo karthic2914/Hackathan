@@ -1,7 +1,8 @@
 
 <div class="overlay"></div>
 <div class="topdiv col-md-12">
-  <button (click)="login()">Log-In</button>
+  <button *appIsAuth="false" (click)="login()">Log-In</button>
+  <button *appIsAuth="true" (click)="logout()">Log-Out</button>
 </div>
 <div class="col-md-12 col-sm-12 col-xs-12">
   <section class="cd-hero col-md-12 col-sm-12 col-xs-12">

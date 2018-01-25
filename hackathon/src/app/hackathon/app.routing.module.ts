@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { LoginComponent } from './login/login.component';
-import { SignInComponent } from './login/sign-in/sign-in.component';
-import { SignUpComponent } from './login/sign-up/sign-up.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { IdeasComponent } from './ideas/ideas.component';
 import { NewsComponent } from './news/news.component';
@@ -20,11 +18,12 @@ import { ProfileComponent } from './hackers/profile/profile.component';
 import { IdeaApprovalComponent } from './admin/idea-approval/idea-approval.component';
 import { LogsComponent } from './admin/logs/logs.component';
 import { PublishNewsComponent } from './admin/publish-news/publish-news.component';
+import {NotAuthorize} from "./auth/not-authorize.service";
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'signIn', component: SignInComponent},
-    { path: 'signUp', component: SignUpComponent},
+    { path: 'signin', component: SignInComponent, canActivate: [NotAuthorize]},
+    { path: 'signup', component: SignUpComponent, canActivate: [NotAuthorize]},
     { path: 'ideas', component: IdeasComponent },
     { path: 'news', component: NewsComponent },
     { path: 'hackers', component: HackersComponent,
