@@ -60,6 +60,8 @@ import { IsAuthDirective } from './shared/is-auth.directive';
 import { PublishListComponent } from './shared/publish-list/publish-list.component';
 import { PublishFormComponent } from './shared/publish-form/publish-form.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NewsCardComponent } from './shared/news-card/news-card.component';
+import { ReadMoreComponent } from './shared/read-more/read-more.component';
 
 export function instrumentOptions() {
   return {
@@ -100,7 +102,9 @@ export function instrumentOptions() {
     MasterListComponent,
     IsAuthDirective,
     PublishListComponent,
-    PublishFormComponent
+    PublishFormComponent,
+    NewsCardComponent,
+    ReadMoreComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

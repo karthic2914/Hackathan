@@ -11,7 +11,7 @@ import { AppStore } from '../../store/models/hackathon-store.model';
 export class HackersComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
-  private  cms: any;
+  private cms: any;
 
   constructor(private store: Store<AppStore>) {
     this.subscription = this.store.subscribe((stores: AppStore) => {

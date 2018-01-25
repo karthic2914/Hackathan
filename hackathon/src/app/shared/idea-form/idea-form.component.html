@@ -2,7 +2,6 @@
   <section>
     <div class="content first-content">
       <div class="primary-button card-deck mb-3 text-center">
-
         <form #postAnIdea="ngForm" (ngSubmit)="onSubmit(postAnIdea.value)">
           <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Team Name</label>
@@ -13,7 +12,13 @@
           <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Idea Title</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control form-control-sm" id="colFormLabelSm"  name="ideaTitle" ngModel>
+              <input type="text" class="form-control form-control-sm" id="colFormLabelSm"  name="title" ngModel>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Description</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control form-control-sm" id="colFormLabelSm"  name="description" ngModel>
             </div>
           </div>
           <div class="form-group row">
@@ -27,7 +32,7 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
