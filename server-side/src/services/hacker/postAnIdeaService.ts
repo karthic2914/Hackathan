@@ -1,5 +1,5 @@
-import { default as Idea, IdeaModel } from '../models/Idea';
-import { parseErrors } from '../utils/errorParser';
+import { default as Idea, IdeaModel } from '../../models/Idea';
+import { parseErrors } from '../../utils/errorParser';
 
 export const postIdea = (data: IdeaModel, callback: any) => {
     const IdeaObj = new Idea({ teamName: data.teamName, title: data.title, description: data.description, technologyTags: data.technologyTags });
