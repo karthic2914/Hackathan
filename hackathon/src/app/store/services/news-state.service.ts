@@ -14,15 +14,20 @@ export class NewsStateService {
 
 
 store(publish: IdeaPub) {
-  return this.http.post(NewsStateService.apiUrl + 'apiUrl', publish)
+  console.log('publish');
+  /*this.http.post('http://localhost:3002/blog', publish)
   .map(response => response.json())
   .catch(res => {
       console.log(res.toString);
       return Observable.throw(res.message || 'Server error');
-  });
+  }); */
+
+  this.http.post('http://localhost:3002/blog', publish).toPromise().then((response: any) => {
+    console.log(response);
+});
 }
 
-getAll(){
+getAll() {
   return this.http.get(NewsStateService.apiUrl + 'apiUrl')
         .map(res => res.json())
         .do(data => console.log(data))
