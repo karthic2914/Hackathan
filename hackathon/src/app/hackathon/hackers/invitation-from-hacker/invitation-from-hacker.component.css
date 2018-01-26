@@ -83,6 +83,10 @@ input:checked + .slider:before {
 .panel-body > .table{
    margin-bottom:0px;
 }
+.panel-title{
+    background-color: #f9a600;
+    color:#fff;
+}
 .margin-top {
     margin-top: 50px;
 }
