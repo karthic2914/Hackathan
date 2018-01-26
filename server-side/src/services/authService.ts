@@ -28,6 +28,18 @@ export const fetchUserById = (id: any) => {
     return User.findById(id).then(user => user).catch(err => err);
 };
 
+export const fetchUserFromToken = (req: Request): any => {
+    return isAuth(req).then((user: UserModel) => {
+        fetchUserByEmail(user.email)
+            .then(user => user)
+            .catch(err => {
+                return {code: 400, message: {errors: {global: 'Invalid user.'}}}
+            });
+    }).catch(err => {
+        return {code: 401, message: {errors: {gloabl: 'TOKEN-EXPIRED'}}};
+    });
+};
+
 export const isAuth = (req: Request) => {
     const token = <string>req.headers.authorization;
     return new Promise(function (resolve, reject) {

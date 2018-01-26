@@ -1,4 +1,5 @@
 import User from '../models/User';
+import { default as Idea, IdeaModel } from "../models/Idea";
 
 const ADMIN_EMAIL = 'admin@aegon.com';
 
@@ -34,4 +35,18 @@ export const createHackerUser = () => {
             console.log('Hacker user already exists: email=', user.email, ', username=', user.username);
         }
     });
+};
+
+export const createIdeas = () => {
+    Idea.count({}, function (err, records) {
+        if (!records) {
+            new Idea({
+                teamName: 'Team 1', title: 'Bootstraped title', description: 'This is test description',
+                technologyTags: ['Java', 'Groovy', 'Node']
+            })
+                .save()
+                .then((idea: IdeaModel) => console.log('Created Idea: title: ', idea.title))
+                .catch(err => console.log('Error caught while creating Idea: ', err));
+        }
+    })
 };

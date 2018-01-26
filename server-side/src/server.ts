@@ -5,7 +5,7 @@ import * as cookieParser from 'cookie-parser';
 import * as mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 import { Routes } from './routes';
-import { createAdminUser, createHackerUser } from './utils/bootstrapData';
+import { createAdminUser, createHackerUser, createIdeas } from './utils/bootstrapData';
 
 const app = express();
 dotenv.config();
@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGO_DB_URL, (err: any) => {
         createAdminUser();
         if (process.env.NODE_ENV === 'development') {
             createHackerUser();
+            createIdeas();
         }
     }
 });
