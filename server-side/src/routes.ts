@@ -1,10 +1,8 @@
-import { auth, signup } from './controllers/auth';
+import { auth, signup, list, inviteHacker, listMyIdea, saveIdea, acceptTeamInvitation } from './controllers';
 import { postBlog, getBlogs, updateblog } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
-import { postAnIdea } from './controllers/hacker/postAnIdea';
 import { getIdeaDetails, searchIdeaDetails } from './controllers/hacker/requestToTeam';
-import { inviteHacker } from './controllers/hackerController';
 
 export class Routes {
 
@@ -21,10 +19,13 @@ export class Routes {
         app.put('/blog', updateblog);
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);
-        app.post('/hacker/postAnIdea', postAnIdea);
         app.get('/hacker/requestToTeam', getIdeaDetails);
         app.post('/hacker/requestToTeam/search', searchIdeaDetails);
         app.post('/hacker/invitehacker', inviteHacker);
+        app.post('/hacker/jointeam', acceptTeamInvitation);
+        app.get('/idea', list);
+        app.get('/idea/myideas', listMyIdea);
+        app.post('/idea/save', saveIdea);
         // app.post('/hacker/requestToTeam/request', functionNameComeHere);
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);
