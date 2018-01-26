@@ -13,6 +13,9 @@
             </tr>
           </thead>
           <tbody>
+            <tr *ngFor="let idea of ideaDetails?.ideas"> 
+              <td class="td-ideas">{{idea.title}}</td>
+            </tr>
             <tr>
               <td class="td-ideas">IdeaA</td>
               <td class="td-ideas">TeamA</td>

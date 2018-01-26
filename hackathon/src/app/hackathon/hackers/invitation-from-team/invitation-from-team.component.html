@@ -1,7 +1,14 @@
+
 <div class="col-md-12 margin-top">
   <section>
+    
     <div class="content ">
       <div class="primary-button card-deck mb-3 text-center">
+          <div class="panel-heading publish-dock">
+              <h3 class="panel-title">
+                  Invitation From Teams
+              </h3>
+          </div>
         <!-- grid start -->
         <table class="table table-striped" [mfData]="dataObj" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
           [(mfSortOrder)]="sortOrder">
@@ -10,12 +17,6 @@
               <th style="width: 20%">
                 <mfDefaultSorter by="ideaTitle">IDEA</mfDefaultSorter>
               </th>
-              <th style="width: 40%">
-                <mfDefaultSorter by="ideaDes">IDEA DESCRIPTION</mfDefaultSorter>
-              </th>
-              <th style="width: 10%">
-                <mfDefaultSorter by="owner">OWNER</mfDefaultSorter>
-              </th>
               <th style="width: 20%">
                 <mfDefaultSorter by="action">ACTION</mfDefaultSorter>
               </th>
@@ -23,15 +24,11 @@
 
           </thead>
           <tbody>
-            <tr *ngFor="let item of mf.data">
-              <td>{{item.ideaTitle}}</td>
-              <td>
-                <a href="#" (click)="showPreview(item)">{{item.ideaDes}}</a>
-              </td>
-              <td>{{item.owner}}</td>
+            <tr *ngFor="let team of teamDetails?.ideas"> <!-- So far created skeleton, need to bind correct data once API call completed-->
+              <td>{{team.teamName}}</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" [checked]="item.approval === 'yes' ? 'checked': 'unchecked'">
+                  <input type="checkbox" [checked]="team.isApproved === 'yes' ? 'checked': 'unchecked'">
                   <span class="slider round"></span>
                 </label>
               </td>

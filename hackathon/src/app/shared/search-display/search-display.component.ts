@@ -7,6 +7,9 @@ import { HackerStateService } from '../../store/services/hacker-state.service';
   styleUrls: ['./search-display.component.css']
 })
 export class SearchDisplayComponent implements OnInit {
+
+  @Input() ideaDetails: any;
+
   hackIdea = 'Choose Idea';
   imgSrc:string;
   description:string;

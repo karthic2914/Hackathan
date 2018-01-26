@@ -1,12 +1,12 @@
 export interface LOGS {
-    logs: LogsData;
+    logs: Logs;
 }
 
-export interface LogsData {
+export interface Logs {
     ideaNumber: number;
     ideaTitle: string;
-    ideaDesc:String;
-    owner:String;
-    action:String;
-    commentsID?:number;
+    ideaDesc: String;
+    owner: String;
+    action: String;
+    commentsID?: number;
 }
