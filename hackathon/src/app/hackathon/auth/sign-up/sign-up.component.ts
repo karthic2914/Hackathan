@@ -9,7 +9,15 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  skillset = [
+    {id: 0, name: 'Priamry Skill Set'},
+    {id: 1, name: 'Angular'},
+    {id: 2, name: 'Node'},
+    {id: 3, name: 'Java'},
+    {id: 4, name: 'Testing'},
+    {id: 5, name: 'JavaScript'}
 
+  ];
   signUpForm: FormGroup;
   errors: { [key: string]: string } = {};
   isSubmit = false;
