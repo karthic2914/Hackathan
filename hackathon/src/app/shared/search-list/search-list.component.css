@@ -1,4 +1,4 @@
-.publish-dock{
+/* /* .publish-dock{
     background-color: #f9a600;
     letter-spacing: 1px;
     font-family: 'Muli', sans-serif;
@@ -62,7 +62,7 @@
       transform: translateX(26px);
     }
   
-    /*table css*/
+    /*table css
     .table > thead > tr > th{
       border-right: 1px solid #ddd;
       border-bottom:0;
@@ -88,4 +88,4 @@
 
   .margin-top {
       margin-top: 50px;
-  }
+  }  */

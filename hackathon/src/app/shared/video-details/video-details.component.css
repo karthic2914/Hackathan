@@ -24,7 +24,7 @@
     background-color: #ffbb05;
     border: 1px solid #ffbb05;
     border-radius: 50%;
-    margin: 50px;
+    margin-top: 135px;
     width: 120px;
   }
 
@@ -32,4 +32,16 @@
     background-color: #fff;
     color: #000000; 
     border:1px solid #fff;
+  }
+
+  .imageClass{
+    background-image: url('/../../assets/images/stickyNote2.jpg');
+    background-size: 200px;
+    height: 175px;
+  }
+
+  .paraClass{
+    margin-top: -112px;
+    margin-left: 65px;
+    color: black;
   }

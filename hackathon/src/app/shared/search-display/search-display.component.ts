@@ -12,6 +12,7 @@ export class SearchDisplayComponent implements OnInit {
   description:string;
   teamName:string;
   flag : boolean = false;
+  ideaListNew;
   disableDrop:boolean = false;
   teamObject = {idea:'', team:'', descrp:''};
 
@@ -26,20 +27,27 @@ export class SearchDisplayComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.hackIdea)
+    this.ideaListNew = this.hackerStateService.getIdeas;
+    console.log(this.ideaListNew);
   }
 
-  public onSubmit(value) {
-    this.flag = true;
+  // public onSubmit(value) {
+  //   this.flag = true;
+  //   console.log(value);
+  //   for(let i = 0; i < this.ideasList.length; i++){
+  //     if(value.hackIdea === this.ideasList[i].name){
+  //       this.imgSrc = this.ideasList[i].image;
+  //       this.teamName = this.ideasList[i].team;
+  //       this.description = this.ideasList[i].desc;
+  //     }
+  //   }    
+
+  onSubmit(value) {
+    console.log(this.hackerStateService);
     console.log(value);
-    for(let i = 0; i < this.ideasList.length; i++){
-      if(value.hackIdea === this.ideasList[i].name){
-        this.imgSrc = this.ideasList[i].image;
-        this.teamName = this.ideasList[i].team;
-        this.description = this.ideasList[i].desc;
-      }
-    }    
-   // this.hackerStateService.searchHackers(value);
+    this.hackerStateService.searchHackers(value);
   }
+   // this.hackerStateService.searchHackers(value);
 
   public requestHacker(hack) {
     console.log(hack);
