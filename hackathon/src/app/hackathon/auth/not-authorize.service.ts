@@ -14,7 +14,7 @@ export class NotAuthorize implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     return this.store.map((store: User) => {
-      return store.user && !store.user.email;
+      return !!store.user;
     });
   }
 }
