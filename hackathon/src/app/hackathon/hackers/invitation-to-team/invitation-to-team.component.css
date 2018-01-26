@@ -1,0 +1,109 @@
+.margin-bottom {
+    margin-bottom: 50px; 
+}
+.first-content{
+    height:350px;
+}
+.margin-top{
+    margin-top:50px;
+}
+label {
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+}
+img{
+    width:300px;
+    margin-top:-45px
+}
+.publish-dock{
+    background-color: #f9a600;
+    letter-spacing: 1px;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    padding-left: 8px;
+  }
+  .tble-hd{
+      background-color: deepskyblue;
+      color:black;
+      letter-spacing: 1px;
+      font-family: 'Muli', sans-serif;
+  }
+  
+  .td-ideas{
+      font-family: 'Muli', sans-serif;
+  }
+  .switch {
+      position: relative;
+      display: inline-block;
+      width: 51px;
+      height: 23px;
+    }
+    
+    .switch input {display:none;}
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 15px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  
+    /*table css*/
+    .table > thead > tr > th{
+      border-right: 1px solid #ddd;
+      border-bottom:0;
+  }
+  
+  .table > tbody > tr > td{
+      border-right: 1px solid #ddd;
+  }
+  
+  .table > thead > tr > th:last-of-type {
+      border-right: 0px;
+  }
+  
+  .table > tbody > tr > td:last-of-type {
+      border-right: 0px;
+  }
+  
+  .panel-body {
+      padding: 0;
+  }
+  
+  .panel-body > .table{margin-bottom:0px;} 
+
+  .margin-top {
+      margin-top: 50px;
+  }

@@ -31,7 +31,7 @@ export class HackerStateService {
       this.store.dispatch({type: 'LOAD_IDEA_DATA', payload: response});
       console.log(response);
     });
-    }
+  }
 
   public invitationFromTeam() { // set the node url here
       return this.http.get('http://localhost:3000//hackers/invitation').toPromise().then((response: any) => {

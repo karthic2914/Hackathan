@@ -9,7 +9,7 @@ export const LOAD_IDEA_DATA = 'LOAD_IDEA_DATA';
  * @param action Action
  */
 
-export function ideaReducer(state: Ideas = {idea: undefined}, action: IdeaAction): Ideas {
+export function ideaReducer(state: Ideas = {idea: undefined, ideas:undefined}, action: IdeaAction): Ideas {
     switch (action.type) {
         case LOAD_IDEA_DATA:
             return Object.assign({}, state, action.payload);
