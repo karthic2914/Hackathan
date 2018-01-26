@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HackerStateService } from '../../../store/services/hacker-state.service';
 
 @Component({
   selector: 'app-invitation-from-hacker',
@@ -6,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invitation-from-hacker.component.css']
 })
 export class InvitationFromHackerComponent implements OnInit {
+  constructor(private hackerStateService: HackerStateService){}
   public dataObj =[{
     "ideaTitle": "111",
     "ideaDes": "<marquee>This is basic example of marquee This is basic example of marquee</marquee>",                  
     "owner": "aaaa",
     "action": "Approved",
-    "approval": "no"                 
+    "approval": "yes"                 
   },
   {
     "ideaTitle": "222",
@@ -25,7 +27,7 @@ export class InvitationFromHackerComponent implements OnInit {
     "ideaDes": "<marquee>This is basic example of marquee</marquee>",
     "owner": "CCCC",
     "action": "Approved",
-    "approval": "no"   
+    "approval": "yes"   
   },
   {
     "ideaTitle": "444",
@@ -46,7 +48,7 @@ export class InvitationFromHackerComponent implements OnInit {
     "ideaDes": "<marquee>This is basic example of marquee</marquee>",
     "owner": "DDDD",
     "action": "Denied",
-    "approval": "no"   
+    "approval": "yes"   
   }];
 public filterQuery = "";
 public rowsOnPage = 10;
@@ -55,9 +57,9 @@ public sortOrder = "asc";
 public ideaDesciption = "";
 //modalRef: BsModalRef;
 content: string = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
-constructor() { }
 
 ngOnInit() {
+ 
 }
 
 remove(item){

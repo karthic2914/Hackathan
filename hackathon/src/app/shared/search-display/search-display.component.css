@@ -16,3 +16,25 @@ img{
     width:300px;
     margin-top:-45px
 }
+.panel-body {
+    padding: 0;
+}
+.panel-body > .table{
+   margin-bottom:0px;
+}
+.panel-title{
+    background-color: #f9a600;
+    color:#fff;
+}
+.margin-top {
+    margin-top: 50px;
+}
+.publish-dock {
+    background-color: #f9a600;
+    letter-spacing: 1px;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    padding-left: 8px;
+    margin-top: 10px;
+    text-align: center;
+}

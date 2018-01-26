@@ -4,6 +4,7 @@ import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
 import { postAnIdea } from './controllers/hacker/postAnIdea';
 import { getIdeaDetails, searchIdeaDetails } from './controllers/hacker/requestToTeam';
+import { inviteTeam, inviteTeamPost } from './controllers/hacker/invitationFromTeam';
 
 export class Routes {
 
@@ -27,8 +28,8 @@ export class Routes {
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);
         // app.post('/hacker/requestToHacker/request', functionNameComeHere);
-        // app.get('/hacker/invitationFromTeam', functionNameComeHere);
-        // app.post('/hacker/invitationFromTeam/approval', functionNameComeHere);
+         app.get('/hacker/invitationFromTeam', inviteTeam);
+         app.post('/hacker/invitationFromTeam/approval', inviteTeamPost);
         // app.get('/hacker/invitationFromHacker', functionNameComeHere);
         // app.post('/hacker/invitationFromHacker/approval', functionNameComeHere);
     }

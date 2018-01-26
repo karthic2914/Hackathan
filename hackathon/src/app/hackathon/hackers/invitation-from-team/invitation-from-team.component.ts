@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HackerStateService } from '../../../store/services/hacker-state.service';
+import { Response } from '@angular/http/src/static_response';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-invitation-from-team',
@@ -6,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invitation-from-team.component.css']
 })
 export class InvitationFromTeamComponent implements OnInit {
+  approve = '';
   public dataObj =[{
     "ideaTitle": "Wing",
     "ideaDes": "<marquee>This is basic example of marquee This is basic example of marquee</marquee>",                  
@@ -55,10 +59,27 @@ public sortOrder = "asc";
 public ideaDesciption = "";
 //modalRef: BsModalRef;
 content: string = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
-constructor() { }
+constructor(private hackerStateService: HackerStateService) { }
 
 ngOnInit() {
+  this.hackerStateService.getInvitationFromTeam()
+  .subscribe((res: Response) => {
+    this.dataObj = res.json();
+    console.log(this.dataObj);
+  },(err) => {
+    console.log(`Server Error: ${err}`);
+  });
 }
+
+sendApprove(item){
+  console.log(item);
+  this.hackerStateService.postInvitationFromTeam(item)
+  .subscribe((res:Response) => {
+    console.log(res);
+  }, (err) =>{
+    console.log(`Server Error:  ${err}`);
+  });
+ }
 
 remove(item){
 console.log(item);

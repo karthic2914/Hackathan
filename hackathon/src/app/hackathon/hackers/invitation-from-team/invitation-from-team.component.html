@@ -38,8 +38,8 @@
               <td>{{item.owner}}</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" [checked]="item.approval === 'yes' ? 'checked': 'unchecked'">
-                  <span class="slider round"></span>
+                    <input type="checkbox" [checked]="item.approval === 'yes' ? true: false" (click)="sendApprove(item)" >
+                    <span class="slider round"></span>
                 </label>
               </td>
             </tr>

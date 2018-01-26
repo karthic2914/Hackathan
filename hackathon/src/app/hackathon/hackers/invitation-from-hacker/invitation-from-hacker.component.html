@@ -33,10 +33,11 @@
               <td>
                 <a href="#" (click)="showPreview(item)">{{item.ideaDes}}</a>
               </td>
-              <td>{{item.owner}}</td>
+              <td>{{item.owner}}
+              </td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" [checked]="item.approval === 'yes' ? 'checked': 'unchecked'">
+                  <input type="checkbox" [checked]="item.approval === 'yes' ? true: false">
                   <span class="slider round"></span>
                 </label>
               </td>
