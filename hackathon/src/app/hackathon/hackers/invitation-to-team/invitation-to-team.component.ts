@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HackerStateService } from '../../../store/services/hacker-state.service';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../store/models/hackathon-store.model';
 

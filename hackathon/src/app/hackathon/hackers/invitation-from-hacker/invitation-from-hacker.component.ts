@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { HackerStateService } from '../../../store/services/hacker-state.service';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../../../store/models/hackathon-store.model';
 
 @Component({
   selector: 'app-invitation-from-hacker',
@@ -6,76 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invitation-from-hacker.component.css']
 })
 export class InvitationFromHackerComponent implements OnInit {
-  public dataObj =[{
-    "ideaTitle": "111",
-    "ideaDes": "<marquee>This is basic example of marquee This is basic example of marquee</marquee>",                  
-    "owner": "aaaa",
-    "action": "Approved",
-    "approval": "no"                 
-  },
-  {
-    "ideaTitle": "222",
-    "ideaDes": "<marquee>This is basic example of marquee This is basic example of marquee</marquee>",
-    "owner": "BBBB",
-    "action": "Denied",
-    "approval": "no"   
-  },
-  {
-    "ideaTitle": "333",
-    "ideaDes": "<marquee>This is basic example of marquee</marquee>",
-    "owner": "CCCC",
-    "action": "Approved",
-    "approval": "no"   
-  },
-  {
-    "ideaTitle": "444",
-    "ideaDes": "<marquee>This is basic example of marquee</marquee>",
-    "owner": "DDDD",
-    "action": "Denied",
-    "approval": "no"   
-  },
-  {
-    "ideaTitle": "555",
-    "ideaDes": "<marquee>This is basic example of marquee</marquee>",
-    "owner": "CCCC",
-    "action": "Approved",
-    "approval": "no"    
-  },
-  {
-    "ideaTitle": "666",
-    "ideaDes": "<marquee>This is basic example of marquee</marquee>",
-    "owner": "DDDD",
-    "action": "Denied",
-    "approval": "no"   
-  }];
-public filterQuery = "";
-public rowsOnPage = 10;
-public sortBy = "ideaTitle";
-public sortOrder = "asc";
-public ideaDesciption = "";
-//modalRef: BsModalRef;
-content: string = 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.';
-constructor() { }
 
-ngOnInit() {
-}
+  private subscription: Subscription;
 
-remove(item){
-console.log(item);
-const index = this.dataObj.indexOf(item);
-this.dataObj.splice(index, 1);
-}
+  private  IdeaDeatails: any;
 
-public sortByWordLength = (a: any) => {
-return a.action.length;
-}
-showPreview(item){
-console.log(item);
-this.ideaDesciption = item.ideaDes;
-//this.modalRef = this.modalService.show(template);
-return false;
-}
+  constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
+    this.hackerStateService.invitationFromHacker().then((response: any) => {
+      this.subscription = this.store.subscribe((stores: AppStore) => {
+        this.IdeaDeatails = stores.ideas;
+        console.log('IdeaDeatails: ' + this.IdeaDeatails);
+      });
+    });
+  }
 
-
-
-}
+  ngOnInit() {
+  }}

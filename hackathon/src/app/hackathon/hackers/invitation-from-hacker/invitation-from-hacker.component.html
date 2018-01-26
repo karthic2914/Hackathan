@@ -23,19 +23,6 @@
 
           </thead>
           <tbody>
-            <tr *ngFor="let item of mf.data">
-              <td>{{item.ideaTitle}}</td>
-              <td>
-                <a href="#" (click)="showPreview(item)">{{item.ideaDes}}</a>
-              </td>
-              <td>{{item.owner}}</td>
-              <td>
-                <label class="switch">
-                  <input type="checkbox" [checked]="item.approval === 'yes' ? 'checked': 'unchecked'">
-                  <span class="slider round"></span>
-                </label>
-              </td>
-            </tr>
           </tbody>
         </table>
         <!-- Grid End -->
