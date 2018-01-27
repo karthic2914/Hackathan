@@ -51,3 +51,12 @@ export const isAuth = (req: Request) => {
         });
     });
 };
+
+export const fetchAllHackerUser = (params: { [key: string]: string | boolean | number } = {}) => {
+    params.isAdmin = false;
+    return User.find(params, {hashPassword: false, userRole: false, createdAt: false, updatedAt: false, __v: false})
+        .then((users: UserModel[]) => users)
+        .catch((error: any) => {
+            return {statusCode: 400, mesage: parseErrors(parseErrors(error.errors))}
+        });
+};

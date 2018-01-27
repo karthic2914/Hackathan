@@ -1,4 +1,4 @@
-import { auth, signup, list, inviteHacker, listMyIdea, saveIdea, acceptTeamInvitation } from './controllers';
+import { auth, signup, list, inviteHacker, listMyIdea, saveIdea, acceptTeamInvitation, listUser } from './controllers';
 import { postBlog, getBlogs, updateblog } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
@@ -14,6 +14,7 @@ export class Routes {
     paths(app: express.Application) {
         app.post('/user/auth', auth);
         app.post('/user/signup', signup);
+        app.get('/user', listUser);
         app.post('/blog', postBlog);
         app.get('/blogs', getBlogs);
         app.put('/blog', updateblog);
