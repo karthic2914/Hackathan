@@ -22,6 +22,13 @@ export class HackerStateService {
     });
   }
 
+  public fetchHackerIdeas() {
+    return this.apiService.get('idea/myideas').then((response: any) => {
+      this.store.dispatch({type: 'LOAD_HACKER_IDEA_DATA', payload: {hackerIdea: response}});
+      console.log(response);
+    });
+  }
+
   public invitationFromTeam() { // set the node url here
       return this.apiService.get('hacker/requestToTeam').then((response: any) => {
         this.store.dispatch({type: 'LOAD_INVITATION_FROM_TEAM', payload: response});

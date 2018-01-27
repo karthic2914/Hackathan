@@ -1,4 +1,4 @@
 export interface Ideas {
-    idea: string;
-    ideas:string;
+    ideas: any;
+    ideasForHacker: any;
 }
