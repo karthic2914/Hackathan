@@ -63,6 +63,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NewsCardComponent } from './shared/news-card/news-card.component';
 import { ReadMoreComponent } from './shared/read-more/read-more.component';
+import { BlogService } from './store/services/blog.service';
 
 export function instrumentOptions() {
   return {
@@ -130,11 +131,12 @@ export function instrumentOptions() {
     IdeaStateService,
     LoginStateService,
     NewsStateService,
+    BlogService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
       useFactory: startupServiceFactory,
-      deps: [CmsStateService],
+      deps: [CmsStateService, BlogService],
       multi: true
     },
     ApiService,

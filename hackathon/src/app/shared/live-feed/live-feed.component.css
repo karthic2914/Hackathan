@@ -4,6 +4,7 @@ div{
     border:2px solid transparent;
     height:250px;
     margin-top:-45px;
+    background-color: #000000;
 }
 ul li a {
     text-decoration: none;

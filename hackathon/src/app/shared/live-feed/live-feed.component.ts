@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../../store/models/hackathon-store.model';
+import { BlogService } from '../../store/services/blog.service'
 
 @Component({
   selector: 'app-live-feed',
@@ -7,8 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LiveFeedComponent implements OnInit {
   private show: Boolean = false;
-
-  constructor() { }
+  private subscription: Subscription;
+  blogs:any;
+  constructor(private blogService: BlogService,  private store: Store<AppStore>) { 
+     this.blogService.getBlogs().then((response: any) => {
+      this.subscription = this.store.subscribe((stores: AppStore) => {
+        this.blogs = stores.news;
+        console.log(this.blogs);
+      });
+    });
+  }
 
   ngOnInit() {
   }

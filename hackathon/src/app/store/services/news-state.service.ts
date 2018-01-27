@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http} from '@angular/http';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../models/hackathon-store.model';
 import { IdeaPub } from '../models/news.model.publish';
 import { log } from 'util';
+import { ApiService } from './api.service';
 
 
 @Injectable()
@@ -11,6 +14,7 @@ export class NewsStateService {
   constructor(private http: Http) { }
 
   private static apiUrl = '/publish';
+  //private baseUrl = 'http://localhost:3000/';
 
 
 store(publish: IdeaPub) {
@@ -36,5 +40,11 @@ getAll() {
           return Observable.throw(res.message || 'Server error')
         });
 }
+// public getBlogs() {
+//   return this.http.get(this.baseUrl + 'blogs').toPromise().then((response: any) => {
+//     this.store.dispatch({type: 'LOAD_NEWS_DATA', payload: response});
+//     console.log(response);
+//   });
+// }
 
 }

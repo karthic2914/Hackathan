@@ -1,3 +1,7 @@
+export interface NEWS{
+    news : IdeaPub
+}
+
 export interface IdeaPub {
     date: Date;
     newsTitle: String;

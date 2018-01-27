@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {UserStateService} from "../../store/services/user-state.service";
+import { logsReducer } from '../../store/reducers/logs.reducer'
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
