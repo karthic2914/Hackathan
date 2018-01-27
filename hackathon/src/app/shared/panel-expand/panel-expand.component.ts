@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-panel-expand',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelExpandComponent implements OnInit {
 
-  constructor() { }
+  @Input() public panelData: any;
+
+  constructor() {
+   }
 
   ngOnInit() {
   }
+
 
 }
