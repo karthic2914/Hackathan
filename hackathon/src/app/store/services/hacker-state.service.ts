@@ -29,9 +29,9 @@ export class HackerStateService {
     });
   }
 
-  public invitationFromTeam() { // set the node url here
-      return this.apiService.get('hacker/requestToTeam').then((response: any) => {
-        this.store.dispatch({type: 'LOAD_INVITATION_FROM_TEAM', payload: response});
+  public invitationFromTeam() {
+      return this.apiService.get('hacker/listhackerrequest').then((response: any) => {
+        this.store.dispatch({type: 'LOAD_INVITATION_FROM_TEAM', payload: {invitationFromTeam: response.data.ideas}});
         console.log(response);
     });
   }

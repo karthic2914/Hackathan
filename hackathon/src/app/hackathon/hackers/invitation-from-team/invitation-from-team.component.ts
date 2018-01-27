@@ -19,7 +19,6 @@ constructor(private hackerStateService: HackerStateService, private store: Store
   this.hackerStateService.invitationFromTeam().then((response: any) => {
     this.subscription = this.store.subscribe((stores: AppStore) => {
       this.teamDetails = stores.ideas;
-      console.log('teamDetails: ' + this.teamDetails);
     });
   });
 }
