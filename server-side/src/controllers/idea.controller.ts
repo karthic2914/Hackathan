@@ -4,6 +4,15 @@ import { UserModel } from '../models/User';
 import { IdeaModel } from '../models/Idea';
 import { listIdea, postIdea } from '../services/ideaService';
 
+export let getApprovedIdeas = (req: Request, res: Response) => {
+    listIdea(req.params || {}, function (err: any, ideaList: IdeaModel[]) {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        res.json({ideas: ideaList});
+    });
+};
+
 export let list = (req: Request, res: Response) => {
     isAuth(req).then((user: UserModel) => {
         listIdea(req.params || {}, function (err: any, ideaList: IdeaModel[]) {

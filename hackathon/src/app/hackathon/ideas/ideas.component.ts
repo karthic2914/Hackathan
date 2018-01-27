@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { IdeaStateService } from '../../store/services/idea-state.service';
 import { PanelExpandComponent } from '../../shared/panel-expand/panel-expand.component';
 
-
 @Component({
   selector: 'app-ideas',
   templateUrl: './ideas.component.html',
@@ -17,10 +16,12 @@ export class IdeasComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private cms: any;
 
-  constructor(private store: Store<AppStore>, private ideaService: IdeaStateService) {
+  constructor(
+    private store: Store<AppStore>,
+    private ideaService: IdeaStateService
+  ) {
     this.subscription = this.store.subscribe((stores: AppStore) => {
-        this.cms = stores.cms;
-        console.log("Heeloo");
+      this.cms = stores.cms;
     });
   }
 
@@ -28,7 +29,6 @@ export class IdeasComponent implements OnInit, OnDestroy {
     this.ideaService.getIdeas().then((response: any) => {
       this.ideaSubscribe = this.store.subscribe((stores: AppStore) => {
         this.ideaObj = stores.ideas;
-        console.log(response);
       });
     });
   }
