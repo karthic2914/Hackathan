@@ -1,6 +1,6 @@
-import Idea, { IdeaModel } from "../models/Idea";
-import { parseErrors } from "../utils/errorParser";
-import { default as User, UserModel } from "../models/User";
+import Idea, { IdeaModel } from '../models/Idea';
+import { parseErrors } from '../utils/errorParser';
+import { default as User, UserModel } from '../models/User';
 
 export const listIdea = (params: {}, callback: any) => {
     Idea.find(params)

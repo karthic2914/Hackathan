@@ -33,7 +33,7 @@ export const fetchUserFromToken = (req: Request): any => {
         fetchUserByEmail(user.email)
             .then(user => user)
             .catch(err => {
-                return {code: 400, message: {errors: {global: 'Invalid user.'}}}
+                return {code: 400, message: {errors: {global: 'Invalid user.'}}};
             });
     }).catch(err => {
         return {code: 401, message: {errors: {gloabl: 'TOKEN-EXPIRED'}}};
@@ -57,6 +57,6 @@ export const fetchAllHackerUser = (params: { [key: string]: string | boolean | n
     return User.find(params, {hashPassword: false, userRole: false, createdAt: false, updatedAt: false, __v: false})
         .then((users: UserModel[]) => users)
         .catch((error: any) => {
-            return {statusCode: 400, mesage: parseErrors(parseErrors(error.errors))}
+            return {statusCode: 400, mesage: parseErrors(parseErrors(error.errors))};
         });
 };

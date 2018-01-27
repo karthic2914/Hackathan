@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { fetchAllHackerUser, isAuth, login, signUp } from '../services/authService';
-import { UserModel } from "../models/User";
+import { UserModel } from '../models/User';
 
 export let auth = (req: Request, res: Response) => {
     login(req.body.data, function (err: any, user: any) {
@@ -28,7 +28,7 @@ export let listUser = (req: Request, res: Response) => {
                 return res.status(400).json({errors: response.message});
             }
             res.json({data: {users: response}});
-        })
+        });
     }).catch(err => {
         res.status(401).json({errors: {global: 'TOKEN-EXPIRED'}});
     });

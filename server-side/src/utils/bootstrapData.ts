@@ -1,5 +1,5 @@
 import User from '../models/User';
-import { default as Idea, IdeaModel } from "../models/Idea";
+import { default as Idea, IdeaModel } from '../models/Idea';
 
 const ADMIN_EMAIL = 'admin@aegon.com';
 
@@ -47,6 +47,8 @@ export const createIdeas = () => {
                 .save()
                 .then((idea: IdeaModel) => console.log('Created Idea: title: ', idea.title))
                 .catch(err => console.log('Error caught while creating Idea: ', err));
+        } else {
+            console.log('Idea records already exist');
         }
-    })
+    });
 };
