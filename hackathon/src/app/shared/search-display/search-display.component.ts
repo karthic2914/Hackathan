@@ -10,58 +10,38 @@ export class SearchDisplayComponent implements OnInit {
 
   @Input() ideaDetails: any;
 
-  hackIdea = 'Choose Idea';
-  imgSrc:string;
-  description:string;
-  teamName:string;
-  flag : boolean = false;
-  disableDrop:boolean = false;
-  teamObject = {idea:'', team:'', descrp:''};
+  private imgSrc: string;
 
-  ideasList = [
-    {id: 0, name: "Choose Idea", image: '', team:"", desc:""},
-    {id: 1, name: "ideaA", image: '/../../assets/images/2017.jpg',team:"TeamA", desc:"hello"},
-    {id: 2, name: "ideaB", image: '/../../assets/images/2016.jpg',team:"TeamB", desc:"hey"},
-    {id: 3, name: "ideaC", image: '/../../assets/images/2015.jpg',team:"TeamC", desc:"welcome"}
-  ];
- 
+  private teamName: string;
+
+  private description: string;
+
+  private hackIdea: string;
+
   constructor(private hackerStateService: HackerStateService) { }
 
   ngOnInit() {
-    console.log(this.hackIdea)
+    if (this.ideaDetails && this.ideaDetails.ideas) {
+      this.hackIdea = this.ideaDetails.ideas[0].title;
+      this.imgSrc = this.ideaDetails.ideas[0].image;
+      this.teamName = this.ideaDetails.ideas[0].teamName;
+      this.description = this.ideaDetails.ideas[0].description.replace(/<(?:.|\n)*?>/gm, '');
+    }
+  }
+  public requestHacker() {
+    this.hackerStateService.requestTeam('send the idea id here like below format'); // Once API ready, need to integrate
+
+    /* {
+      "id": "5a6a1fe95456463588c3cf2a" // send idea id
+     } */
   }
 
-  public onSubmit(value) {
-    this.flag = true;
-    console.log(value);
-    for(let i = 0; i < this.ideasList.length; i++){
-      if(value.hackIdea === this.ideasList[i].name){
-        this.imgSrc = this.ideasList[i].image;
-        this.teamName = this.ideasList[i].team;
-        this.description = this.ideasList[i].desc;
-      }
-    }    
-   // this.hackerStateService.searchHackers(value);
-  }
-
-  public requestHacker(hack) {
-    console.log(hack);
-    this.teamObject.idea = hack;
-    this.teamObject.team = this.teamName;
-    this.teamObject.descrp = this.description;
-    console.log(this.teamObject);
-    this.flag = false;
-    this.disableDrop = true;
-    this.hackerStateService.requestHacker('data should pass here');
-  }
-
-  changedOption(idea){
-    console.log(idea);
-      for(let i = 0; i < this.ideasList.length; i++){
-        if(idea === this.ideasList[i].name){
-          this.imgSrc = this.ideasList[i].image;
-          this.teamName = this.ideasList[i].team;
-          this.description = this.ideasList[i].desc;
+  changedOption(idea) {
+      for (let i = 0; i < this.ideaDetails.ideas.length; i++) {
+        if (idea === this.ideaDetails.ideas[i].title) {
+          this.imgSrc = this.ideaDetails.ideas[i].image;
+          this.teamName = this.ideaDetails.ideas[i].teamName;
+          this.description = this.ideaDetails.ideas[i].description.replace(/<(?:.|\n)*?>/gm, '');
         }
       }
   }
