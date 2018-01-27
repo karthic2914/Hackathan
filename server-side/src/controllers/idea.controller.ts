@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { fetchUserByEmail, isAuth } from "../services/authService";
-import { UserModel } from "../models/User";
-import { IdeaModel } from "../models/Idea";
-import { listIdea, postIdea } from "../services/ideaService";
+import { fetchUserByEmail, isAuth } from '../services/authService';
+import { UserModel } from '../models/User';
+import { IdeaModel } from '../models/Idea';
+import { listIdea, postIdea } from '../services/ideaService';
 
 export let list = (req: Request, res: Response) => {
     isAuth(req).then((user: UserModel) => {
@@ -41,7 +41,7 @@ export let saveIdea = (req: Request, res: Response) => {
             if (!user) {
                 return res.status(400).json({errors: {global: 'Invalid user.'}});
             }
-            postIdea(req.body,user, function (err: any, idea: IdeaModel) {
+            postIdea(req.body, user, function (err: any, idea: IdeaModel) {
                 if (err) {
                     return res.status(400).json(err);
                 }
