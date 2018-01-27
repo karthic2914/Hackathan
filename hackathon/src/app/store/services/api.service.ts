@@ -24,8 +24,15 @@ export class ApiService {
   }
 
   post(relativePath: string, body: Object = {}): Promise<any> {
-    const url: string = `${environment.BASE_URL + relativePath}`;
+    const url = `${environment.BASE_URL + relativePath}`;
     return this.http.post(url, body, {headers: this.setHeader()}).toPromise().then((response: any) => {
+      return response;
+    });
+  }
+
+  get(relativePath: string): Promise<any> {
+    const url = `${environment.BASE_URL + relativePath}`;
+    return this.http.get(url, {headers: this.setHeader()}).toPromise().then((response: any) => {
       return response;
     });
   }
