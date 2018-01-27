@@ -2,7 +2,7 @@ import Log, { LogModel } from '../models/Log';
 import { fetchUserByEmail, fetchUserById } from './authService';
 import { fetchIdeaById } from './ideaService';
 import { default as Idea, IdeaModel } from '../models/Idea';
-import { UserModel } from '../models/User';
+import { default as User, UserModel } from '../models/User';
 import { parseErrors } from '../utils/errorParser';
 import * as logService from './logService';
 
@@ -63,4 +63,26 @@ export const joinTeam = (data: any, user: UserModel, callback: any) => {
                 .catch((err: any) => callback(parseErrors(err.errors), undefined));
         }
     });
+};
+
+export const listHackersRequest = (email: string) => {
+    return fetchUserByEmail(email)
+        .then((user: UserModel) => {
+            return Idea.findOne({createdBy: user, isApproved: true})
+                .then((idea: IdeaModel) => {
+                    return logService.fetchLogsByIdea(idea)
+                        .then((logs: LogModel[]) => {
+                            if (!logs.length) return [];
+                            const userIds = logs.map((log => log.userId));
+                            return User.find({
+                                '_id': {$in: userIds}
+                            }, {createdAt: false, updatedAt: false, __v: false, hashPassword: false})
+                                .then((users: UserModel[]) => {
+                                    return users;
+                                });
+                        });
+                });
+        }).catch(error => {
+            return {statusCode: 400, mesage: parseErrors(parseErrors(error.errors))};
+        });
 };

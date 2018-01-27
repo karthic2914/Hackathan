@@ -25,6 +25,7 @@ export class Routes {
         app.post('/hacker/invitehacker', route.inviteHacker);
         app.post('/hacker/jointeam', route.acceptTeamInvitation);
         app.get('/hacker/listinvitation', route.listTeamInvitations);
+        app.get('/hacker/listhackerrequest', route.listHackerRequest);
         app.get('/idea', route.list);
         app.get('/idea/myideas', route.listMyIdea);
         app.post('/idea/save', route.saveIdea);
