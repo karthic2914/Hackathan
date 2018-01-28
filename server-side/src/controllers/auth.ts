@@ -3,12 +3,12 @@ import { fetchAllHackerUser, isAuth, login, signUp } from '../services/authServi
 import { UserModel } from '../models/User';
 
 export let auth = (req: Request, res: Response) => {
-    login(req.body.data, function (err: any, user: any) {
+    login(req.body.data, function (err: any, user: any, isIdeaExist: boolean) {
         if (err) {
             res.status(400).json(err);
             return;
         }
-        res.json({user: user.toAuthJson()});
+        res.json({user: user.toAuthJson(isIdeaExist)});
     });
 };
 
