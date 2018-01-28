@@ -18,6 +18,8 @@ export class SearchDisplayComponent implements OnInit {
 
   private hackIdea: string;
 
+  private flag : boolean = false
+
   constructor(private hackerStateService: HackerStateService) { }
 
   ngOnInit() {
@@ -37,6 +39,8 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   changedOption(idea) {
+    if(this.hackIdea !== "Choose one"){
+      this.flag = true;
       for (let i = 0; i < this.ideaDetails.ideas.length; i++) {
         if (idea === this.ideaDetails.ideas[i].title) {
           this.imgSrc = this.ideaDetails.ideas[i].image;
@@ -44,5 +48,10 @@ export class SearchDisplayComponent implements OnInit {
           this.description = this.ideaDetails.ideas[i].description.replace(/<(?:.|\n)*?>/gm, '');
         }
       }
+    } else {
+       this.teamName = "";
+       this.description = "";
+       this.flag = false;
+    }      
   }
 }

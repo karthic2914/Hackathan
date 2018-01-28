@@ -65,6 +65,8 @@ import { NewsCardComponent } from './shared/news-card/news-card.component';
 import { ReadMoreComponent } from './shared/read-more/read-more.component';
 import { PanelExpandComponent } from './shared/panel-expand/panel-expand.component';
 import { EllipsisPipe } from './shared/pipes/truncate.pipe';
+import { SearchDisplayRequestToHackerComponent } from './shared/search-display-request-to-hacker/search-display-request-to-hacker.component';
+import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
 
 export function instrumentOptions() {
   return {
@@ -110,7 +112,9 @@ export function instrumentOptions() {
     NewsCardComponent,
     ReadMoreComponent,
     PanelExpandComponent,
-    EllipsisPipe
+    EllipsisPipe,
+    SearchDisplayRequestToHackerComponent,
+    SearchListRequestToHackerComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

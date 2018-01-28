@@ -12,6 +12,7 @@ export const LOAD_INVITATION_FROM_HACKER = 'LOAD_INVITATION_FROM_HACKER';
 
 export const LOAD_HACKER_IDEA_DATA = 'LOAD_HACKER_IDEA_DATA';
 
+export const LOAD_HACKER_REQUEST_DATA = 'LOAD_HACKER_REQUEST_DATA';
 
 
 /**
@@ -31,6 +32,8 @@ export function ideaReducer(state: Ideas = {ideas: undefined, ideasForHacker: un
         case LOAD_INVITATION_FROM_HACKER:
             return Object.assign({}, state, action.payload);
         case LOAD_HACKER_IDEA_DATA:
+            return Object.assign({}, state, action.payload);
+         case LOAD_HACKER_REQUEST_DATA:
             return Object.assign({}, state, action.payload);
         default:
             return state;
