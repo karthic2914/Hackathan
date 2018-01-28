@@ -59,7 +59,7 @@ UserSchema.methods.generateJWT = function generateJWT(isIdeaExist: boolean) {
         isAdmin: this.isAdmin,
         isIdeaExist: isIdeaExist,
         profile: {
-            skillSet: this.skillSet
+            skillSet: this.profile && this.profile.skillSet || []
         }
     }, process.env.SECRET_KEY, {
         expiresIn: EXPIRATION_TIME
