@@ -18,7 +18,9 @@ export class SearchDisplayComponent implements OnInit {
 
   private hackIdea: string;
 
-  private flag : boolean = false
+  private flag: boolean = false;
+
+  private ideaId: string;
 
   constructor(private hackerStateService: HackerStateService) { }
 
@@ -31,7 +33,7 @@ export class SearchDisplayComponent implements OnInit {
     }
   }
   public requestHacker() {
-    this.hackerStateService.requestTeam('send the idea id here like below format'); // Once API ready, need to integrate
+    this.hackerStateService.requestTeam({data: {ideaId: this.ideaId}}); // Once API ready, need to integrate
 
     /* {
       "id": "5a6a1fe95456463588c3cf2a" // send idea id
@@ -39,19 +41,20 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   changedOption(idea) {
-    if(this.hackIdea !== "Choose one"){
+    if (this.hackIdea !== 'Choose one') {
       this.flag = true;
       for (let i = 0; i < this.ideaDetails.ideas.length; i++) {
         if (idea === this.ideaDetails.ideas[i].title) {
           this.imgSrc = this.ideaDetails.ideas[i].image;
           this.teamName = this.ideaDetails.ideas[i].teamName;
           this.description = this.ideaDetails.ideas[i].description.replace(/<(?:.|\n)*?>/gm, '');
+          this.ideaId = this.ideaDetails.ideas[i]._id;
         }
       }
     } else {
-       this.teamName = "";
-       this.description = "";
+       this.teamName = '';
+       this.description = '';
        this.flag = false;
-    }      
+    }
   }
 }

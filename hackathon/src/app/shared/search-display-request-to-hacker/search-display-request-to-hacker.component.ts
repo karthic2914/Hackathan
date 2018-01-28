@@ -20,6 +20,8 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
 
   private userId: string;
 
+  public test: string;
+
   private flag: boolean = false;
 
   constructor(private hackerStateService: HackerStateService) { }
@@ -47,23 +49,23 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
   }
 
   changedOption(idea) {
-    if(this.hackIdea !== "Choose one"){
+    if (this.hackIdea !== 'Choose one') {
       this.flag = true;
       for (let i = 0; i < this.HackerDetails.hackerList.data.users.length; i++) {
         if (idea === this.HackerDetails.hackerList.data.users[i].username) {
           this.imgSrc = this.HackerDetails.hackerList.data.users[i].image;
           this.email = this.HackerDetails.hackerList.data.users[i].email;
-          this.skill = this.HackerDetails.hackerList.data.users[i].profile.skillset[0];
+          this.skill = this.HackerDetails.hackerList.data.users[i].profile.skillSet[0];
           this.userId = this.HackerDetails.hackerList.data.users[i]._id;
-        }else{
-          this.email = "";
-          this.skill = "";
+        } else {
+          this.email = '';
+          this.skill = '';
         }
       }
     } else {
       this.flag = false;
-      this.email = "";
-      this.skill = "";
+      this.email = '';
+      this.skill = '';
     }
   }
 }

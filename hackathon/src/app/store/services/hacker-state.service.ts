@@ -68,7 +68,7 @@ export class HackerStateService {
   }
 
   public requestTeam(value) { // set the node url here
-    this.apiService.post('/hacker/invitehacker', value).then((response: any) => {
+    this.apiService.post('hacker/requestteam', value).then((response: any) => {
       console.log(response);
     });
   }

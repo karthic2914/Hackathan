@@ -37,7 +37,7 @@ export const cmsJSON = {
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: '/hackers/invitationToHacker'
         }, {
-          title: 'Initation from hacker',
+          title: 'Invitation from hacker',
           imgUrl: '/../../assets/images/hacker1.png',
           routerLink: '/hackers/invitationFromHacker'
         }]
