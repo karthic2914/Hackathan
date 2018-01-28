@@ -29,6 +29,12 @@ export const updateIdea = (data: IdeaModel, owner: UserModel, callback: any) => 
     });
 };
 
+export const deleteIdeaService = (data: IdeaModel, callback: any) => {
+    Idea.findByIdAndRemove({ _id: data._id })
+        .then((comment: IdeaModel) => callback(undefined, comment))
+        .catch((comment: IdeaModel) => callback(parseErrors(comment.errors), undefined));
+};
+
 export const fetchIdeaById = (id: any) => {
     return Idea.findById(id).then(idea => idea).catch(err => err);
 };

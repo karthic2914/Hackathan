@@ -42,14 +42,12 @@ export class IdeaApprovalComponent implements OnInit, OnDestroy {
   Approve(item) {
     this.requestData = item;
     this.requestData.status = 'approved';
-    window.alert('Approved' + this.requestData);
     this.adminStateService.updateAnIdea(this.requestData);
   }
 
   Reject(item) {
     this.requestData = item;
-    this.requestData.status = 'denied';
-    window.alert('Rejected');
+    this.requestData.status = 'rejected';
     this.adminStateService.updateAnIdea(this.requestData);
   }
 
