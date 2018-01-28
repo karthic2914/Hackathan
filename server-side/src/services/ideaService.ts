@@ -19,3 +19,7 @@ export const postIdea = (data: IdeaModel, owner: UserModel, callback: any) => {
 export const fetchIdeaById = (id: any) => {
     return Idea.findById(id).then(idea => idea).catch(err => err);
 };
+
+export const fetchIdeaByCondition = (condition: { [key: string]: string | number | boolean | Object }) => {
+    return Idea.findOne(condition).then((idea: IdeaModel) => idea).catch(err => err);
+};
