@@ -13,7 +13,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let idea of HackerDetails?.data?.users"> 
+              <tr *ngFor="let idea of HackerDetails?.invitedHackerList?.data?.users"> 
                 <td class="td-ideas">{{idea.username}}</td>
                 <td class="td-ideas">{{idea.email}}</td>
                 <td class="td-ideas">{{idea.skillset[0]}}</td>
