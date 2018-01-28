@@ -15,6 +15,12 @@ export class HackerStateService {
     });
   }
 
+  public updateAnIdea(value) {
+    this.apiService.post('idea/update', value).then((response: any) => {
+      console.log(response);
+  });
+}
+
   public fetchAllIdeas() {
     return this.apiService.get('idea').then((response: any) => {
       this.store.dispatch({type: 'LOAD_IDEA_DATA', payload: response});

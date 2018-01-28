@@ -8,38 +8,40 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <!-- grid start -->
-          <table class="table table-striped" [mfData]="dataObj" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+          <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
               <thead>
                 <tr>
-                  <th style="width: 20%">
-                      <mfDefaultSorter by="Title">CheckBox</mfDefaultSorter>
-                  </th>
-                  <th style="width: 20%">
-                    <mfDefaultSorter by="Title">Title</mfDefaultSorter>
-                  </th>
-                  <th style="width: 40%">
-                    <mfDefaultSorter by="Tags">Tags</mfDefaultSorter>
+                 <th style="width: 10%">
+                    <mfDefaultSorter by="title">Title</mfDefaultSorter>
                   </th>
                   <th style="width: 10%">
+                    <mfDefaultSorter by="technologyTags">Tags</mfDefaultSorter>
+                  </th>
+                  <th style="width: 40%">
                     <mfDefaultSorter by="Description">Description</mfDefaultSorter>
                   </th>
-                  <th style="width: 20%">
-                    <mfDefaultSorter [by]="Preview">Preview</mfDefaultSorter>
+                  <th style="width: 10%">
+                    <mfDefaultSorter [by]="createdBy">Creater</mfDefaultSorter>
                   </th>
-                  <th style="width: 10%"></th>
-
+                  <th style="width: 20%">
+                    <mfDefaultSorter [by]="status">Status</mfDefaultSorter>
+                  </th>   
+                  <th style="width: 20%">
+                      <mfDefaultSorter >Action</mfDefaultSorter>
+                  </th>              
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of mf.data">
-                  <td><input type="checkbox" name="sel" id="chk"/></td>
-                  <td>{{item.Title}}</td>
-                  <td>{{item.Tags}}</td>
-                  <td>{{item.Description}}</td>
-                  <td>{{item.Preview}}</td>
+                  <td>{{item.title}}</td>
+                  <td>{{item.technologyTags}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{item.createdBy}}</td>
+                  <td>{{item.status}}</td>
                   <td>
-                      <button (click)="remove(item)" class="btn btn-danger">x</button>
-                    </td>
+                      <button style="float: left" (click)="Approve(item)" class="btn btn-primary">Approve</button>
+                      <button style="float: right" (click)="Reject(item)" class="btn btn-danger">Deny</button>                      
+                  </td>
                 </tr>
               </tbody>
                </table>
@@ -49,10 +51,7 @@
   </div>
 </div>
 </div>
-    
-   
-<button type="button" class="btn btn-primary" (click)="Approve();">Approve</button>
-<button type="button" class="btn btn-primary" (click)="Reject();">Reject</button>
+
    
    
     
