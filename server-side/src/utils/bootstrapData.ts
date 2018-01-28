@@ -42,7 +42,7 @@ export const createIdeas = () => {
         if (!records) {
             new Idea({
                 teamName: 'Team 1', title: 'Bootstraped title', description: 'This is test description',
-                technologyTags: ['Java', 'Groovy', 'Node']
+                technologyTags: ['Java', 'Groovy', 'Node'], isApproved: true
             })
                 .save()
                 .then((idea: IdeaModel) => console.log('Created Idea: title: ', idea.title))

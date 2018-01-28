@@ -5,7 +5,9 @@ import { IdeaModel } from '../models/Idea';
 import { listIdea, postIdea } from '../services/ideaService';
 
 export let getApprovedIdeas = (req: Request, res: Response) => {
-    listIdea(req.params || {}, function (err: any, ideaList: IdeaModel[]) {
+    const params = req.params || {};
+    params.isApproved = true;
+    listIdea(params, function (err: any, ideaList: IdeaModel[]) {
         if (err) {
             return res.status(400).json(err);
         }
