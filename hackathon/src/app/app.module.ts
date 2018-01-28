@@ -47,7 +47,7 @@ import { IdeaApprovalComponent } from './hackathon/admin/idea-approval/idea-appr
 import { LogsComponent } from './hackathon/admin/logs/logs.component';
 import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-news.component';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SearchDisplayComponent } from './shared/search-display/search-display.component';
 import { SearchListComponent } from './shared/search-list/search-list.component';
 import { MasterListComponent } from './shared/master-list/master-list.component';
@@ -67,6 +67,7 @@ import { PanelExpandComponent } from './shared/panel-expand/panel-expand.compone
 import { EllipsisPipe } from './shared/pipes/truncate.pipe';
 import { SearchDisplayRequestToHackerComponent } from './shared/search-display-request-to-hacker/search-display-request-to-hacker.component';
 import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
+import { AuthInterceptor } from './store/services/authInterceptor';
 
 export function instrumentOptions() {
   return {
@@ -148,7 +149,12 @@ export function instrumentOptions() {
     ApiService,
     UserStateService,
     JwtService,
-    NotAuthorize
+    NotAuthorize,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
