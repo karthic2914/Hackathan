@@ -1,0 +1,27 @@
+<div class="col-md-12 margin-top">
+    <section>
+      <div class="content ">
+        <div class="primary-button card-deck mb-3 text-center">
+  
+          <table class="table table-bordered">
+            <thead class="tble-hd" style="background-color: 1px solid #66b0de">
+              <tr>
+                <th>Idea Name</th>
+                <th>Team Name</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let idea of HackerDetails?.data?.users"> 
+                <td class="td-ideas">{{idea.username}}</td>
+                <td class="td-ideas">{{idea.email}}</td>
+                <td class="td-ideas">{{idea.skillset[0]}}</td>
+                <td class="td-ideas">{{idea.isApproved}}</td>
+              </tr>
+            </tbody>
+          </table>  
+        </div>
+      </div>
+    </section>
+    </div>
