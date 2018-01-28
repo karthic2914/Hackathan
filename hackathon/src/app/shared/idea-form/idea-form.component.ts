@@ -18,25 +18,16 @@ export class IdeaFormComponent implements OnInit {
   bindEditbox = '';
 
   skillset = [
-
-    { id: 0, name: 'Priamry Skill Set' },
-
     { id: 1, name: 'Angular' },
-
     { id: 2, name: 'Node' },
-
     { id: 3, name: 'Java' },
-
     { id: 4, name: 'Testing' },
-
     { id: 5, name: 'JavaScript' }
-
   ];
   ngOnInit() {
     this.hackerProfileForm = new FormGroup({
       'teamName': new FormControl('', Validators.required),
       'title': new FormControl('', Validators.required),
-      'technology': new FormControl('', Validators.required),
       'description': new FormControl('', Validators.required),
       'technologyTags': new FormControl('', Validators.required)
     });

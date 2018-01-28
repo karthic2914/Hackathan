@@ -29,6 +29,7 @@ export class Routes {
         app.get('/idea', route.list);
         app.get('/idea/myideas', route.listMyIdea);
         app.post('/idea/save', route.saveIdea);
+        app.post('/idea/update', route.ideaUpdate);
         // app.post('/hacker/requestToTeam/request', functionNameComeHere);
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);

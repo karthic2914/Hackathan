@@ -16,10 +16,13 @@ export class InvitationToHackerComponent implements OnInit {
 
   constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
     this.hackerStateService.fetchHackerDetails().then((response: any) => {
+      this.hackerStateService.fetchInvitedHackerList().then((data: any) => {
       this.subscription = this.store.subscribe((stores: AppStore) => {
         this.HackerDetails = stores.ideas;
+        // this.HackerDetails = stores.ideas.data.users
         console.log('IdeaDeatails: ' + this.HackerDetails);
       });
+    });
     });
   }
 
