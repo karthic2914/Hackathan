@@ -79,5 +79,6 @@ export class UserStateService {
       type: 'USER_LOGGED_OUT',
       payload: {}
     });
+    this.router.navigateByUrl('/');
   }
 }
