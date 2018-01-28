@@ -14,17 +14,10 @@ export class SignUpComponent implements OnInit {
   errors: { [key: string]: string } = {};
   isSubmit = false;
   skillset = [
-
-    { id: 0, name: 'Priamry Skill Set' },
-
     { id: 1, name: 'Angular' },
-
     { id: 2, name: 'Node' },
-
     { id: 3, name: 'Java' },
-
     { id: 4, name: 'Testing' },
-
     { id: 5, name: 'JavaScript' }
 
   ];
