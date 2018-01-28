@@ -53,6 +53,26 @@
             </span>
           </div>
         </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['skillSet'].invalid && signUpForm.controls['skillSet'].touched}">
+          <label for="skillSet">Primary Skill</label>
+          <select formControlName="skillSet" class="form-control" placeholder="Primary Skill">
+            <option *ngFor="let skill of skillset" value="skill.name">{{skill.name}}</option>
+         </select>         
+          <div *ngIf="signUpForm.controls['skillSet'].errors && !signUpForm.controls['skillSet'].pristine"
+               class="help-block">
+            <span *ngIf="signUpForm.controls['skillSet'].invalid">
+              Please enter skill set.
+            </span>
+          </div>
+        </div>
+       <!--  <div class="form-group">
+          <label for="skillSet">Primary Skill</label>
+          <select formControlName="skillSet" class="form-control" placeholder="Primary Skill">
+             <option *ngFor="let skill of skillset" value="skill.name">{{skill.name}}</option>
+          </select>
+          <span *ngIf="!hackerProfileForm.get('skillSet').valid && hackerProfileForm.get('technologyTags').touched" class="help-block">Please select a Technology Tags</span>
+       </div> -->
         <div class="form-group">
           <button [disabled]="!signUpForm.valid" class="btn btn-primary">SignUp</button>
         </div>

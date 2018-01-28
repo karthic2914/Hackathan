@@ -13,6 +13,21 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   errors: { [key: string]: string } = {};
   isSubmit = false;
+  skillset = [
+
+    { id: 0, name: 'Priamry Skill Set' },
+
+    { id: 1, name: 'Angular' },
+
+    { id: 2, name: 'Node' },
+
+    { id: 3, name: 'Java' },
+
+    { id: 4, name: 'Testing' },
+
+    { id: 5, name: 'JavaScript' }
+
+  ];
 
   constructor(private router: Router,
               private userStateService: UserStateService,
@@ -23,6 +38,7 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       skillSet: ['', [Validators.required]],
+      
     });
   }
 
