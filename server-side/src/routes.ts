@@ -3,6 +3,7 @@ import { postBlog, getBlogs, updateblog } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
 import { getIdeaDetails, searchIdeaDetails } from './controllers/hacker/requestToTeam';
+import { getInvitationFromTeam, approveTeamInvitation } from './controllers/hacker/invitationFromTeam';
 
 export class Routes {
 
@@ -34,8 +35,8 @@ export class Routes {
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);
         // app.post('/hacker/requestToHacker/request', functionNameComeHere);
-        // app.get('/hacker/invitationFromTeam', functionNameComeHere);
-        // app.post('/hacker/invitationFromTeam/approval', functionNameComeHere);
+         app.post('/hacker/invitationFromTeam', getInvitationFromTeam);
+         app.post('/hacker/invitationFromTeam/approval', approveTeamInvitation);
         // app.get('/hacker/invitationFromHacker', functionNameComeHere);
         // app.post('/hacker/invitationFromHacker/approval', functionNameComeHere);
     }
