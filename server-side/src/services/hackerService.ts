@@ -45,6 +45,30 @@ export const requestToHacker = (data: any, email: string): any => {
     });
 };
 
+export const addHackerToTeam = (data: any, email: string) => {
+    return fetchUserByEmail(email).then(function (currentUser) {
+        return fetchIdeaByCondition({createdBy: currentUser, isApproved: true}).then((idea: IdeaModel) => {
+            if (!idea) return {statusCode: 400, message: {errors: {global: 'Idea not found'}}};
+            return Log.findOne({ideaId: idea, userId: data.userId, requestTeam: true})
+                .then((log: LogModel) => {
+                    return fetchUserById(data.userId)
+                        .then((user: UserModel) => {
+                            idea.members.push(user);
+                            idea.save()
+                                .then((idea: IdeaModel) => idea)
+                                .catch((err: any) => ({statusCode: 400, message: parseErrors(err.errors)}));
+                        }).catch(err => ({
+                            statusCode: 400,
+                            message: {errors: {global: 'No user found with requested id'}}
+                        }));
+                }).catch(err => ({
+                    statusCode: 400,
+                    message: {errors: {global: 'No request found for user. can not be added'}}
+                }));
+        });
+    });
+};
+
 export const joinTeam = (data: any, user: UserModel, callback: any) => {
     fetchIdeaById(data.ideaId).then((idea: IdeaModel) => {
         if (!idea) {
@@ -53,7 +77,6 @@ export const joinTeam = (data: any, user: UserModel, callback: any) => {
             idea.members.push(user);
             idea.save()
                 .then((idea: IdeaModel) => {
-                    Log.findOneAndRemove({ideaId: idea, userId: user});
                     callback(undefined, idea);
                 })
                 .catch((err: any) => callback(parseErrors(err.errors), undefined));
@@ -81,4 +104,19 @@ export const listHackersRequest = (email: string) => {
         }).catch(error => {
             return {statusCode: 400, mesage: parseErrors(parseErrors(error.errors))};
         });
+};
+
+export const requestTeam = (data: any, email: string): any => {
+    return fetchUserByEmail(email).then(function (currentUser) {
+        return fetchIdeaById(data.ideaId).then((idea: IdeaModel) => {
+            if (!idea) return {statusCode: 400, message: {global: 'Idea not found'}};
+            return Log.findOne({ideaId: idea, userId: currentUser, requestTeam: true})
+                .then((log: LogModel) => {
+                    if (log) return {statusCode: 400, message: {global: 'Request already sent'}};
+                    return new Log({ideaId: idea, userId: currentUser, requestTeam: true}).save()
+                        .then((log: any) => log)
+                        .catch((err: any) => ({statusCode: 400, mesage: parseErrors(parseErrors(err.errors))}));
+                });
+        });
+    });
 };
