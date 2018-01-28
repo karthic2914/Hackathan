@@ -14,34 +14,6 @@ import { AppStore } from '../../../store/models/hackathon-store.model';
 export class IdeaApprovalComponent implements OnInit, OnDestroy {
   requestData: any;
   public dataObj: any;
-  //  [{
-  //   "title": "Google",
-  //   "technologyTags": "JS",
-  //   "description": "Google is a search engine",
-  //   "createdBy": "VJ",
-  //   "status": "pending",
-  // },
-  // {
-  //   "title": "Google",
-  //   "technologyTags": "JS",
-  //   "description": "Google is a search engine",
-  //   "createdBy": "VJ",
-  //   "status": "approved"
-  // },
-  // {
-  //   "title": "Google",
-  //   "technologyTags": "JS",
-  //   "description": "Google is a search engine",
-  //   "createdBy": "VJ",
-  //   "status": "denied"
-  // },
-  // {
-  //   "title": "Google",
-  //   "technologyTags": "JS",
-  //   "description": "Google is a search engine",
-  //   "createdBy": "VJ",
-  //   "status": "pending"
-  // }];
   public filterQuery = "";
   public rowsOnPage = 10;
   public sortBy = "Tags";
@@ -79,6 +51,13 @@ export class IdeaApprovalComponent implements OnInit, OnDestroy {
     this.requestData.status = "denied";
     window.alert("Rejected");
     this.hackerStateService.updateAnIdea(this.requestData);
+  }
+
+  isInvalid(item){
+    if( item.status === 'pending' ){
+      return 'enabled';
+    }
+    return 'disabled';
   }
 
   public ngOnDestroy() {

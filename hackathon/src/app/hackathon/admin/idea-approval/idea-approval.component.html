@@ -21,7 +21,7 @@
                     <mfDefaultSorter by="Description">Description</mfDefaultSorter>
                   </th>
                   <th style="width: 10%">
-                    <mfDefaultSorter [by]="createdBy">Creater</mfDefaultSorter>
+                    <mfDefaultSorter [by]="teamName">Team Name</mfDefaultSorter>
                   </th>
                   <th style="width: 20%">
                     <mfDefaultSorter [by]="status">Status</mfDefaultSorter>
@@ -36,11 +36,11 @@
                   <td>{{item.title}}</td>
                   <td>{{item.technologyTags}}</td>
                   <td>{{item.description}}</td>
-                  <td>{{item.createdBy}}</td>
+                  <td>{{item.teamName}}</td>
                   <td>{{item.status}}</td>
                   <td>
-                      <button style="float: left" (click)="Approve(item)" class="btn btn-primary">Approve</button>
-                      <button style="float: right" (click)="Reject(item)" class="btn btn-danger">Deny</button>                      
+                      <button style="float: left" [ngClass] = "isInvalid(item)"  (click) = "Approve(item)" class="btn btn-primary">Approve</button>
+                      <button style="float: right" [ngClass] = "isInvalid(item)" (click)="Reject(item)" class="btn btn-danger">Deny</button>                      
                   </td>
                 </tr>
               </tbody>

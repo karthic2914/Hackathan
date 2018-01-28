@@ -17,11 +17,16 @@ export const postIdea = (data: IdeaModel, owner: UserModel, callback: any) => {
 };
 
 export const updateIdea = (data: IdeaModel, owner: UserModel, callback: any) => {
-    const ideaInstance = new Idea(data);
-    ideaInstance.createdBy = owner;
-    ideaInstance.update({ _id: data._id }, { $set: { isActive: data.status == 'approved' ? true : false, status: data.status }})
-        .then((idea: IdeaModel) => callback(undefined, idea))
-        .catch((idea: any) => callback(parseErrors(idea.errors), undefined));
+      fetchIdeaById(data._id).then((idea: IdeaModel) => {
+        if (!idea) {
+            return callback({errors: {global: 'Idea not found'}}, undefined);
+        } else {
+            idea.status = data.status;
+            idea.save()
+            .then((idea: IdeaModel) => callback(undefined, idea))
+            .catch((idea: any) => callback(parseErrors(idea.errors), undefined));
+        }
+    });
 };
 
 export const fetchIdeaById = (id: any) => {
