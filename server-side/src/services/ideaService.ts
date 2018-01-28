@@ -16,6 +16,19 @@ export const postIdea = (data: IdeaModel, owner: UserModel, callback: any) => {
         .catch((idea: any) => callback(parseErrors(idea.errors), undefined));
 };
 
+export const updateIdea = (data: IdeaModel, owner: UserModel, callback: any) => {
+      fetchIdeaById(data._id).then((idea: IdeaModel) => {
+        if (!idea) {
+            return callback({errors: {global: 'Idea not found'}}, undefined);
+        } else {
+            idea.status = data.status;
+            idea.save()
+            .then((idea: IdeaModel) => callback(undefined, idea))
+            .catch((idea: any) => callback(parseErrors(idea.errors), undefined));
+        }
+    });
+};
+
 export const fetchIdeaById = (id: any) => {
     return Idea.findById(id).then(idea => idea).catch(err => err);
 };
