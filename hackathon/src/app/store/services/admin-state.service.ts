@@ -12,34 +12,6 @@ export class AdminStateService {
 
   constructor(private http: HttpClient, private apiService: ApiService, public store: Store<AppStore>) { }
 
-  //Admin >> ideaApproval 
-  public getProfileList(value) { // set the node url here
-    this.http.post('http://localhost:3000//admin/idealist', value).toPromise().then((response: any) => {
-      console.log(response);
-    });
-  }
-
-  //Admin >> ideaApproval 
-  public updateProfileStatus(value) { // set the node url here
-    this.http.post('http://localhost:3000//admin/changestatus', value).toPromise().then((response: any) => {
-      console.log(response);
-    });
-  }
-
-  //Admin >> Master logs 
-  public masterlogGet(value) { // set the node url here
-    this.http.post('http://localhost:3000//admin/getlogs', value).toPromise().then((response: any) => {
-      console.log(response);
-    });
-  }
-
-  //Admin >> Master logs
-  public masterlogdelete(value) { // set the node url here
-    this.http.post('http://localhost:3000//admin/delete', value).toPromise().then((response: any) => {
-      console.log(response);
-    });
-  }
-
   // Get idea details from page
   public loadLogs(value) {
     this.http.post('http://localhost:3000//admin/delete', value).toPromise().then((response: any) => {
@@ -50,6 +22,12 @@ export class AdminStateService {
 
   public updateAnIdea(value) {
     this.apiService.post('idea/update', value).then((response: any) => {
+      console.log(response);
+    });
+  }
+
+  public deleteAnIdea(value) {
+    this.apiService.post('idea/deleteidea', value).then((response: any) => {
       console.log(response);
     });
   }

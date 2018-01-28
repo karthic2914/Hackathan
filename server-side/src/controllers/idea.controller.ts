@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { fetchUserByEmail, isAuth } from '../services/authService';
 import { UserModel } from '../models/User';
 import { IdeaModel } from '../models/Idea';
-import { listIdea, postIdea, updateIdea } from '../services/ideaService';
+import { listIdea, postIdea, updateIdea, deleteIdeaService } from '../services/ideaService';
 
 export let getApprovedIdeas = (req: Request, res: Response) => {
     const params = req.params || {};
@@ -78,6 +78,17 @@ export let ideaUpdate = (req: Request, res: Response) => {
         });
     }).catch(err => {
         res.status(401).json({errors: {global: 'TOKEN-EXPIRED'}});
+    });
+};
+
+// delete Idea
+export let deleteIdea = (req: Request, res: Response) => {
+    deleteIdeaService(req.body, function (err: any, comment: any) {
+        if (err) {
+            res.status(400).json(err);
+            return;
+        }
+        res.send('Comment Deleted Successfully');
     });
 };
 
