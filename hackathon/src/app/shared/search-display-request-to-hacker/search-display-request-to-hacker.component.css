@@ -1,0 +1,18 @@
+.margin-bottom {
+    margin-bottom: 50px; 
+}
+.first-content{
+    height:350px;
+}
+.margin-top{
+    margin-top:50px;
+}
+label {
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+}
+img{
+    width:300px;
+    margin-top:-45px
+}

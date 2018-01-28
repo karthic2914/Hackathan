@@ -1,6 +1,6 @@
 import Log, { LogModel } from '../models/Log';
 import { fetchUserByEmail, fetchUserById } from './authService';
-import { fetchIdeaById } from './ideaService';
+import { fetchIdeaByCondition, fetchIdeaById } from './ideaService';
 import { default as Idea, IdeaModel } from '../models/Idea';
 import { default as User, UserModel } from '../models/User';
 import { parseErrors } from '../utils/errorParser';
@@ -26,25 +26,21 @@ export const listTeamInvites = (email: string) => {
         });
 };
 
-export const requestToHacker = (data: any, callback: any) => {
-    fetchUserById(data.userId).then(function (user) {
-        if (!user) {
-            return callback({errors: {global: 'User not found'}}, undefined);
-        }
-        fetchIdeaById(data.ideaId).then(idea => {
-            if (!idea) {
-                return callback({errors: {global: 'Idea not found'}}, undefined);
-            } else {
-                Log.findOne({ideaId: idea, userId: user})
-                    .then((log: LogModel) => {
-                        if (log) {
-                            return callback({errors: {global: 'Request already sent'}}, undefined);
-                        }
-                        new Log({ideaId: idea, userId: user, inviteUser: true}).save()
-                            .then((log: LogModel) => callback(undefined, log))
-                            .catch((err: any) => callback(parseErrors(err.errors), undefined));
-                    });
-            }
+export const requestToHacker = (data: any, email: string): any => {
+    return fetchUserByEmail(email).then(function (currentUser) {
+        return fetchIdeaByCondition({createdBy: currentUser, isApproved: true}).then((idea: IdeaModel) => {
+            if (!idea) return {statusCode: 400, message: {errors: {global: 'Idea not found'}}};
+            return fetchUserById(data.userId)
+                .then((userToRequest: UserModel) => {
+                    if (!userToRequest) return {statusCode: 400, message: {errors: {global: 'User not found'}}};
+                    return Log.findOne({ideaId: idea, userId: userToRequest})
+                        .then((log: LogModel) => {
+                            if (log) return {statusCode: 400, message: {errors: {global: 'Request already sent'}}};
+                            return new Log({ideaId: idea, userId: userToRequest, inviteUser: true}).save()
+                                .then((log: any) => log)
+                                .catch((err: any) => ({statusCode: 400, mesage: parseErrors(parseErrors(err.errors))}));
+                        });
+                }).catch((err: any) => ({statusCode: 400, mesage: parseErrors(parseErrors(err.errors))}));
         });
     });
 };

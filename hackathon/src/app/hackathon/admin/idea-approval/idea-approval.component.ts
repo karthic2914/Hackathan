@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HackerStateService } from '../../../store/services/hacker-state.service';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../store/models/hackathon-store.model';
-
-
+import { AdminStateService } from '../../../store/services/admin-state.service';
+import { HackerStateService } from '../../../store/services/hacker-state.service';
 
 @Component({
   selector: 'app-idea-approval',
@@ -14,14 +13,15 @@ import { AppStore } from '../../../store/models/hackathon-store.model';
 export class IdeaApprovalComponent implements OnInit, OnDestroy {
   requestData: any;
   public dataObj: any;
-  public filterQuery = "";
+  public filterQuery = '';
   public rowsOnPage = 10;
-  public sortBy = "Tags";
-  public sortOrder = "asc";
+  public sortBy = 'Tags';
+  public sortOrder = 'asc';
 
   private subscription: Subscription;
 
-  constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
+  constructor(private hackerStateService: HackerStateService,
+     private adminStateService: AdminStateService, private store: Store<AppStore>) {
 
     this.hackerStateService.fetchAllIdeas().then((response: any) => {
       this.subscription = this.store.subscribe((stores: AppStore) => {
@@ -41,20 +41,20 @@ export class IdeaApprovalComponent implements OnInit, OnDestroy {
 
   Approve(item) {
     this.requestData = item;
-    this.requestData.status = "approved";
-    window.alert("Approved" + this.requestData);
-    this.hackerStateService.updateAnIdea(this.requestData);
+    this.requestData.status = 'approved';
+    window.alert('Approved' + this.requestData);
+    this.adminStateService.updateAnIdea(this.requestData);
   }
 
   Reject(item) {
     this.requestData = item;
-    this.requestData.status = "denied";
-    window.alert("Rejected");
-    this.hackerStateService.updateAnIdea(this.requestData);
+    this.requestData.status = 'denied';
+    window.alert('Rejected');
+    this.adminStateService.updateAnIdea(this.requestData);
   }
 
-  isInvalid(item){
-    if( item.status === 'pending' ){
+  isInvalid(item) {
+    if ( item.status === 'pending' ) {
       return 'enabled';
     }
     return 'disabled';

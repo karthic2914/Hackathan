@@ -1,40 +1,46 @@
 <div class="col-md-12 margin-top">
   <section>
-    <div class="content ">
-      <div class="primary-button card-deck mb-3 text-center">
-<div class="container">
-  <div class="row">
-    <div class="panel-heading publish-dock">
+     <div class="content ">
+        <div class="primary-button card-deck mb-3 text-center">
+           <div class="container">
+              <div class="row">
+                 <div class="panel-heading publish-dock">
                     <h3 class="panel-title" style="background-color: #f9a600; color:#fff;">
-                        Post An Idea
+                       Post An Idea
                     </h3>
-                </div>
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form [formGroup]="hackerProfileForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <!-- <label for="teamname">Team Name</label> -->
-          <input type="text" id="teamname" formControlName="teamName" class="form-control" placeholder="Team Name" >
-          <span *ngIf="!hackerProfileForm.get('teamName').valid && hackerProfileForm.get('teamName').touched" class="help-block">Please enter a valid Team Name</span>
+                 </div>
+                 <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                    <form [formGroup]="hackerProfileForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                       <!-- <label for="teamname">Team Name</label> -->
+                       <input type="text" id="teamname" formControlName="teamName" class="form-control" placeholder="Team Name">
+                       <span *ngIf="!hackerProfileForm.get('teamName').valid && hackerProfileForm.get('teamName').touched" class="help-block">Please enter a valid Team Name</span>
+                    </div>
+                    <div class="form-group">
+                       <!-- <label for="ideatitle">Idea Title</label> -->
+                       <input type="text" id="ideatitle" formControlName="title" class="form-control" placeholder="Idea Title">
+                       <span *ngIf="!hackerProfileForm.get('title').valid && hackerProfileForm.get('title').touched" class="help-block">Please enter a valid Idea Title</span>
+                    </div>
+                    <div class="form-group">
+                       <label for="technologyTags">Primary Skill</label>
+                       <select formControlName="technologyTags" class="form-control" placeholder="Primary Skill">
+                          <option *ngFor="let skill of skillset" value="skill.name">{{skill.name}}</option>
+                       </select>
+                       <span *ngIf="!hackerProfileForm.get('technologyTags').valid && hackerProfileForm.get('technologyTags').touched" class="help-block">Please select a Technology Tags</span>
+                    </div>
+                    <div [froalaEditor] formControlName="description">
+                       Hello, Froala!
+                       <span *ngIf="!hackerProfileForm.get('description').valid && hackerProfileForm.get('description').touched" class="help-block">Please enter a valid Idea</span>
+                    </div>
+                    <!-- <span *ngIf="!hackerProfileForm.valid && hackerProfileForm.touched" class="help-block">Please enter a valid Data!</span> -->
+                    <br>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-default" (click)="clear()">Clear</button>
+                    </form>
+                 </div>
+              </div>
+           </div>
         </div>
-        <div class="form-group">
-          <!-- <label for="ideatitle">Idea Title</label> -->
-          <input type="text" id="ideatitle" formControlName="title" class="form-control" placeholder="Idea Title">
-          <span *ngIf="!hackerProfileForm.get('title').valid && hackerProfileForm.get('title').touched" class="help-block">Please enter a valid Idea Title</span>
-        </div>
-        <div [froalaEditor] formControlName="description">
-          Hello, Froala!
-          <span *ngIf="!hackerProfileForm.get('description').valid && hackerProfileForm.get('description').touched" class="help-block">Please enter a valid Idea</span>
-        </div>
-        <!-- <span *ngIf="!hackerProfileForm.valid && hackerProfileForm.touched" class="help-block">Please enter a valid Data!</span> -->
-        <br>
-        <button class="btn btn-primary" type="submit">Submit</button>
-        <button class="btn btn-default" (click)="clear()">Clear</button>
-
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</section>
+     </div>
+  </section>
 </div>

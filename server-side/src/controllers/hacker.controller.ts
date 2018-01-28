@@ -21,12 +21,13 @@ export let listTeamInvitations = (req: Request, res: Response) => {
 export let inviteHacker = (req: Request, res: Response) => {
     isAuth(req).then((user: UserModel) => {
         if (!req.body.data) return res.status(400).json({status: 'Invalid JSON format'});
-        requestToHacker(req.body.data, function (err: any, data: LogModel) {
-            if (err) {
-                return res.status(400).json(err);
-            }
-            res.json({status: 'success'});
-        });
+        requestToHacker(req.body.data, user.email)
+            .then((response: any) => {
+                if (response && response.statusCode === 400) {
+                    return res.status(400).json({errors: response.message});
+                }
+                res.json({status: 'success'});
+            });
     }).catch(err => {
         res.status(401).json({errors: {global: 'TOKEN-EXPIRED'}});
     });
