@@ -9,11 +9,33 @@ import { UserStateService } from '../../store/services/user-state.service';
 export class NavigationComponent implements OnInit {
   @Input() cms: string;
 
-  constructor(
-    private router: Router,
-    private userStateService: UserStateService
-  ) {}
+  isAdmin: boolean;
+  isAuthenticated: boolean;
+  isIdeaExists: boolean;
 
+  constructor(private router: Router,
+              private userStateService: UserStateService) {
+                this.getAdmin();
+                this.getAunthenticated();
+                this.getIdea();
+              }
+getAdmin() {
+  this.userStateService.isAdmin().subscribe(condition => {
+    this.isAdmin = condition;
+  });
+}
+
+getAunthenticated() {
+  this.userStateService.isAuthenticated().subscribe(condition => {
+    this.isAuthenticated = condition;
+  });
+}
+
+getIdea() {
+  this.userStateService.isIdeaExists().subscribe(condition => {
+    this.isIdeaExists = condition;
+  });
+}
   ngOnInit() {}
 
   login() {
