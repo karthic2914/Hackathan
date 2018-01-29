@@ -43,6 +43,7 @@
     "mongoose": "^5.0.1",
     "mongoose-unique-validator": "^1.0.6",
     "ngx-bootstrap": "^2.0.2",
+    "ngx-pagination": "^3.0.3",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -71,4 +72,3 @@
     "typescript": "~2.5.3"
   }
 }
-
