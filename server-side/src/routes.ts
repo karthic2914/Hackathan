@@ -16,7 +16,7 @@ export class Routes {
         app.get('/user', route.listUser);
         app.post('/blog', postBlog);
         app.get('/getblog', getBlogs);
-        app.put('/updateblog', updateblog);
+        app.post('/updateblog', updateblog);
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);
         app.post('/hacker/invitehacker', route.inviteHacker);

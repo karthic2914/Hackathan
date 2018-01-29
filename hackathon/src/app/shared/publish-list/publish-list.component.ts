@@ -1,79 +1,67 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnDestroy, ChangeDetectionStrategy  } from '@angular/core';
 import { Data } from '@angular/router/src/config';
 import { DatePipe } from '@angular/common';
 import { NewsModel } from '../../store/models/news.model.publish';
 import { NewsStateService } from '../../store/services/news-state.service';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
+import { AppStore } from '../../store/models/hackathon-store.model';
+import { AdminStateService } from '../../store/services/admin-state.service';
 
 
 @Component({
   selector: 'app-publish-list',
   templateUrl: './publish-list.component.html',
   styleUrls: ['./publish-list.component.css']
+
 })
-export class PublishListComponent implements OnInit {
-
+export class PublishListComponent implements OnInit, OnDestroy {
+  public newsSubscribe: Subscription;
   private newTitle: any;
-
-  @Input() newsideaspub: NewsModel[];
-
-   public dataObj = [{
-
-    'date': 1516709036,
-
-    'header': 'tellus.eu.augue@arcu.com',
-
-    'description': '2016-01-09T14:48:34-08:00'
-
-     },
-
-     {
-
-    'date': 1516713319,
-
-    'header': 'sed.dictum@Donec.org',
-
-    'description': '2017-01-23T20:09:52-08:00'
-
-     },
-
-     {
-
-    'date': 1516709036,
-
-    'header': 'mauris@Craslorem.ca',
-
-    'description': '2015-11-19T19:11:33-08:00'
-
-     },
-
-     {
-
-    'date': 1516709036,
-
-    'header': 'mi.Aliquam@Phasellus.net',
-
-    'description': '2015-11-02T07:59:34-08:00'
-
-     }];
+  public newsObj: any;
+    @Input() public addList =  new EventEmitter<string>();
+    @Input() newsideaspub: NewsModel[];
 
     public filterQuery = '';
 
-    public rowsOnPage = 10;
+    public rowsOnPage = 5;
 
     public sortBy = 'email';
 
     public sortOrder = 'asc';
+    public requestObj: any;
 
-    public theDate: any = this.dataObj[0].date;
+    // public theDate: any = this.dataObj[0].date;
 
-  constructor(private ideapublishService: NewsStateService) {
-    console.log('The date is ' , this.theDate);
+  constructor(private newsStateService: NewsStateService, private store: Store<AppStore>,
+    private adminStateService: AdminStateService
+  ) {
+      //console.log('The date is ' , this.theDate);
   }
   ngOnInit() {
-    // this.ideapublishService.getAll().subscribe(
-    //   (ideapublish: NewsModel[]) => {
-    //     ideapublish.forEach(publish => this.newsideaspub.push(publish));
-    //   }
-    // );
+    console.log('NgOnInit');
+    this.newsStateService.getNews().then((response: any) => {
+      this.newsSubscribe = this.store.subscribe((stores: AppStore) => {
+        this.newsObj = stores.news;
+      });
+    });
   }
+
+  addListerner(value: any) {
+    this.ngOnInit();
+  }
+
+  Approve(item) {
+    this.requestObj = item;
+    this.requestObj.isActive = true;
+    this.adminStateService.updateNews(this.requestObj);
+  }
+
+  Reject(item) {
+    this.requestObj = item;
+    this.requestObj.isActive = false;
+    this.adminStateService.updateNews(this.requestObj);
+  }
+
+  public ngOnDestroy(): void {}
 }
