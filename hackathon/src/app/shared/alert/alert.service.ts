@@ -13,7 +13,6 @@ export class AlertService {
   }
 
   getAlert(): Observable<any> {
-    console.log('here: ', this.subject);
     return this.subject.asObservable();
   }
 
@@ -34,7 +33,6 @@ export class AlertService {
   }
 
   alert(type: AlertType, message: string) {
-    console.log('here 1: ', message);
     this.subject.next(<Alert>{type: type, message: message});
   }
 
