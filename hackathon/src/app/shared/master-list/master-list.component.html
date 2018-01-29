@@ -37,8 +37,8 @@
                     <td>{{item.teamName}}</td>
                     <td>{{item.status | uppercase}}</td>
                     <ng-template #template>
-                        <div class="modal-dialog">
-                            <div class="modal-header">
+                        <div class="modal-dialog" style="margin-top: 0px;">
+                            <div class="modal-header" style=" background-color: #ffbb05;">
                                 <h4 class="modal-title pull-left">{{item.title}}</h4>
                                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                 <span aria-hidden="true">&times;</span>
