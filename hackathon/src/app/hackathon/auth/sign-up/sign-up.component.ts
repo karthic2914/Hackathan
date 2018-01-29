@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
     { id: 2, name: 'Node' },
     { id: 3, name: 'Java' },
     { id: 4, name: 'Testing' },
-    { id: 5, name: 'JavaScript' }
+    { id: 5, name: 'Javascript' }
 
   ];
 
@@ -31,7 +31,6 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       skillSet: ['', [Validators.required]],
-      
     });
   }
 

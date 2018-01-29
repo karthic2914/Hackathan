@@ -34,7 +34,11 @@ export class IdeasComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
+    if (this.subscription) {
     this.subscription.unsubscribe();
+    }
+    if (this.ideaSubscribe) {
     this.ideaSubscribe.unsubscribe();
+  }
   }
 }
