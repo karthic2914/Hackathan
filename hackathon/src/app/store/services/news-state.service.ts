@@ -1,40 +1,34 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Http} from '@angular/http';
-import { IdeaPub } from '../models/news.model.publish';
-import { log } from 'util';
-
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { ApiService } from './api.service';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../models/hackathon-store.model';
 
 @Injectable()
 export class NewsStateService {
+  constructor(private http: HttpClient, private apiService: ApiService, public store: Store<AppStore>) {}
 
-  constructor(private http: Http) { }
+  public getNews() {
+    return this.apiService.get('blog').then((response: any) => {
+      this.store.dispatch({type: 'LOAD_NEWS_DATA', payload: response});
+    });
+  }
 
-  private static apiUrl = '/publish';
 
+  public postNews(value) {
+    this.apiService.post('blog', value).then((response: any) => {
+      console.log(response);
+    });
+  }
 
-store(publish: IdeaPub) {
-  console.log('publish');
-  /*this.http.post('http://localhost:3002/blog', publish)
-  .map(response => response.json())
-  .catch(res => {
-      console.log(res.toString);
-      return Observable.throw(res.message || 'Server error');
-  }); */
-
-  this.http.post('http://localhost:3002/blog', publish).toPromise().then((response: any) => {
-    console.log(response);
-});
-}
-
-getAll() {
-  return this.http.get(NewsStateService.apiUrl + 'apiUrl')
-        .map(res => res.json())
-        .do(data => console.log(data))
-        .catch(res => {
-          console.error(res.toString());
-          return Observable.throw(res.message || 'Server error')
-        });
-}
-
+  // getAll() {
+  //   return this.http
+  //     .get(NewsStateService.apiUrl + 'apiUrl')
+  //     .map(res => res.json())
+  //     .do(data => console.log(data))
+  //     .catch(res => {
+  //       console.error(res.toString());
+  //       return Observable.throw(res.message || 'Server error');
+  //     });
+  // }
 }

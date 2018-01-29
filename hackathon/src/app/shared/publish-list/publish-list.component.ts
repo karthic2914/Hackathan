@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges  } from '@angular/core';
 import { Data } from '@angular/router/src/config';
 import { DatePipe } from '@angular/common';
-import { IdeaPub } from '../../store/models/news.model.publish';
+import { NewsModel } from '../../store/models/news.model.publish';
 import { NewsStateService } from '../../store/services/news-state.service';
 
 
@@ -14,7 +14,7 @@ export class PublishListComponent implements OnInit {
 
   private newTitle: any;
 
-  @Input() newsideaspub: IdeaPub[];
+  @Input() newsideaspub: NewsModel[];
 
    public dataObj = [{
 
@@ -70,10 +70,10 @@ export class PublishListComponent implements OnInit {
     console.log('The date is ' , this.theDate);
   }
   ngOnInit() {
-    this.ideapublishService.getAll().subscribe(
-      (ideapublish: IdeaPub[]) => {
-        ideapublish.forEach(publish => this.newsideaspub.push(publish));
-      }
-    );
+    // this.ideapublishService.getAll().subscribe(
+    //   (ideapublish: NewsModel[]) => {
+    //     ideapublish.forEach(publish => this.newsideaspub.push(publish));
+    //   }
+    // );
   }
 }
