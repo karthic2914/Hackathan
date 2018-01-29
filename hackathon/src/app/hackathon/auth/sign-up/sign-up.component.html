@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['password'].invalid }">
-          <input type="password" class="form-control" placeholder="password" formControlName="password"/>
+          <input type="password" class="form-control" id="password"  placeholder="password" formControlName="password"/>
           <div *ngIf="signUpForm.controls['password'].errors && !signUpForm.controls['password'].pristine"
                class="help-block">
             <span *ngIf="signUpForm.controls['password'].invalid">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['confirmPassword'].invalid }">
-          <input type="password" class="form-control" placeholder="confirmpassword" formControlName="confirmPassword"/>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="confirmpassword" formControlName="confirmPassword"/>
           <div *ngIf="signUpForm.controls['confirmPassword'].errors && !signUpForm.controls['confirmPassword'].pristine"
                class="help-block">
             <span *ngIf="signUpForm.controls['confirmPassword'].invalid">
