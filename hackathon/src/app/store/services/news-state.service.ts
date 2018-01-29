@@ -9,7 +9,7 @@ export class NewsStateService {
   constructor(private http: HttpClient, private apiService: ApiService, public store: Store<AppStore>) {}
 
   public getNews() {
-    return this.apiService.get('blog').then((response: any) => {
+    return this.apiService.get('getblog').then((response: any) => {
       this.store.dispatch({type: 'LOAD_NEWS_DATA', payload: response});
     });
   }
