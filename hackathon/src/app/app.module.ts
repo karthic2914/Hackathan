@@ -65,6 +65,7 @@ import { NewsCardComponent } from './shared/news-card/news-card.component';
 import { ReadMoreComponent } from './shared/read-more/read-more.component';
 import { PanelExpandComponent } from './shared/panel-expand/panel-expand.component';
 import { EllipsisPipe } from './shared/pipes/truncate.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function instrumentOptions() {
   return {
@@ -125,7 +126,8 @@ export function instrumentOptions() {
     HttpClientModule,
     ReactiveFormsModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     CmsStateService,

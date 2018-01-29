@@ -15,6 +15,7 @@ export class IdeasComponent implements OnInit, OnDestroy {
   public ideaObj: any;
   private subscription: Subscription;
   private cms: any;
+  public pageNumber = 1;
 
   constructor(
     private store: Store<AppStore>,
