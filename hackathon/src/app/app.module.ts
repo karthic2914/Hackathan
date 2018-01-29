@@ -69,6 +69,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchDisplayRequestToHackerComponent } from './shared/search-display-request-to-hacker/search-display-request-to-hacker.component';
 import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
 import { AuthInterceptor } from './store/services/authInterceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 export function instrumentOptions() {
   return {
@@ -132,7 +133,8 @@ export function instrumentOptions() {
     ReactiveFormsModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     AccordionModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    ModalModule.forRoot()
   ],
   providers: [
     CmsStateService,

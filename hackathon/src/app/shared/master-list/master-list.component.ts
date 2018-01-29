@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { HackerStateService } from '../../store/services/hacker-state.service';
 import { AdminStateService } from '../../store/services/admin-state.service';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppStore } from '../../store/models/hackathon-store.model';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 
 @Component({
   selector: 'app-master-list',
@@ -19,9 +22,11 @@ export class MasterListComponent implements OnInit {
   public sortBy = "ideaTitle";
   public sortOrder = "asc";
   public ideaDesciption = "";
+  modalRef: BsModalRef;
   
   constructor(private hackerStateService: HackerStateService,
-    private adminStateService: AdminStateService, private store: Store<AppStore>) {
+    private adminStateService: AdminStateService, private store: Store<AppStore>,
+    private modalService: BsModalService) {
 
    this.hackerStateService.fetchAllIdeas().then((response: any) => {
      this.subscription = this.store.subscribe((stores: AppStore) => {
@@ -47,6 +52,11 @@ export class MasterListComponent implements OnInit {
   showPreview(item) {
     console.log(item);
     this.ideaDesciption = item.ideaDes;    
+    return false;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
     return false;
   }
 
