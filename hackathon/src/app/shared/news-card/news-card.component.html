@@ -1,17 +1,8 @@
-<div class="col-md-12 margin-top">  
-    <div class="col-md-4 col-sm-6 clear-md clear-sm" *ngFor="let blog of news">
-      <div class="news-content">
-        <div class="card-deck mb-3">
-          <div class="card">
-            <img class="card-img-top" [src]="blog.imageUrl"
-              alt="Card image cap" height="300" width="360">
-            <div class="card-body">
-              <h5 class="card-title">{{ blog.title }}</h5>
-              <p class="card-text">{{ blog.description }}</p>
-              <a routerLink='/read_news' class="btn btn-primary">Read More...</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>  
-</div>
+<div class="panel-column" *ngFor="let blog of newsObj?.blogs">
+    <div class="panel-content">
+      <img src="https://gcn.com/~/media/GIG/GCN/Redesign/Articles/2015/May/hackathon.png" alt="Avatar" style="width:100%">     
+      <h3>{{ blog.title }}</h3>
+      <a [routerLink]="['/read_news']"[queryParams]="{id:blog._id}">Read More</a>
+    </div>
+  </div>
+
