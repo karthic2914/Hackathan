@@ -10,8 +10,8 @@ export class HackerStateService {
   constructor(private http: HttpClient, private apiService: ApiService, public store: Store<AppStore>) { }
   //Post request to post an idea by hacker
   public postAnIdea(value) {
-    this.apiService.post('idea/save', value).then((response: any) => {
-      console.log(response);
+    return this.apiService.post('idea/save', value).then((response: any) => {
+      return response;
     });
   }
 
