@@ -47,4 +47,11 @@ export class PublishFormComponent implements OnInit {
   hideChildModal(): void {
     this.childModal.hide();
   }
+
+  validateText(){
+    if(this.description.length > 46){
+      return "enabled";
+    }
+    return "disabled";
+  }
 }

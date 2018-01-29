@@ -10,15 +10,15 @@
                 </div>
                 <br/>
                 <form (ngSubmit)="dataSubmit()">
-                    <div style="width:80%; padding-left:15px;">
+                    <div style="width:100%">
                         <div class="form-group">
-                            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter Title" class="input-sm">
+                            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter News Title!!" class="form-control form-control-lg">
                         </div>
                         <br>
                         <div class="form-group">
-                            <textarea rows="4" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
+                            <textarea rows="10" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" [ngClass]="validateText()" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
                 <br/>
