@@ -1,55 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../../../store/models/hackathon-store.model';
+import { AdminStateService } from '../../../store/services/admin-state.service';
+import { HackerStateService } from '../../../store/services/hacker-state.service';
 
 @Component({
   selector: 'app-idea-approval',
   templateUrl: './idea-approval.component.html',
   styleUrls: ['./idea-approval.component.css']
 })
-export class IdeaApprovalComponent implements OnInit {
-
-
-  public dataObj = [{
-    "Title": "Google",
-    "Tags": "Angularjs",
-    "Description": "Google is a search engine",
-    "Preview": "https://www.google.co.in"
-  },
-  {
-    "Title": "Facebook",
-    "Tags": "Reactjs",
-    "Description": "Facebook is a social networking site",
-    "Preview": "https://www.Facebook.com"
-  },
-  {
-    "Title": "Gmail",
-    "Tags": "Nodejs",
-    "Description": "It is a mail Exchange server",
-    "Preview": "https://www.gmail.com"
-  },
-  {
-    "Title": "GMap",
-    "Tags": "AWS",
-    "Description": "It provides directions",
-    "Preview": "https://www.gmap.com"
-  }];
-  public filterQuery = "";
+export class IdeaApprovalComponent implements OnInit, OnDestroy {
+  requestData: any;
+  public dataObj: any;
+  public filterQuery = '';
   public rowsOnPage = 10;
-  public sortBy = "Tags";
-  public sortOrder = "asc";
-  constructor() { }
+  public sortBy = 'Tags';
+  public sortOrder = 'asc';
+
+  private subscription: Subscription;
+
+  constructor(private hackerStateService: HackerStateService,
+     private adminStateService: AdminStateService, private store: Store<AppStore>) {
+
+    this.hackerStateService.fetchAllIdeas().then((response: any) => {
+      this.subscription = this.store.subscribe((stores: AppStore) => {
+        this.dataObj = stores.ideas;
+      });
+    });
+  }
 
   ngOnInit() {
   }
+
   remove(item) {
     console.log(item);
     const index = this.dataObj.indexOf(item);
     this.dataObj.splice(index, 1);
   }
-  Approve() {
-    window.alert("Approved");
+
+  Approve(item) {
+    this.requestData = item;
+    this.requestData.status = 'approved';
+    this.adminStateService.updateAnIdea(this.requestData);
   }
-  Reject() {
-    window.alert("Rejected");
+
+  Reject(item) {
+    this.requestData = item;
+    this.requestData.status = 'rejected';
+    this.adminStateService.updateAnIdea(this.requestData);
+  }
+
+  isInvalid(item) {
+    if ( item.status === 'pending' ) {
+      return 'enabled';
+    }
+    return 'disabled';
+  }
+
+  public ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

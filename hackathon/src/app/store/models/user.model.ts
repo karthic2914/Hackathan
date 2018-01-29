@@ -9,4 +9,5 @@ export interface UserData {
   profile: {
     skillSet: string[]
   };
+  isIdeaExist: boolean;
 }

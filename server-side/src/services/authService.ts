@@ -2,13 +2,15 @@ import { default as User, UserModel } from '../models/User';
 import { parseErrors } from '../utils/errorParser';
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
+import Idea from '../models/Idea';
 
 export const login = (credential: any, callback: any) => {
     User.findOne({username: credential.username}).then((user: any) => {
         if (!user || !user.isValidPassword(credential.password)) {
             return callback({errors: {global: 'no user found'}}, undefined);
         }
-        return callback(undefined, user);
+        Idea.count({createdBy: user, isApproved: true})
+            .then((count: number) => callback(undefined, user, !!count));
     });
 };
 

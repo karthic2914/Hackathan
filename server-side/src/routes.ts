@@ -2,7 +2,6 @@ import * as route from './controllers';
 import { postBlog, getBlogs, updateblog } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
-import { getIdeaDetails, searchIdeaDetails } from './controllers/hacker/requestToTeam';
 
 export class Routes {
 
@@ -20,22 +19,22 @@ export class Routes {
         app.put('/blog', updateblog);
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);
-        app.get('/hacker/requestToTeam', getIdeaDetails);
-        app.post('/hacker/requestToTeam/search', searchIdeaDetails);
         app.post('/hacker/invitehacker', route.inviteHacker);
         app.post('/hacker/jointeam', route.acceptTeamInvitation);
         app.get('/hacker/listinvitation', route.listTeamInvitations);
+        app.post('/hacker/requestteam', route.requestToJoinTeam);
+        app.post('/hacker/addhackertoteam', route.addToTeam);
         app.get('/hacker/listhackerrequest', route.listHackerRequest);
-        app.get('/getIdeas', route.getApprovedIdeas);
+        app.get('/idea/approved', route.getApprovedIdeas);
         app.get('/idea', route.list);
         app.get('/idea/myideas', route.listMyIdea);
         app.post('/idea/save', route.saveIdea);
+        app.post('/idea/update', route.ideaUpdate);
+        app.delete('/idea/deleteidea', route.deleteIdea);
         // app.post('/hacker/requestToTeam/request', functionNameComeHere);
         // app.get('/hacker/requestToHacker', functionNameComeHere);
         // app.post('/hacker/requestToHacker/search', functionNameComeHere);
         // app.post('/hacker/requestToHacker/request', functionNameComeHere);
-        // app.get('/hacker/invitationFromTeam', functionNameComeHere);
-        // app.post('/hacker/invitationFromTeam/approval', functionNameComeHere);
         // app.get('/hacker/invitationFromHacker', functionNameComeHere);
         // app.post('/hacker/invitationFromHacker/approval', functionNameComeHere);
     }

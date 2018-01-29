@@ -25,6 +25,15 @@ export class UserStateService {
     return this.store.map((store: User) => store.user && !!store.user.email);
   }
 
+  isAdmin(): Observable<boolean> {
+    return this.store.map((store: User) => !!store.user.isAdmin);
+  }
+
+  isIdeaExists(): Observable<boolean> {
+    return this.store.map((store: User) => !!store.user.isIdeaExist);
+  }
+
+
   userLoggedIn = (user: User) => ({
     type: 'USER_LOGGED_IN',
     payload: user
@@ -70,5 +79,6 @@ export class UserStateService {
       type: 'USER_LOGGED_OUT',
       payload: {}
     });
+    this.router.navigateByUrl('/');
   }
 }
