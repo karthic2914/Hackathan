@@ -59,7 +59,7 @@ export class UserStateService {
     return this.apiService.post('user/signup', {data: data})
       .then((data: any) => {
         this.store.dispatch(this.userLoggedIn({user: JWT(data.user.token)}));
-        this.setAuth(data);
+        this.setAuth(data.user.token);
         return data;
       })
       .catch((err: any) => Promise.reject(err));
