@@ -5,13 +5,15 @@ import { JwtService } from './jwt.service';
 import { Store } from '@ngrx/store';
 import { User } from '../models/user.model';
 import { Router } from "@angular/router";
+import { AlertService } from '../../shared/alert/alert.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private jwtService: JwtService,
               private store: Store<User>,
-              private router: Router) {
+              private router: Router,
+              private alertService: AlertService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -19,6 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
+          this.alertService.error('You are not authorized. Please login');
           this.purgeAuth();
         }
       }

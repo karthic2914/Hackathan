@@ -70,6 +70,10 @@ import { SearchDisplayRequestToHackerComponent } from './shared/search-display-r
 import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
 import { AuthInterceptor } from './store/services/authInterceptor';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastModule } from "ng2-toastr";
+import { AlertService } from "./shared/alert/alert.service";
+import { AlertComponent } from "./shared/alert/alert.component";
 
 export function instrumentOptions() {
   return {
@@ -117,7 +121,8 @@ export function instrumentOptions() {
     PanelExpandComponent,
     EllipsisPipe,
     SearchDisplayRequestToHackerComponent,
-    SearchListRequestToHackerComponent
+    SearchListRequestToHackerComponent,
+    AlertComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
@@ -134,7 +139,9 @@ export function instrumentOptions() {
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     AccordionModule.forRoot(),
     NgxPaginationModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastModule.forRoot()
   ],
   providers: [
     CmsStateService,
@@ -158,7 +165,8 @@ export function instrumentOptions() {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
