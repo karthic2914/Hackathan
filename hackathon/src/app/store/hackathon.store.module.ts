@@ -8,12 +8,14 @@ import { cmsReducer  } from './reducers/cms.reducer';
 import { userReducer } from './reducers/user.reducer';
 import { logsReducer } from './reducers/logs.reducer';
 import { ideaReducer } from './reducers/idea.reducer';
+import { adminReducer } from './reducers/admin.reducer';
 
 export const rootReducer = {
   cms : cmsReducer,
   user : userReducer,
   logs : logsReducer,
-  ideas: ideaReducer
+  ideas: ideaReducer,
+  news : adminReducer
 };
 
 
