@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../store/models/hackathon-store.model';
 import { AdminStateService } from '../../../store/services/admin-state.service';
 import { HackerStateService } from '../../../store/services/hacker-state.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-idea-approval',
@@ -17,11 +19,13 @@ export class IdeaApprovalComponent implements OnInit, OnDestroy {
   public rowsOnPage = 10;
   public sortBy = 'Tags';
   public sortOrder = 'asc';
+  modalRef: BsModalRef;
 
   private subscription: Subscription;
 
   constructor(private hackerStateService: HackerStateService,
-     private adminStateService: AdminStateService, private store: Store<AppStore>) {
+     private adminStateService: AdminStateService, private store: Store<AppStore>,
+     private modalService: BsModalService) {
 
     this.hackerStateService.fetchAllIdeas().then((response: any) => {
       this.subscription = this.store.subscribe((stores: AppStore) => {
@@ -56,6 +60,11 @@ export class IdeaApprovalComponent implements OnInit, OnDestroy {
       return 'enabled';
     }
     return 'disabled';
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+    return false;
   }
 
   public ngOnDestroy() {
