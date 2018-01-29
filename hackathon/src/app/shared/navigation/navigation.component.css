@@ -141,3 +141,7 @@ img{
     outline: none;
     margin-bottom: 0px;
   }
+
+  .nav-mar{
+    margin-left: -80px;
+  }
