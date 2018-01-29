@@ -25,8 +25,7 @@ const productionReducer: ActionReducer<AppStore> = combineReducers(rootReducer);
   imports: [
     CommonModule,
     StoreModule.forRoot(rootReducer)
-  ],
-  declarations: []
+  ]
 })
 export class HackathonStoreModule {
   public static forRoot(): ModuleWithProviders {

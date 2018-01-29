@@ -9,3 +9,7 @@ export interface News {
     title?: string;
     description?: string;
 }
+
+export interface News {
+    news: News;
+}

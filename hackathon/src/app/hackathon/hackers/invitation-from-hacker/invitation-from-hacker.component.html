@@ -13,17 +13,27 @@
           <thead>
             <tr>
               <th style="width: 20%">
-                <mfDefaultSorter by="ideaTitle">IDEA</mfDefaultSorter>
+                <mfDefaultSorter by="ideaTitle">Hacker Name</mfDefaultSorter>
               </th>
               <th style="width: 40%">
-                <mfDefaultSorter by="ideaDes">IDEA DESCRIPTION</mfDefaultSorter>
+                <mfDefaultSorter by="ideaDes">Email</mfDefaultSorter>
               </th>
-              <th style="width: 10%">
-                <mfDefaultSorter by="owner">OWNER</mfDefaultSorter>
-              </th>
+             <!-- <th style="width: 10%">
+                <mfDefaultSorter by="owner">Skill set</mfDefaultSorter>
+              </th> -->
               <th style="width: 20%">
                 <mfDefaultSorter by="action">ACTION</mfDefaultSorter>
               </th>
+            </tr>
+            <tr *ngFor="let user of IdeaDeatails?.invitationFromHacker?.data?.users">
+              <td> {{user.user.username}} </td>
+              <td> {{user.user.email}} </td>
+             <!-- <td> {{user.profile.skillSet[0]}} </td> -->
+              <td>                 
+                <label class="switch">
+                  <input type="checkbox" (click)="approval(user)" [checked]="user.confirmed === 'yes' ? true: false">
+                  <span class="slider round"></span>
+                </label> </td>
             </tr>
 
           </thead>

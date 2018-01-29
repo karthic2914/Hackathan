@@ -8,16 +8,16 @@
               <tr>
                 <th>Hacker Name</th>
                 <th>Hacker email</th>
-                <th>Primary skills</th>
+                <!-- <th>Primary skills</th> -->
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let idea of HackerDetails?.invitedHackerList?.data?.users"> 
-                <td class="td-ideas">{{idea.username}}</td>
-                <td class="td-ideas">{{idea.email}}</td>
-                <td class="td-ideas">{{idea.skillset[0]}}</td>
-                <td class="td-ideas">{{idea.isApproved}}</td>
+              <tr *ngFor="let user of HackerDetails?.invitedHackerList?.data?.users"> 
+                <td class="td-ideas">{{user.user.username}}</td>
+                <td class="td-ideas">{{user.user.email}}</td>
+               <!-- <td class="td-ideas">{{user.user.skillset[0]}}</td> -->
+                <td class="td-ideas">{{user.isMember === true ? 'Accepted' : 'Pending'}}</td>
               </tr>
             </tbody>
           </table>  

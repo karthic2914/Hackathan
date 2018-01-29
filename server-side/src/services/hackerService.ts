@@ -5,6 +5,7 @@ import { default as Idea, IdeaModel } from '../models/Idea';
 import { default as User, UserModel } from '../models/User';
 import { parseErrors } from '../utils/errorParser';
 import * as logService from './logService';
+import * as _ from 'lodash';
 
 export const listTeamInvites = (email: string) => {
     return fetchUserByEmail(email)
@@ -28,12 +29,12 @@ export const listTeamInvites = (email: string) => {
 
 export const requestToHacker = (data: any, email: string): any => {
     return fetchUserByEmail(email).then(function (currentUser) {
-        return fetchIdeaByCondition({createdBy: currentUser, isApproved: true}).then((idea: IdeaModel) => {
+        return fetchIdeaByCondition({createdBy: currentUser, status: 'approved'}).then((idea: IdeaModel) => {
             if (!idea) return {statusCode: 400, message: {errors: {global: 'Idea not found'}}};
             return fetchUserById(data.userId)
                 .then((userToRequest: UserModel) => {
                     if (!userToRequest) return {statusCode: 400, message: {errors: {global: 'User not found'}}};
-                    return Log.findOne({ideaId: idea, userId: userToRequest})
+                    return Log.findOne({ideaId: idea, userId: userToRequest, inviteUser: true})
                         .then((log: LogModel) => {
                             if (log) return {statusCode: 400, message: {errors: {global: 'Request already sent'}}};
                             return new Log({ideaId: idea, userId: userToRequest, inviteUser: true}).save()
@@ -45,17 +46,24 @@ export const requestToHacker = (data: any, email: string): any => {
     });
 };
 
-export const addHackerToTeam = (data: any, email: string) => {
+export const addOrRemoveHackerToTeam = (data: any, email: string) => {
     return fetchUserByEmail(email).then(function (currentUser) {
-        return fetchIdeaByCondition({createdBy: currentUser, isApproved: true}).then((idea: IdeaModel) => {
+        return fetchIdeaByCondition({createdBy: currentUser, status: 'approved'}).then((idea: IdeaModel) => {
             if (!idea) return {statusCode: 400, message: {errors: {global: 'Idea not found'}}};
             return Log.findOne({ideaId: idea, userId: data.userId, requestTeam: true})
                 .then((log: LogModel) => {
                     return fetchUserById(data.userId)
                         .then((user: UserModel) => {
-                            idea.members.push(user);
-                            idea.save()
-                                .then((idea: IdeaModel) => idea)
+                            let query = {};
+                            if (data.addMember) {
+                                query = {'$push': {'members': user._id}};
+                            } else {
+                                query = {'$pull': {'members': user._id}};
+                            }
+                            return Idea.findOneAndUpdate(
+                                {'_id': idea._id},
+                                query
+                            ).then((idea: IdeaModel) => idea)
                                 .catch((err: any) => ({statusCode: 400, message: parseErrors(err.errors)}));
                         }).catch(err => ({
                             statusCode: 400,
@@ -87,7 +95,7 @@ export const joinTeam = (data: any, user: UserModel, callback: any) => {
 export const listHackersRequest = (email: string) => {
     return fetchUserByEmail(email)
         .then((user: UserModel) => {
-            return Idea.findOne({createdBy: user, isApproved: true})
+            return Idea.findOne({createdBy: user, status: 'approved'})
                 .then((idea: IdeaModel) => {
                     return logService.fetchLogsByIdea(idea)
                         .then((logs: LogModel[]) => {
@@ -97,7 +105,17 @@ export const listHackersRequest = (email: string) => {
                                 '_id': {$in: userIds}
                             }, {createdAt: false, updatedAt: false, __v: false, hashPassword: false})
                                 .then((users: UserModel[]) => {
-                                    return users;
+                                    if (users) {
+                                        return users.map((user: UserModel) => {
+                                            return {
+                                                user: user, isMember: !!(_.find(idea.members, function (userId) {
+                                                    return userId.toString() == user._id.toString();
+                                                }))
+                                            };
+                                        });
+                                    } else {
+                                        return [];
+                                    }
                                 });
                         });
                 });

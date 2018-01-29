@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HackerStateService } from '../../store/services/hacker-state.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-idea-form',
@@ -9,14 +11,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class IdeaFormComponent implements OnInit {
 
-  constructor(private hackerStateService: HackerStateService) {
-
+  constructor(private hackerStateService: HackerStateService, private modalService: BsModalService) {
   }
 
-  hackerProfileForm: FormGroup;
-  display = 'none';
-  bindEditbox = '';
-
+  private hackerProfileForm: FormGroup;
+  private display: string = 'none';
+  private bindEditbox: string = '';
+  private responseMessage: string;
+  private successMessage: string;
+  private modalHeading: string;
   skillset = [
     { id: 1, name: 'Angular' },
     { id: 2, name: 'Node' },
@@ -32,20 +35,33 @@ export class IdeaFormComponent implements OnInit {
       'technologyTags': new FormControl('', Validators.required)
     });
   }
-  onSubmit() {
-    console.log(this.hackerProfileForm);
-    this.hackerStateService.postAnIdea(this.hackerProfileForm.value);
+  private onSubmit(template) {
+    this.hackerStateService.postAnIdea(this.hackerProfileForm.value).then((data: any) => {
+      if (data.status === 'success') {
+        this.successMessage = 'Idea posted successfully';
+        this.modalHeading = 'Success';
+        this.modalService.show(template);
+        this.clear();
+      } else {
+        this.successMessage = 'Failed to post an idea';
+        this.modalHeading = 'Failure';
+        this.modalService.show(template);
+      }
+    });    
   }
-  clear() {
-    this.hackerProfileForm.reset();
+  private modalClose(template) {
+    this.modalService.hide(0);
   }
-  openModal() {
+
+  private clear() {
+     this.hackerProfileForm.reset();
+  }
+  private openModal() {
     this.display = 'block';
     this.bindEditbox = this.hackerProfileForm.value.description;
     console.log(this.bindEditbox);
-    // this.hackerProfileFormPreview = this.hackerProfileForm;
   }
-  onCloseModal() {
+  private onCloseModal() {
     this.display = 'none';
   }
 }

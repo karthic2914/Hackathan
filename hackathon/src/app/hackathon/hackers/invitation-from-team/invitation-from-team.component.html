@@ -15,13 +15,13 @@
           <thead>
             <tr>
               <th style="width: 20%">
-                <mfDefaultSorter by="ideaTitle">Hacker Name</mfDefaultSorter>
+                <mfDefaultSorter by="ideaTitle">Team Name</mfDefaultSorter>
               </th>
               <th style="width: 20%">
-                <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                <mfDefaultSorter by="email">Team idea</mfDefaultSorter>
               </th>
               <th style="width: 20%">
-                <mfDefaultSorter by="skillset">Skill set</mfDefaultSorter>
+                <mfDefaultSorter by="skillset">Technology</mfDefaultSorter>
               </th>
               <th style="width: 20%">
                 <mfDefaultSorter by="action">Action</mfDefaultSorter>
@@ -32,11 +32,10 @@
           <tbody>
             <tr *ngFor="let team of teamDetails?.invitationFromTeam"> <!-- So far created skeleton, need to bind correct data once API call completed-->
               <td>{{team.teamName}}</td>
+              <td>{{team.title}}</td>
+              <td>{{team.technologyTags[0]}}</td>
               <td>
-                <label class="switch">
-                  <input type="checkbox" [checked]="team.isApproved === 'yes' ? 'checked': 'unchecked'">
-                  <span class="slider round"></span>
-                </label>
+                <button (click)="joinTeam(team)">JOIN TEAM</button>
               </td>
             </tr>
           </tbody>

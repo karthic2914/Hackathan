@@ -9,7 +9,7 @@ export const login = (credential: any, callback: any) => {
         if (!user || !user.isValidPassword(credential.password)) {
             return callback({errors: {global: 'no user found'}}, undefined);
         }
-        Idea.count({createdBy: user, isApproved: true})
+        Idea.count({createdBy: user, status: 'approved'})
             .then((count: number) => callback(undefined, user, !!count));
     });
 };

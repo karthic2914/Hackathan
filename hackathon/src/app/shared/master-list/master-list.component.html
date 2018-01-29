@@ -1,6 +1,7 @@
 <accordion>
-    <accordion-group heading="Idea Log">
-        <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+    <accordion-group style="text-align: left" heading="Idea Log">
+        <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
+            [(mfSortOrder)]="sortOrder">
             <thead>
                 <tr>
                     <th style="width: 10%" by="ideaTitle">
@@ -32,10 +33,23 @@
                     <td>{{item.title}}</td>
                     <td>{{item.technologyTags}}</td>
                     <td>
-                        <a href="#" (click)="showPreview(item)">{{item.description}}</a>
+                        <a href="#" (click)="openModal(template)">{{item.description | ellipsis: 50 }}</a>
                     </td>
                     <td>{{item.teamName}}</td>
                     <td>{{item.status | uppercase}}</td>
+                    <ng-template #template>
+                    <div class="modal-dialog">
+                            <div class="modal-header">
+                                <h4 class="modal-title pull-left">{{item.title}}</h4>
+                                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div [innerHtml]="item.description"></div>
+                            </div>
+                        </div>
+                    </ng-template>
                 </tr>
             </tbody>
         </table>
