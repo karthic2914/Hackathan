@@ -30,10 +30,8 @@ export class PublishFormComponent implements OnInit {
       title: this.title,
       description: this.description
     };
-    this.newsStateService.store(this.newsObj);
-    // this.newTitle.emit(this.title);
-    // this.newDescription.emit(this.description);
-    // this.newDate.emit(this.date);
+
+    this.newsStateService.postNews(this.newsObj);
   }
 
 }

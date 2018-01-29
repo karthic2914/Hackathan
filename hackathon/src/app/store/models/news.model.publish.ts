@@ -1,4 +1,4 @@
-export interface IdeaPub {
+export interface NewsModel {
     date: Date;
     newsTitle: String;
     newsDescription: String;
