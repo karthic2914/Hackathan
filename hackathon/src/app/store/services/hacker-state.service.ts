@@ -22,6 +22,12 @@ export class HackerStateService {
       console.log(response);
     });
   }
+  public fetchApprovedIdeas() {
+    return this.apiService.get('idea/approved').then((response: any) => {
+      this.store.dispatch({ type: 'LOAD_IDEA_DATA', payload: response });
+      console.log(response);
+    });
+  }
 
   // get method to fetch all the hackers's ideas
   public fetchHackerIdeas() {
@@ -32,13 +38,26 @@ export class HackerStateService {
   }
 
   public invitationFromTeam() {
-    return this.apiService.get('hacker/listhackerrequest').then((response: any) => {
+    return this.apiService.get('hacker/listinvitation').then((response: any) => {
       this.store.dispatch({ type: 'LOAD_INVITATION_FROM_TEAM', payload: { invitationFromTeam: response.data.ideas } });
       console.log(response);
     });
   }
 
-  //get method to fetch all the hackers
+ public addHackerToTeam (value) {
+  this.apiService.post('hacker/addhackertoteam', value).then((response: any) => {
+    // this.store.dispatch({type: 'LOAD_HACKER_REQUEST_DATA', payload: response});
+    console.log(response);
+  });
+ }
+  public joinTeam(value) {
+    this.apiService.post('hacker/jointeam', value).then((response: any) => {
+      // this.store.dispatch({type: 'LOAD_HACKER_REQUEST_DATA', payload: response});
+      console.log(response);
+    });
+  }
+
+  // get method to fetch all the hackers
   public fetchHackerDetails() {
     return this.apiService.get('user').then((response: any) => {
       this.store.dispatch({ type: 'LOAD_HACKER_DETAILS', payload: { hackerList: response } });
@@ -46,13 +65,13 @@ export class HackerStateService {
     });
   }
 
-  public invitationFromHacker() { // set the node url here
-    return this.apiService.get('hacker/requestToTeam').then((response: any) => {
-      this.store.dispatch({ type: 'LOAD_INVITATION_FROM_TEAM', payload: response });
+  public invitationFromHacker() {
+    return this.apiService.get('hacker/listhackerrequest').then((response: any) => {
+      this.store.dispatch({ type: 'LOAD_INVITATION_FROM_TEAM', payload: { invitationFromHacker : response} });
       console.log(response);
     });
   }
-  //post method for hack team is to request hacker
+  // post method for hack team is to request hacker
   public requestHacker(value) {
     this.apiService.post('hacker/invitehacker', value).then((response: any) => {
       // this.store.dispatch({type: 'LOAD_HACKER_REQUEST_DATA', payload: response});
@@ -61,7 +80,7 @@ export class HackerStateService {
   }
 
   public fetchInvitedHackerList() {
-    return this.apiService.get('hacker/listinvitation').then((response: any) => {
+    return this.apiService.get('hacker/listhackerrequest').then((response: any) => {
       this.store.dispatch({ type: 'LOAD_HACKER_REQUEST_DATA', payload: { invitedHackerList: response } });
       console.log(response);
     });
