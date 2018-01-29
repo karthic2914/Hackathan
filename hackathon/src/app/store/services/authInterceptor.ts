@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { JwtService } from './jwt.service';
 import { Store } from '@ngrx/store';
 import { User } from '../models/user.model';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { ApiService } from "./api.service";
+import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
 import * as JWT from 'jwt-decode';
 import { Store, Action } from '@ngrx/store';
-import { JwtService } from "./jwt.service";
-import { User } from "../models/user.model";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs/Observable";
+import { JwtService } from './jwt.service';
+import { User } from '../models/user.model';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()

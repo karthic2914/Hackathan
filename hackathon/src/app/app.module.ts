@@ -70,6 +70,7 @@ import { SearchDisplayRequestToHackerComponent } from './shared/search-display-r
 import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
 import { AuthInterceptor } from './store/services/authInterceptor';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { IdeaDetailsComponent } from './shared/idea-details/idea-details.component';
 
 export function instrumentOptions() {
   return {
@@ -117,7 +118,8 @@ export function instrumentOptions() {
     PanelExpandComponent,
     EllipsisPipe,
     SearchDisplayRequestToHackerComponent,
-    SearchListRequestToHackerComponent
+    SearchListRequestToHackerComponent,
+    IdeaDetailsComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

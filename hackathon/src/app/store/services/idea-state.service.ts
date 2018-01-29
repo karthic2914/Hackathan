@@ -10,7 +10,7 @@ export class IdeaStateService {
   constructor(private http: HttpClient, private apiService: ApiService, public store: Store<AppStore>) { }
 
   public getIdeas() {
-    return this.apiService.get('idea/myideas').then((response: any) => {
+    return this.apiService.get('idea/approved').then((response: any) => {
       this.store.dispatch({type: 'LOAD_IDEA_DATA', payload: response});
     });
   }
