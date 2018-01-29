@@ -83,6 +83,7 @@ export const cmsJSON = {
         title: '2017',
         className: 'first',
         imageUrl: '/../../assets/images/2017.jpg',
+        desimageUrl : 'http://www.unitewnc.io/wp-content/uploads/2017/07/StG-Hackathon-Event-Cover.jpg',
         description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
         Please tell your friends about templatemo and this is a way to help back. Thank you. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
@@ -91,6 +92,7 @@ export const cmsJSON = {
         title: '2016',
         className: 'second',
         imageUrl: '/../../assets/images/2016.jpg',
+        desimageUrl : 'https://amft.io/wp-content/uploads/2017/09/HACKATHON_FLYER.png',
         description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
         Please tell your friends about templatemo and this is a way to help back. Thank you. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies
@@ -99,6 +101,7 @@ export const cmsJSON = {
         title: '2015',
         className: 'third',
         imageUrl: '/../../assets/images/2015.jpg',
+        desimageUrl : 'https://blog.docker.com/wp-content/uploads/fbbcec1a-0151-476f-a3ff-51aee623e8ef-1.jpg',
         description: `Newline is free CSS template by templatemo. Credits go to Pexels.com for a video background and Unsplash for images.
         Please tell your friends about templatemo and this is a way to help back. Thank you. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Quisque dictum convallis mi. In dapibus auctor dictum donec mattis quis eros ultricies

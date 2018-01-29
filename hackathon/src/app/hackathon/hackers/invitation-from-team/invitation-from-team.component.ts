@@ -26,4 +26,8 @@ constructor(private hackerStateService: HackerStateService, private store: Store
 ngOnInit() {
 }
 
+joinTeam(team) {
+  this.hackerStateService.joinTeam({data: {ideaId: team._id}});
+}
+
 }

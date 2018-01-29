@@ -120,3 +120,8 @@ input:checked+.slider:before {
 .margin-top {
     margin-top: 50px;
 }
+
+.panel-group{
+    /* background-color: #ffbb05; */
+    text-align: left;
+}
