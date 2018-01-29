@@ -1,7 +1,6 @@
 <accordion>
-    <accordion-group style="text-align: left" heading="Idea Log">
-        <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
-            [(mfSortOrder)]="sortOrder">
+    <accordion-group isOpen=true style="text-align: left" heading="Idea Log">
+        <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
             <thead>
                 <tr>
                     <th style="width: 10%" by="ideaTitle">
@@ -38,7 +37,7 @@
                     <td>{{item.teamName}}</td>
                     <td>{{item.status | uppercase}}</td>
                     <ng-template #template>
-                    <div class="modal-dialog">
+                        <div class="modal-dialog">
                             <div class="modal-header">
                                 <h4 class="modal-title pull-left">{{item.title}}</h4>
                                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">

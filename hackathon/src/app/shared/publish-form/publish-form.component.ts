@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { NewsStateService } from '../../store/services/news-state.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-publish-form',
@@ -12,6 +13,7 @@ export class PublishFormComponent implements OnInit {
  // @Output() newDescription: EventEmitter<string> = new EventEmitter<string>();
  // @Output() newDate: EventEmitter<string> = new EventEmitter<string>();
 
+  @ViewChild('childModal') childModal: ModalDirective;
   private title: string;
   private description: string;
   private date: string;
@@ -32,6 +34,17 @@ export class PublishFormComponent implements OnInit {
     };
     this.newsStateService.postNews(this.newsObj).then((response: any) => {
       console.log('post response', response);
+      if(response.blogs.length){
+        this.showChildModal();
+      }
     });
+  }
+
+  showChildModal(): void {
+    this.childModal.show();
+  }
+
+  hideChildModal(): void {
+    this.childModal.hide();
   }
 }
