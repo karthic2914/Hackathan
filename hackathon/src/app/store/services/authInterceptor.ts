@@ -20,6 +20,9 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req).do(() => {
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
+        if (err.status === 400) {
+          this.alertService.error(err.error && err.error.errors && err.error.errors.errors && err.error.errors.errors.global && err.error.errors.errors.global || 'Some error caught please try again!');
+        }
         if (err.status === 401) {
           this.alertService.error('You are not authorized. Please login');
           this.purgeAuth();
