@@ -16,7 +16,7 @@ export class InvitationToTeamComponent implements OnInit {
 
   constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
 
-    this.hackerStateService.fetchAllIdeas().then((response: any) => {
+    this.hackerStateService.fetchApprovedIdeas().then((response: any) => {
       this.hackerStateService.fetchHackerIdeas().then((data: any) => {
         this.subscription = this.store.subscribe((stores: AppStore) => {
           this.ideaDetails = stores.ideas;
