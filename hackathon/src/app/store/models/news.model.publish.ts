@@ -1,8 +1,11 @@
 export interface NewsModel {
-    date: Date;
-    newsTitle: String;
-    newsDescription: String;
-    newsAction: boolean;
-    title: string;
-    description: string;
+    news?: any ;
+}
+export interface News {
+    date?: string;
+    newsTitle?: String;
+    newsDescription?: String;
+    newsAction?: boolean;
+    title?: string;
+    description?: string;
 }

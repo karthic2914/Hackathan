@@ -1,51 +1,44 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div>&nbsp;</div>
-            <div class="panel panel-default panel-table">
-                <div class="panel-heading publish-dock">
-                    <h3 class="panel-title" style="background-color: #f9a600; color:#fff;">
-                        Published News
-                    </h3>
-                </div>
-                <br/>
-                <app-publish-form></app-publish-form>
-                <br/>
-                <div class="panel-body table-responsive">
-                    <table class="table table-bordered" [mfData]="dataObj" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-                        <thead class="tble-hd">
-                            <tr>
-                                <th>
-                                    <mfDefaultSorter by="Date">Date</mfDefaultSorter>
-                                </th>
-                                <th>
-                                    <mfDefaultSorter by="Header">News Header</mfDefaultSorter>
-                                </th>
-                                <th>
-                                    <mfDefaultSorter by="Description" [by]="sortByWordLength">Description</mfDefaultSorter>
-                                </th>
-                                <th>
-                                    <mfDefaultSorter by="age">Action </mfDefaultSorter>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of mf.data">
-                                <td>{{item.date | date: format}}</td>
-                                <td>{{item.header}}</td>
-                                <td>{{item.description}}</td>
-                                <td>
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-    </div>
+<div class="panel-body table-responsive">
+    <table class="table table-bordered" [mfData]="newsObj?.blogs" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+        <thead class="tble-hd">
+            <tr>
+                <th>
+                    <mfDefaultSorter by="Date">Date</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="Header">News Header</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="Description" [by]="sortByWordLength">Description</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="age">Action </mfDefaultSorter>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of mf.data">
+                <td>{{item.date | date: format}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.description}}</td>
+                <td>
+                    <!-- <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label> -->
+                    <div class="btn-group" role="group">
+                        <button (click)="Approve(item)" class="btn btn-primary">Approve</button>
+                        <button (click)="Reject(item)" class="btn btn-danger">Deny</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot style="position: absolute;width:100%;border:0PX;">
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 </div>

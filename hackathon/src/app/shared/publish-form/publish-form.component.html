@@ -1,12 +1,30 @@
-<form (ngSubmit)="dataSubmit()">
-    <div style="width:80%; padding-left:15px;">
-        <div class="form-group">
-            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter Title" class="input-sm">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div>&nbsp;</div>
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading publish-dock">
+                    <h3 class="panel-title" style="background-color: #f9a600; color:#fff;">
+                        Published News
+                    </h3>
+                </div>
+                <br/>
+                <form (ngSubmit)="dataSubmit()">
+                    <div style="width:80%; padding-left:15px;">
+                        <div class="form-group">
+                            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter Title" class="input-sm">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <textarea rows="4" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <br/>
+                <app-publish-list></app-publish-list>
+            </div>
+
         </div>
-        <br>
-        <div class="form-group">
-            <textarea rows="4" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-</form>
+</div>

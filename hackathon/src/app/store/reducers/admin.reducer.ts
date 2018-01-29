@@ -11,7 +11,7 @@ export const LOAD_NEWS_DATA = 'LOAD_NEWS_DATA';
  * @param action Action
  */
 
-export function adminReducer(state: NewsModel, action: AdminAction): NewsModel {
+export function adminReducer(state: {news: NewsModel} , action: AdminAction): NewsModel {
     switch (action.type) {
         case LOAD_NEWS_DATA:
             return Object.assign({}, state, action.payload);
