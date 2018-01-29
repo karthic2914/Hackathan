@@ -27,25 +27,19 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
   constructor(private hackerStateService: HackerStateService) { }
 
   ngOnInit() {
-    //console.log(this.HackerDetails.hackerList);
-    // if (this.HackerDetails && this.HackerDetails.ideas) {
-    //   this.hackIdea = this.HackerDetails.data.users[0].username;
-    //   this.imgSrc = this.HackerDetails.data.users[0].image;
-    //   this.email = this.HackerDetails.data.users[0].email;
-    //   console.log(this.email);
-    //   this.skill = this.HackerDetails.data.users[0].skillsets;
-    //   this.userId = this.HackerDetails.data.users[0]._id;
-    // }
 
   }
 
   public requestHacker() {
     console.log(this.userId);
-    this.hackerStateService.requestHacker({data: {userId: this.userId} }); // Once API ready, need to integrate
-
-    /* {
-      "id": "5a6a1fe95456463588c3cf2a" // send idea id
-     } */
+    this.hackerStateService.requestHacker({data: {userId: this.userId} }).then((data) => {
+      if (data.data === 'success') {
+        alert('Requested successfully');
+      } else {
+        alert('Error Message: ' + data.error.errors.errors.global);
+      }
+      
+    }) 
   }
 
   changedOption(idea) {

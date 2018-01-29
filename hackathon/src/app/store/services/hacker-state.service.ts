@@ -12,6 +12,8 @@ export class HackerStateService {
   public postAnIdea(value) {
     return this.apiService.post('idea/save', value).then((response: any) => {
       return response;
+    }).catch((err) => {
+      return err;
     });
   }
 
@@ -73,9 +75,10 @@ export class HackerStateService {
   }
   // post method for hack team is to request hacker
   public requestHacker(value) {
-    this.apiService.post('hacker/invitehacker', value).then((response: any) => {
-      // this.store.dispatch({type: 'LOAD_HACKER_REQUEST_DATA', payload: response});
-      console.log(response);
+    return this.apiService.post('hacker/invitehacker', value).then((response: any) => {
+      return response;
+    }).catch((err) => {
+      return err;
     });
   }
 
