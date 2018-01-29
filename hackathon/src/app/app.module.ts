@@ -65,6 +65,7 @@ import { NewsCardComponent } from './shared/news-card/news-card.component';
 import { ReadMoreComponent } from './shared/read-more/read-more.component';
 import { PanelExpandComponent } from './shared/panel-expand/panel-expand.component';
 import { EllipsisPipe } from './shared/pipes/truncate.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchDisplayRequestToHackerComponent } from './shared/search-display-request-to-hacker/search-display-request-to-hacker.component';
 import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
 import { AuthInterceptor } from './store/services/authInterceptor';
@@ -130,7 +131,8 @@ export function instrumentOptions() {
     HttpClientModule,
     ReactiveFormsModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     CmsStateService,
