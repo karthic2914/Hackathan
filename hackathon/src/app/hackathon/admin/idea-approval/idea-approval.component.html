@@ -31,7 +31,7 @@
         <tr *ngFor="let item of mf.data">
             <td>{{item.title}}</td>
             <td>{{item.technologyTags}}</td>
-            <td>{{item.description}}</td>
+            <td>{{item.description | ellipsis: 50 }}</td>
             <td>{{item.teamName}}</td>
             <td>{{item.status}}</td>
             <td>
