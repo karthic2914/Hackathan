@@ -53,9 +53,10 @@ export class HackerStateService {
   });
  }
   public joinTeam(value) {
-    this.apiService.post('hacker/jointeam', value).then((response: any) => {
-      // this.store.dispatch({type: 'LOAD_HACKER_REQUEST_DATA', payload: response});
-      console.log(response);
+    return this.apiService.post('hacker/jointeam', value).then((response: any) => {
+      return response;
+    }).catch((err) => {
+      return err;
     });
   }
 

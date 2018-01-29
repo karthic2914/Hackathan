@@ -33,7 +33,7 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
   public requestHacker() {
     console.log(this.userId);
     this.hackerStateService.requestHacker({data: {userId: this.userId} }).then((data) => {
-      if (data.data === 'success') {
+      if (data.status === 'success') {
         alert('Requested successfully');
       } else {
         alert('Error Message: ' + data.error.errors.errors.global);
