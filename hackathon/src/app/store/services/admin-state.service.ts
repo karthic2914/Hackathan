@@ -32,4 +32,11 @@ export class AdminStateService {
     });
   }
 
+  public updateNews(value) {
+    this.apiService.post('updateblog', value).then((response: any) => {
+      console.log(response);
+      this.store.dispatch({type: 'LOAD_NEWS_DATA', payload: response});
+    });
+  }
+
 }

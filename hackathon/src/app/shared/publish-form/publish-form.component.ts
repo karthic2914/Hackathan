@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { NewsStateService } from '../../store/services/news-state.service';
 
 @Component({
@@ -30,8 +30,8 @@ export class PublishFormComponent implements OnInit {
       title: this.title,
       description: this.description
     };
-
-    this.newsStateService.postNews(this.newsObj);
+    this.newsStateService.postNews(this.newsObj).then((response: any) => {
+      console.log('post response', response);
+    });
   }
-
 }

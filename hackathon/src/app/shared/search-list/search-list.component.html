@@ -17,7 +17,7 @@
               <td class="td-ideas">{{idea.title}}</td>
               <td class="td-ideas">{{idea.teamName}}</td>
               <td class="td-ideas" [innerHtml]="idea.description"></td>
-              <td class="td-ideas">{{idea.isApproved}}</td>
+              <td class="td-ideas">{{idea.isApproved === true ? 'Accepted' : 'Pending'}}</td>
             </tr>
           </tbody>
         </table>  
