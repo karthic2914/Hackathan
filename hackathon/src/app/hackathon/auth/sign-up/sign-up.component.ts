@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserStateService } from "../../../store/services/user-state.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { PasswordValidation } from '../custom-password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -31,6 +32,9 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       skillSet: ['', [Validators.required]],
+    },
+    {
+      validator: PasswordValidation.MatchPassword // your validation method
     });
   }
 
