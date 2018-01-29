@@ -28,12 +28,12 @@ export const listTeamInvites = (email: string) => {
 
 export const requestToHacker = (data: any, email: string): any => {
     return fetchUserByEmail(email).then(function (currentUser) {
-        return fetchIdeaByCondition({createdBy: currentUser, isApproved: true}).then((idea: IdeaModel) => {
+        return fetchIdeaByCondition({createdBy: currentUser, status: 'approved'}).then((idea: IdeaModel) => {
             if (!idea) return {statusCode: 400, message: {errors: {global: 'Idea not found'}}};
             return fetchUserById(data.userId)
                 .then((userToRequest: UserModel) => {
                     if (!userToRequest) return {statusCode: 400, message: {errors: {global: 'User not found'}}};
-                    return Log.findOne({ideaId: idea, userId: userToRequest})
+                    return Log.findOne({ideaId: idea, userId: userToRequest, inviteUser: true})
                         .then((log: LogModel) => {
                             if (log) return {statusCode: 400, message: {errors: {global: 'Request already sent'}}};
                             return new Log({ideaId: idea, userId: userToRequest, inviteUser: true}).save()
@@ -47,7 +47,7 @@ export const requestToHacker = (data: any, email: string): any => {
 
 export const addHackerToTeam = (data: any, email: string) => {
     return fetchUserByEmail(email).then(function (currentUser) {
-        return fetchIdeaByCondition({createdBy: currentUser, isApproved: true}).then((idea: IdeaModel) => {
+        return fetchIdeaByCondition({createdBy: currentUser, status: 'approved'}).then((idea: IdeaModel) => {
             if (!idea) return {statusCode: 400, message: {errors: {global: 'Idea not found'}}};
             return Log.findOne({ideaId: idea, userId: data.userId, requestTeam: true})
                 .then((log: LogModel) => {
@@ -87,7 +87,7 @@ export const joinTeam = (data: any, user: UserModel, callback: any) => {
 export const listHackersRequest = (email: string) => {
     return fetchUserByEmail(email)
         .then((user: UserModel) => {
-            return Idea.findOne({createdBy: user, isApproved: true})
+            return Idea.findOne({createdBy: user, status: 'approved'})
                 .then((idea: IdeaModel) => {
                     return logService.fetchLogsByIdea(idea)
                         .then((logs: LogModel[]) => {

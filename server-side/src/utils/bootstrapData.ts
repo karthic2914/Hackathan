@@ -45,7 +45,7 @@ const createIdeas = (user: UserModel) => {
         if (!records) {
             new Idea({
                 teamName: 'Team 1', title: 'Bootstraped title', description: 'This is test description',
-                technologyTags: ['Java', 'Groovy', 'Node'], isApproved: true, createdBy: user
+                technologyTags: ['Java', 'Groovy', 'Node'], status: 'approved', createdBy: user
             })
                 .save()
                 .then((idea: IdeaModel) => console.log('Created Idea: title: ', idea.title))

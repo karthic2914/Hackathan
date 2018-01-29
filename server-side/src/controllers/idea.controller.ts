@@ -6,7 +6,7 @@ import { listIdea, postIdea, updateIdea, deleteIdeaService } from '../services/i
 
 export let getApprovedIdeas = (req: Request, res: Response) => {
     const params = req.params || {};
-    params.isApproved = true;
+    params.status = 'approved';
     listIdea(params, function (err: any, ideaList: IdeaModel[]) {
         if (err) {
             return res.status(400).json(err);
