@@ -6,3 +6,7 @@ export interface NewsModel {
     title: string;
     description: string;
 }
+
+export interface News {
+    news: News;
+}
