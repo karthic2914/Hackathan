@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {
-    addHackerToTeam, joinTeam, listHackersRequest, listTeamInvites, requestTeam,
+    addOrRemoveHackerToTeam, joinTeam, listHackersRequest, listTeamInvites, requestTeam,
     requestToHacker
 } from '../services/hackerService';
 import { fetchUserByEmail, isAuth } from '../services/authService';
@@ -87,7 +87,7 @@ export let requestToJoinTeam = (req: Request, res: Response) => {
 export let addToTeam = (req: Request, res: Response) => {
     isAuth(req).then((user: UserModel) => {
         if (!req.body.data) return res.status(400).json({status: 'Invalid JSON format'});
-        addHackerToTeam(req.body.data, user.email)
+        addOrRemoveHackerToTeam(req.body.data, user.email)
             .then((response: any) => {
                 if (response && response.statusCode === 400) {
                     return res.status(400).json(response.message);
