@@ -17,7 +17,7 @@ export class IdeaApprovalComponent implements OnInit, OnDestroy {
   public dataObj: any;
   public filterQuery = '';
   public rowsOnPage = 10;
-  public sortBy = 'Tags';
+  public sortBy = 'status';
   public sortOrder = 'asc';
   modalRef: BsModalRef;
 
