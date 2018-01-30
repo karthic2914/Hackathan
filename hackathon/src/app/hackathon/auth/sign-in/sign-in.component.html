@@ -28,7 +28,7 @@
         <div class="form-group">
           <button [disabled]="!authForm.valid" class="btn btn-primary">Login</button>
         </div>
-        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div *ngIf="loginFail" class="alert alert-danger">Invalid Username Or Password</div>
         <div class="cursor">New User ? <a [routerLink]="['/signup']"> Register here ! </a></div>
       </fieldset>
     </form>
