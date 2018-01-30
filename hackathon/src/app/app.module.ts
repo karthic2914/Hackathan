@@ -70,6 +70,7 @@ import { SearchDisplayRequestToHackerComponent } from './shared/search-display-r
 import { SearchListRequestToHackerComponent } from './shared/search-list-request-to-hacker/search-list-request-to-hacker.component';
 import { AuthInterceptor } from './store/services/authInterceptor';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { IdeaDetailsComponent } from './shared/idea-details/idea-details.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastModule } from "ng2-toastr";
 import { AlertService } from "./shared/alert/alert.service";
@@ -122,6 +123,7 @@ export function instrumentOptions() {
     EllipsisPipe,
     SearchDisplayRequestToHackerComponent,
     SearchListRequestToHackerComponent,
+    IdeaDetailsComponent,
     AlertComponent
   ],
   imports: [

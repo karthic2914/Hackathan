@@ -10,21 +10,37 @@
                 </div>
                 <br/>
                 <form (ngSubmit)="dataSubmit()">
-                    <div style="width:80%; padding-left:15px;">
+                    <div style="width:100%">
                         <div class="form-group">
-                            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter Title" class="input-sm">
+                            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter News Title!!" class="form-control form-control-lg">
                         </div>
                         <br>
                         <div class="form-group">
-                            <textarea rows="4" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
+                            <textarea rows="10" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" [ngClass]="validateText()" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
                 <br/>
                 <app-publish-list></app-publish-list>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="margin-top: 0px;">
+        <div class="modal-content">
+            <div class="modal-header" style=" background-color: #ffbb05;">
+                <h4 class="modal-title pull-left">Success</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                News publish successfull !! <br> Approve to display in News Page
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,19 @@
+<app-navigation [cms] = "cms.home"></app-navigation>
+<div class="col-md-12 ">
+    <section class="card-top">
+      <div class="content first-content">
+        <div class="primary-button card-deck mb-3 text-center">
+          <div class="row">
+          <h1> {{ readIdeaObj.title }}
+          </h1>
+          <h6>NOVEMBER 3, 2017</h6>
+        </div> 
+          <div class="row">              
+              <br>
+            <div [innerHtml]= "readIdeaObj.description" ></div>                
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  

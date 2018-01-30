@@ -3,7 +3,7 @@
       <img src="../../../assets/images/idea-image.jpg" alt="Avatar" style="width:100%">
       <h4>{{panelData.title | ellipsis: 50}}</h4>       
       <p>Team : {{panelData.teamName}}</p>
-      <a href="">Read More</a>
+      <a [routerLink]="['/idea_details']" [queryParams]="{id:panelData._id}">Read More</a>
     </div>
   </div>
 

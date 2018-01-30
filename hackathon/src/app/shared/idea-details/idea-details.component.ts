@@ -5,17 +5,17 @@ import { AppStore } from '../../store/models/hackathon-store.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-read-more',
-  templateUrl: './read-more.component.html',
-  styleUrls: ['./read-more.component.css']
+  selector: 'app-idea-details',
+  templateUrl: './idea-details.component.html',
+  styleUrls: ['./idea-details.component.css']
 })
-export class ReadMoreComponent implements OnInit, OnDestroy {
-  private newsSubscribe: Subscription;
+export class IdeaDetailsComponent implements OnInit, OnDestroy {
+  private ideaSubscribe: Subscription;
   private subscription: Subscription;
-  private newsObj: any;
+  private ideaObj: any;
   private cms: any;
-  private selectedNews: number;
-  private readNewsObj: any;
+  private ideaId: number;
+  private readIdeaObj: any;
 
   constructor(
     private store: Store<AppStore>,
@@ -28,15 +28,15 @@ export class ReadMoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.newsSubscribe = this.store.subscribe((stores: AppStore) => {
+    this.ideaSubscribe = this.store.subscribe((stores: AppStore) => {
       this.subscription = this.route.queryParams.subscribe(params => {
-        this.selectedNews = params['id'];
+        this.ideaId = params['id'];
       });
-      this.newsObj = stores.news;
-      let neww: any[] = this.newsObj.blogs;
-      for (let entry of neww) {
-        if (entry._id == this.selectedNews) {
-          this.readNewsObj = entry;
+      this.ideaObj = stores.ideas;
+      const ideaDetails: any[] = this.ideaObj.ideas;
+      for (const entry of ideaDetails) {
+        if (entry._id === this.ideaId) {
+          this.readIdeaObj = entry;
         }
       }
     });
@@ -45,4 +45,5 @@ export class ReadMoreComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
 }

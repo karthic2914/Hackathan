@@ -10,8 +10,9 @@
         <div class="panel-row">
           <div class="panel-column nature">
             <app-panel-expand *ngFor="let ideaCard of ideaObj?.ideas | paginate: { itemsPerPage: 3, currentPage: pageNumber }" [panelData]="ideaCard"></app-panel-expand>
-            <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+            
           </div>
+          <pagination-controls class="col-md-12" (pageChange)="pageNumber = $event"></pagination-controls>
         </div>  
       </div>
     </div>
