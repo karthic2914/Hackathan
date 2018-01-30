@@ -6,6 +6,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
+      require('karma-coverage'),
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
@@ -19,10 +20,13 @@ module.exports = function (config) {
       reports: [ 'html', 'lcovonly' ],
       fixWebpackSourcePaths: true
     },
+    preprocessors : {
+      "./src/test.ts": ["@angular/cli"]
+    },
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
