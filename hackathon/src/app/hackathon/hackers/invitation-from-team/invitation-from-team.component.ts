@@ -19,6 +19,7 @@ constructor(private hackerStateService: HackerStateService, private store: Store
   this.hackerStateService.invitationFromTeam().then((response: any) => {
     this.subscription = this.store.subscribe((stores: AppStore) => {
       this.teamDetails = stores.ideas;
+      console.log(stores.ideas);
     });
   });
 }
@@ -27,7 +28,7 @@ ngOnInit() {
 }
 
 joinTeam(team) {
-  this.hackerStateService.joinTeam({data: {ideaId: team._id}}).then((data)=> {
+  this.hackerStateService.joinTeam({data: {ideaId: team.idea._id}}).then((data)=> {
     if (data.status === 'success') {
       alert('Joined in group');
     } else {
