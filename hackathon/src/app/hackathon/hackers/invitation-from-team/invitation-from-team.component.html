@@ -31,9 +31,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let team of teamDetails?.invitationFromTeam"> <!-- So far created skeleton, need to bind correct data once API call completed-->
-              <td>{{team.teamName}}</td>
-              <td>{{team.title}}</td>
-              <td>{{team.technologyTags[0]}}</td>
+              <td>{{team.idea.teamName}}</td>
+              <td>{{team.idea.title}}</td>
+              <td>{{team.idea.technologyTags[0]}}</td>
               <td>
                 <button (click)="joinTeam(team)">JOIN TEAM</button>
               </td>
