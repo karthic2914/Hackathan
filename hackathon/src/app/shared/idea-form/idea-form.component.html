@@ -28,11 +28,11 @@
                     </div>
                     <div [froalaEditor] formControlName="description">
                        Hello, Froala!
-                       <span *ngIf="!hackerProfileForm.get('description').valid && hackerProfileForm.get('description').touched" class="help-block">Please enter a valid Idea</span>
+                       <!-- <span *ngIf="!hackerProfileForm.get('description').valid && hackerProfileForm.get('description').touched" class="help-block">Please enter a valid Idea</span> -->
                     </div>
-                    <!-- <span *ngIf="!hackerProfileForm.valid && hackerProfileForm.touched" class="help-block">Please enter a valid Data!</span> -->
+                    <span *ngIf="!hackerProfileForm.valid && hackerProfileForm.touched" class="help-block">Please enter a valid Data!</span>
                     <br>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="!hackerProfileForm.valid">Submit</button>
                     <button class="btn btn-default" type="button" (click)="clear()">Clear</button>
                     </form>
                  </div>
