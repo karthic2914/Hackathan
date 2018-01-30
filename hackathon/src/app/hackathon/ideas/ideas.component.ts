@@ -16,6 +16,7 @@ export class IdeasComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private cms: any;
   public pageNumber = 1;
+  public ideaCount: number;
 
   constructor(
     private store: Store<AppStore>,
@@ -30,6 +31,7 @@ export class IdeasComponent implements OnInit, OnDestroy {
     this.ideaService.getIdeas().then((response: any) => {
       this.ideaSubscribe = this.store.subscribe((stores: AppStore) => {
         this.ideaObj = stores.ideas;
+        this.ideaCount = this.ideaObj.ideas.length;
       });
     });
   }

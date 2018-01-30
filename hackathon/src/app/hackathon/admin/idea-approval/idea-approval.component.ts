@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../store/models/hackathon-store.model';
 import { AdminStateService } from '../../../store/services/admin-state.service';

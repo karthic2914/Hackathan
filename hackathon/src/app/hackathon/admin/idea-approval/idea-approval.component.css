@@ -4,6 +4,7 @@
     font-family: 'Muli', sans-serif;
     font-weight: bold;
     padding-left: 8px;
+    margin-top: 0px;
 }
 
 .tble-hd {
@@ -79,7 +80,9 @@ input:checked+.slider:before {
 
 
 /*table css*/
-
+.table {
+    margin-bottom:0px;
+}
 .table>thead>tr>th {
     border-right: 1px solid #ddd;
     border-bottom: 0;
@@ -114,11 +117,3 @@ input:checked+.slider:before {
     margin-top: 50px;
 }
 
-.publish-dock {
-    background-color: #f9a600;
-    letter-spacing: 1px;
-    font-family: 'Muli', sans-serif;
-    font-weight: bold;
-    padding-left: 8px;
-    margin-top: 10px;
-}
