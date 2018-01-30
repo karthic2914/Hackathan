@@ -3,7 +3,7 @@ import { UserModel } from '../models/User';
 import { IdeaModel } from '../models/Idea';
 
 export const fetchLogsByUser = (user: UserModel) => {
-    return Log.find({userId: user, inviteUser: true})
+    return Log.find({userId: user, inviteUser: {$in: ['pending', 'approved']}})
         .then((logs: LogModel[]) => logs)
         .catch(err => err);
 };
