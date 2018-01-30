@@ -26,13 +26,9 @@ export class InvitationFromHackerComponent implements OnInit {
 
   ngOnInit() {
   }
-  approval(user) { // approval should change based on check flag
-    this.hackerStateService.addHackerToTeam({data: {userId: user.user._id, addMember: true }}).then((data) => {
-      if (data.status === 'success') {
-        alert('Approved');
-      } else {
-        alert('Error Message: ' + data.error.errors.errors.global);
-      }
+  approval(user, event) {
+   this.hackerStateService.addHackerToTeam({data: {userId: user.user._id, addMember: event.target.checked }}).then((data) => {
+     console.log(data);
     });
   }
 }

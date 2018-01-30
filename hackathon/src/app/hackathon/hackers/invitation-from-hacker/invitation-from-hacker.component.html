@@ -31,7 +31,7 @@
              <!-- <td> {{user.profile.skillSet[0]}} </td> -->
               <td>                 
                 <label class="switch">
-                  <input type="checkbox" (click)="approval(user)" [checked]="user.confirmed === 'yes' ? true: false">
+                  <input type="checkbox" (click)="approval(user, $event)" [checked]="user.confirmed === 'yes' ? true: false">
                   <span class="slider round"></span>
                 </label> </td>
             </tr>

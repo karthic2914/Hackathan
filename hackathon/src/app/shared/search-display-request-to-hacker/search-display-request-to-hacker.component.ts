@@ -36,11 +36,11 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
     console.log(this.userId);
     this.hackerStateService.requestHacker({data: {userId: this.userId} }).then((data) => {
       if (data.status === 'success') {
-        alert('Requested successfully');
+        console.log('Requested successfully');
       } else {
-        alert('Error Message: ' + data.error.errors.errors.global);
+        console.log('Error Message: ' + data.error.errors.errors.global);
       }
-    })
+    });
   }
 
   changedOption(idea) {

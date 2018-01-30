@@ -28,12 +28,10 @@ ngOnInit() {
 }
 
 joinTeam(team) {
-  this.hackerStateService.joinTeam({data: {ideaId: team.idea._id}}).then((data)=> {
+   this.hackerStateService.joinTeam({data: {ideaId: team.idea._id}}).then((data) => {
     if (data.status === 'success') {
-      alert('Joined in group');
-    } else {
-      alert('Error Message: ' + data.error.errors.errors.global);
-    }
+      team.isPending = 'approved';
+     }
   });
 }
 
