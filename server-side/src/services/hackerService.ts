@@ -19,7 +19,9 @@ export const listTeamInvites = (email: string) => {
                     return Idea.find({
                         '_id': {$in: ideaIds}
                     }, {createdAt: false, updatedAt: false, __v: false}).then((ideas: IdeaModel[]) => {
-                        return ideas;
+                        return ideas.map((idea: any) => {
+                            return {idea: idea, isPending: _.find(logs, {ideaId: idea._id}).inviteUser};
+                        });
                     });
                 });
         }).catch(error => {
@@ -34,10 +36,14 @@ export const requestToHacker = (data: any, email: string): any => {
             return fetchUserById(data.userId)
                 .then((userToRequest: UserModel) => {
                     if (!userToRequest) return {statusCode: 400, message: {errors: {global: 'User not found'}}};
-                    return Log.findOne({ideaId: idea, userId: userToRequest, inviteUser: true})
+                    return Log.findOne({
+                        ideaId: idea,
+                        userId: userToRequest,
+                        inviteUser: {$in: ['pending', 'approved']}
+                    })
                         .then((log: LogModel) => {
                             if (log) return {statusCode: 400, message: {errors: {global: 'Request already sent'}}};
-                            return new Log({ideaId: idea, userId: userToRequest, inviteUser: true}).save()
+                            return new Log({ideaId: idea, userId: userToRequest}).save()
                                 .then((log: any) => log)
                                 .catch((err: any) => ({statusCode: 400, mesage: parseErrors(parseErrors(err.errors))}));
                         });
@@ -85,6 +91,7 @@ export const joinTeam = (data: any, user: UserModel, callback: any) => {
             idea.members.push(user);
             idea.save()
                 .then((idea: IdeaModel) => {
+                    Log.findOneAndUpdate({ideaId: idea, userId: user}, {$set: {inviteUser: 'approved'}}, {new: true});
                     callback(undefined, idea);
                 })
                 .catch((err: any) => callback(parseErrors(err.errors), undefined));
