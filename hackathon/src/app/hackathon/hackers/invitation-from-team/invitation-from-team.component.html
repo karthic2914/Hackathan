@@ -35,7 +35,7 @@
               <td>{{team.idea.title}}</td>
               <td>{{team.idea.technologyTags[0]}}</td>
               <td>
-                <button (click)="joinTeam(team)" [disabled]="team.isPending === 'approved' ? 'true': null">JOIN TEAM</button>
+                <button (click)="joinTeam(team)" [disabled]="team.isPending === 'approved' ? 'true': null">{{team.isPending === 'approved' ? 'JOINED': 'JOIN TEAM'}}</button>
               </td>
             </tr>
           </tbody>

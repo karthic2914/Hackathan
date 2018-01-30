@@ -15,6 +15,8 @@ private subscription: Subscription;
 
 private  teamDetails: any;
 
+private joinButtonLabel: string;
+
 constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
   this.hackerStateService.invitationFromTeam().then((response: any) => {
     this.subscription = this.store.subscribe((stores: AppStore) => {

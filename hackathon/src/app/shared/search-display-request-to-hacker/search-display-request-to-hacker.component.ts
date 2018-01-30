@@ -12,11 +12,9 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
 
   private imgSrc: string;
 
-  private email: string;
-
   private hackerEmail: string;
 
-  private skill: string;
+  private hackerSkill: string;
 
   private hackIdea: string;
 
@@ -24,6 +22,7 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
 
   public test: string;
 
+  // tslint:disable-next-line:no-inferrable-types
   private flag: boolean = false;
 
   constructor(private hackerStateService: HackerStateService) { }
@@ -46,22 +45,17 @@ export class SearchDisplayRequestToHackerComponent implements OnInit {
   changedOption(idea) {
     if (this.hackIdea !== 'Choose one') {
       this.flag = true;
-      for (let i = 0; i < this.HackerDetails.hackerList.data.users.length; i++) {
-        if (idea === this.HackerDetails.hackerList.data.users[i].username) {
-          this.imgSrc = this.HackerDetails.hackerList.data.users[i].image;
-          this.hackerEmail = this.HackerDetails.hackerList.data.users[i].email;
-          this.email = this.HackerDetails.hackerList.data.users[i].email;
-          this.skill = this.HackerDetails.hackerList.data.users[i].profile.skillSet[0];
-          this.userId = this.HackerDetails.hackerList.data.users[i]._id;
-        } else {
-          this.email = '';
-          this.skill = '';
+      this.HackerDetails.forEach(element => {
+        if (element.username === idea) {
+          this.hackerEmail = element.email;
+          this.hackerSkill = element.profile.skillSet[0];
+          this.userId = element._id;
         }
-      }
+      });
     } else {
       this.flag = false;
-      this.email = '';
-      this.skill = '';
+      this.hackerEmail = '';
+      this.hackerSkill = '';
     }
   }
 }
