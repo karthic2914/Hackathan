@@ -8,7 +8,7 @@ export let auth = (req: Request, res: Response) => {
             res.status(400).json(err);
             return;
         }
-        res.json({user: user.toAuthJson(isIdeaExist)});
+        res.json({message: `welcome ${user.username}`, user: user.toAuthJson(isIdeaExist)});
     });
 };
 
@@ -17,7 +17,7 @@ export let signup = (req: Request, res: Response) => {
         if (err) {
             return res.status(400).json({errors: err});
         }
-        res.json({user: user.toAuthJson()});
+        res.json({message: `welcome ${user.username}`, user: user.toAuthJson()});
     });
 };
 

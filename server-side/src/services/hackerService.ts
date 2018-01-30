@@ -70,7 +70,10 @@ export const addOrRemoveHackerToTeam = (data: any, email: string) => {
                                 {'_id': idea._id},
                                 query
                             ).then((idea: IdeaModel) => idea)
-                                .catch((err: any) => ({statusCode: 400, message: parseErrors(err.errors)}));
+                                .catch((err: any) => ({
+                                    statusCode: 400,
+                                    message: {errors: {global: parseErrors(err.errors)}}
+                                }));
                         }).catch(err => ({
                             statusCode: 400,
                             message: {errors: {global: 'No user found with requested id'}}
