@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserStateService } from "../../../store/services/user-state.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AppStore } from '../../../store/models/hackathon-store.model';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,10 +24,13 @@ export class SignUpComponent implements OnInit {
     { id: 5, name: 'Javascript' }
 
   ];
+  private subscription: Subscription;
+  private  cms: any;
 
   constructor(private router: Router,
               private userStateService: UserStateService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private store: Store<AppStore>) {
     this.signUpForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
@@ -32,6 +38,11 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       skillSet: ['', [Validators.required]],
     });
+
+    this.subscription = this.store.subscribe((stores: AppStore) => {
+      this.cms = stores.cms;
+    });
+
   }
 
   ngOnInit() {
