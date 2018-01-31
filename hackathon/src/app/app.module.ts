@@ -75,6 +75,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'ng2-toastr';
 import { AlertService } from './shared/alert/alert.service';
 import { AlertComponent } from './shared/alert/alert.component';
+import { HtmlSanitizerPipe } from './shared/pipes/sanitize.pipe';
 
 export function instrumentOptions() {
   return {
@@ -124,7 +125,8 @@ export function instrumentOptions() {
     SearchDisplayRequestToHackerComponent,
     SearchListRequestToHackerComponent,
     IdeaDetailsComponent,
-    AlertComponent
+    AlertComponent,
+    HtmlSanitizerPipe
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),

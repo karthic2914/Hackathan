@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserStateService } from "../../../store/services/user-state.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserStateService } from '../../../store/services/user-state.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppStore } from '../../../store/models/hackathon-store.model';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';

@@ -82,6 +82,9 @@ input:checked+.slider:before {
 /*table css*/
 .table {
     margin-bottom:0px;
+    border-right: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    border-left: 1px solid #dedede;
 }
 .table>thead>tr>th {
     border-right: 1px solid #ddd;

@@ -36,7 +36,7 @@ export class PublishListComponent implements OnInit, OnDestroy {
   constructor(private newsStateService: NewsStateService, private store: Store<AppStore>,
     private adminStateService: AdminStateService
   ) {
-      //console.log('The date is ' , this.theDate);
+      // console.log('The date is ' , this.theDate);
   }
   ngOnInit() {
     console.log('NgOnInit');

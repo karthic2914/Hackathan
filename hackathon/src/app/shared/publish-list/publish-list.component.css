@@ -93,3 +93,12 @@ input:checked+.slider:before {
 .panel-body>.table {
     margin-bottom: 0px;
 }
+.publish-list .table>tbody>tr>td.description{
+    width:50%;
+}
+.publish-list .table>tbody>tr>td.description p{
+    margin:0px 10px;
+}
+.publish-list .table>tbody>tr>td.action{
+    width:18%;
+}

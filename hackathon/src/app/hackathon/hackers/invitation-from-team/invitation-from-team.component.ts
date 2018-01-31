@@ -30,7 +30,7 @@ ngOnInit() {
 }
 
 joinTeam(team) {
-   this.hackerStateService.joinTeam({data: {ideaId: team.idea._id}}).then((data) => {
+  this.hackerStateService.joinTeam({data: {ideaId: team.idea._id}}).then((data) => {
     if (data.status === 'success') {
       team.isPending = 'approved';
      }

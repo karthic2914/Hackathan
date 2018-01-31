@@ -15,8 +15,8 @@ export class IdeaFormComponent implements OnInit {
   }
 
   private hackerProfileForm: FormGroup;
-  private display: string = 'none';
-  private bindEditbox: string = '';
+  private display = 'none';
+  private bindEditbox = '';
   private responseMessage: string;
   private successMessage: string;
   private modalHeading: string;
@@ -47,7 +47,7 @@ export class IdeaFormComponent implements OnInit {
         this.modalHeading = 'Failure';
         this.modalService.show(template);
       }
-    });    
+    });
   }
   private modalClose(template) {
     this.modalService.hide(0);

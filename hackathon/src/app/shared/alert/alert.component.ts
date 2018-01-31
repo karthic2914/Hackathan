@@ -2,7 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
 import { Alert, AlertType } from './alert.model';
 import { AlertService } from './alert.service';
-import { ToastsManager } from "ng2-toastr";
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   moduleId: module.id,
