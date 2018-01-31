@@ -15,11 +15,18 @@ private subscription: Subscription;
 
 private  teamDetails: any;
 
+private joined:boolean = false;
+
 constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
   this.hackerStateService.invitationFromTeam().then((response: any) => {
     this.subscription = this.store.subscribe((stores: AppStore) => {
       this.teamDetails = stores.ideas;
       console.log(stores.ideas);
+      for(let i = 0; i < this.teamDetails.invitationFromTeam.length; i++){
+        if(this.teamDetails.invitationFromTeam[i].isPending !== "pending"){
+          this.joined = true;
+        }
+      }
     });
   });
 }
@@ -30,6 +37,7 @@ ngOnInit() {
 joinTeam(team) {
   this.hackerStateService.joinTeam({data: {ideaId: team.idea._id}}).then((data)=> {
     if (data.status === 'success') {
+      this.joined = true;
       alert('Joined in group');
     } else {
       alert('Error Message: ' + data.error.errors.errors.global);
