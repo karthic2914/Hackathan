@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AppStore } from '../../../store/models/hackathon-store.model';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
+import { PasswordValidation } from '../custom-password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -37,6 +38,9 @@ export class SignUpComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       skillSet: ['', [Validators.required]],
+    },
+    {
+        validator: PasswordValidation.MatchPassword
     });
 
     this.subscription = this.store.subscribe((stores: AppStore) => {
@@ -50,7 +54,7 @@ export class SignUpComponent implements OnInit {
 
   signUp(form) {
     const data = this.signUpForm.value;
-    data.skillSet = data.skillSet.split(/[ ,]+/).filter(Boolean);
+    //data.skillSet = data.skillSet.split(/[ ,]+/).filter(Boolean);
     this.userStateService.signup(data)
       .then(res => this.router.navigateByUrl('/'),
         err => {
