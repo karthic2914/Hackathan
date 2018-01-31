@@ -21,7 +21,7 @@ export let list = (req: Request, res: Response) => {
             if (err) {
                 return res.status(400).json(err);
             }
-            res.json({ideas: ideaList});
+            res.json({message: `So far ${ideaList.length} ideas has been posted by hackers.`, ideas: ideaList});
         });
     }).catch(err => {
         res.status(401).json({errors: {global: 'TOKEN-EXPIRED'}});
@@ -54,9 +54,12 @@ export let saveIdea = (req: Request, res: Response) => {
             }
             postIdea(req.body, user, function (err: any, idea: IdeaModel) {
                 if (err) {
-                    return res.status(400).json(err);
+                    return res.status(400).json({errors: {global: err}});
                 }
-                res.json({status: 'success', idea: idea});
+                res.json({
+                    message: `Congratulations ${user.email}!! Your idea has been posted successfully. Now wait for admin approval.`,
+                    idea: idea
+                });
             });
         });
     }).catch(err => {
@@ -71,9 +74,9 @@ export let ideaUpdate = (req: Request, res: Response) => {
             }
             updateIdea(req.body, user, function (err: any, idea: IdeaModel) {
                 if (err) {
-                    return res.status(400).json(err);
+                    return res.status(400).json({errors: {global: err}});
                 }
-                res.json({status: 'success', idea: idea});
+                res.json({message: `Idea ${idea.title} has approved now.`, status: 'success', idea: idea});
             });
         });
     }).catch(err => {

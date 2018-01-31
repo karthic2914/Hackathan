@@ -43,11 +43,11 @@ export let acceptTeamInvitation = (req: Request, res: Response) => {
             if (!user) {
                 return res.status(400).json({errors: {global: `No user found with email: ${user.email}`}});
             }
-            joinTeam(req.body.data, user, function (err: any, data: LogModel) {
+            joinTeam(req.body.data, user, function (err: any, data: any) {
                 if (err) {
                     return res.status(400).json(err);
                 }
-                res.json({message: `Thanks ${user.username} for joining the team.`, status: 'success'});
+                res.json({message: `Thanks ${user.username} for joining the team.`, data: data});
             });
         });
     }).catch(err => {
