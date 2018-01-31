@@ -23,3 +23,12 @@ table thead tr th{
     font-size: 16px;
 }
 
+@media all and (max-width: 1000px) and (min-width: 300px){
+    div{
+        float:right;
+        display:table-cell;
+        border:2px solid transparent;
+        /* height:250px; */
+        margin-top:20px;
+    }
+}

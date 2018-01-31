@@ -4,7 +4,7 @@
   <button *appIsAuth="false" (click)="login()">Log-In</button>
   <button *appIsAuth="true" (click)="logout()">Log-Out</button>
 </div>
-<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="col-md-12 col-sm-12 col-xs-12 mobClass">
   <section class="cd-hero col-md-12 col-sm-12 col-xs-12">
     <div class="cd-slider-nav">
       <nav>
@@ -14,14 +14,14 @@
             <div class="dropdown" [ngClass]="{'nav-mar' : nav.title ==='Admin'}" *ngIf="((nav.title === 'Home') || (nav.title === 'Idea') || (nav.title === 'News') || (nav.title === 'Hackers' && (isAuthenticated && !isAdmin)  ) || (nav.title === 'Admin' &&  isAdmin))">
               <a routerLink='{{nav.routerLink}}'>
                 <div class="image-icon">
-                  <img class="img" src="{{nav.imgUrl}}">
+                  <img class="" src="{{nav.imgUrl}}">
                 </div>
                 <h6>{{nav.title}}</h6>
               </a>
              <div class="dropdown-content" *ngIf="nav.submenu">
                 <div *ngFor="let submenu of nav.submenu"> 
                   <div *ngIf="((submenu.title === 'Profile') || ( submenu.title === 'Post an idea')) || (submenu.title === 'Request to team' && !isIdeaExists) || (submenu.title === 'Invitation from team' && !isIdeaExists) || (submenu.title === 'Request to hacker' && isIdeaExists) || (submenu.title === 'Invitation from hacker' && isIdeaExists) || ( submenu.title === 'Idea Approval'  && isAdmin )  || ( submenu.title === 'Logs'  && isAdmin ) || ( submenu.title === 'Publish News'  && isAdmin )">
-                    <a routerLink = "{{submenu.routerLink}}">{{submenu.title}}</a>
+                    <a class="responsiveClass" routerLink = "{{submenu.routerLink}}">{{submenu.title}}</a>
                 </div>
                 </div>
               </div>

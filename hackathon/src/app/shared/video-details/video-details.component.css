@@ -32,3 +32,12 @@
     color: #000000; 
     border:1px solid #fff;
   }
+
+  @media all and  (max-width: 768px) and (min-width: 426px){
+    button {
+      background-color: #ffbb05;
+      border: 1px solid #ffbb05;    
+      /* margin: 20px; */
+      /* width: 120px; */
+    }
+  }
