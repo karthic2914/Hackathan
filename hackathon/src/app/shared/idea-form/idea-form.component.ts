@@ -37,16 +37,7 @@ export class IdeaFormComponent implements OnInit {
   }
   private onSubmit(template) {
     this.hackerStateService.postAnIdea(this.hackerProfileForm.value).then((data: any) => {
-      if (data.status === 'success') {
-        this.successMessage = 'Idea posted successfully';
-        this.modalHeading = 'Success';
-        this.modalService.show(template);
-        this.clear();
-      } else {
-        this.successMessage = 'Failed to post an idea';
-        this.modalHeading = 'Failure';
-        this.modalService.show(template);
-      }
+      this.clear();
     });
   }
   private modalClose(template) {
