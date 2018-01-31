@@ -96,7 +96,7 @@ export const joinTeam = (data: any, user: UserModel, callback: any) => {
                 .then((idea: IdeaModel) => {
                     Log.findOneAndUpdate({ideaId: idea, userId: user}, {$set: {inviteUser: 'approved'}}, {new: true})
                         .then(log => console.log('log: ', log));
-                    callback(undefined, idea);
+                    callback(undefined, {idea: idea, isPending: 'approved'});
                 })
                 .catch((err: any) => callback(parseErrors(err.errors), undefined));
         }
