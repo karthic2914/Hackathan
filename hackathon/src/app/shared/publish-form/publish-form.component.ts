@@ -34,7 +34,7 @@ export class PublishFormComponent implements OnInit {
     };
     this.newsStateService.postNews(this.newsObj).then((response: any) => {
       console.log('post response', response);
-      if(response.blogs.length){
+      if (response.blogs.length) {
         this.showChildModal();
       }
     });
@@ -48,10 +48,10 @@ export class PublishFormComponent implements OnInit {
     this.childModal.hide();
   }
 
-  validateText(){
-    if(this.description.length > 46){
-      return "enabled";
+  validateText() {
+    if (this.description.length > 46) {
+      return 'enabled';
     }
-    return "disabled";
+    return 'disabled';
   }
 }

@@ -1,29 +1,29 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { HackerStateService } from '../../store/services/hacker-state.service';
 import { AdminStateService } from '../../store/services/admin-state.service';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { AppStore } from '../../store/models/hackathon-store.model';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-
 @Component({
   selector: 'app-master-list',
   templateUrl: './master-list.component.html',
-  styleUrls: ['./master-list.component.css']
+  styleUrls: ['./master-list.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MasterListComponent implements OnInit {
 
-  public dataObj:any; 
+  public dataObj: any;
   private subscription: Subscription;
-  public filterQuery = "";
+  public filterQuery = '';
   public rowsOnPage = 10;
-  public sortBy = "ideaTitle";
-  public sortOrder = "asc";
-  public ideaDesciption = "";
+  public sortBy = 'ideaTitle';
+  public sortOrder = 'asc';
+  public ideaDesciption = '';
   modalRef: BsModalRef;
-  
+
   constructor(private hackerStateService: HackerStateService,
     private adminStateService: AdminStateService, private store: Store<AppStore>,
     private modalService: BsModalService) {
@@ -51,7 +51,7 @@ export class MasterListComponent implements OnInit {
 
   showPreview(item) {
     console.log(item);
-    this.ideaDesciption = item.ideaDes;    
+    this.ideaDesciption = item.ideaDes;
     return false;
   }
 

@@ -1,4 +1,4 @@
-<div class="panel-body table-responsive">
+<div class="panel-body table-responsive publish-list">
     <table class="table table-bordered" [mfData]="newsObj?.blogs" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
         <thead class="tble-hd">
             <tr>
@@ -20,8 +20,8 @@
             <tr *ngFor="let item of mf.data">
                 <td>{{item.date | date: format}}</td>
                 <td>{{item.title}}</td>
-                <td>{{item.description}}</td>
-                <td>
+                <td class="description" [innerHTML]="item.description | ellipsis: 150 | sanitizeHtml">{{item.description}}</td>
+                <td class="action">
                     <!-- <label class="switch">
                         <input type="checkbox">
                         <span class="slider"></span>

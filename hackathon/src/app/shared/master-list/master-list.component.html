@@ -1,5 +1,5 @@
 <accordion>
-    <accordion-group isOpen=true style="text-align: left" heading="Idea Log">
+    <accordion-group class="log-container" isOpen=true style="text-align: left" heading="Idea Log">
         <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
             <thead>
                 <tr>
@@ -32,7 +32,7 @@
                     <td>{{item.title}}</td>
                     <td>{{item.technologyTags}}</td>
                     <td>
-                        <a href="#" (click)="openModal(template)">{{item.description | ellipsis: 50 }}</a>
+                        <a href="#" (click)="openModal(template)" [innerHTML]="item.description | ellipsis: 50 | sanitizeHtml"></a>
                     </td>
                     <td>{{item.teamName}}</td>
                     <td>{{item.status | uppercase}}</td>
