@@ -13,11 +13,17 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
+    /**
+     * List of files to exclude.
+    */
+    exclude: [],
+    
     client:{
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
+      captureConsole: false
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      reports: [ 'html', 'lcovonly','text-summary' ],
       fixWebpackSourcePaths: true
     },
     preprocessors : {
@@ -26,7 +32,7 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['coverage'],
+    reporters: ['progress', 'kjhtml','coverage-istanbul'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
