@@ -14,13 +14,27 @@ export class InvitationToHackerComponent implements OnInit {
 
   private  HackerDetails: any;
 
+  private  userInformation: any;
+
+  private hackerInformation: any;
+
   constructor(private hackerStateService: HackerStateService, private store: Store<AppStore>) {
     this.hackerStateService.fetchHackerDetails().then((response: any) => {
       this.hackerStateService.fetchInvitedHackerList().then((data: any) => {
       this.subscription = this.store.subscribe((stores: AppStore) => {
         this.HackerDetails = stores.ideas;
-        // this.HackerDetails = stores.ideas.data.users
-        console.log('IdeaDeatails: ' + this.HackerDetails);
+        this.userInformation = stores.user;
+        this.hackerInformation = [];
+        if (this.HackerDetails && this.HackerDetails.hackerList &&
+          this.HackerDetails.hackerList.data && this.HackerDetails.hackerList.data.users) {
+            console.log('hey');
+            this.HackerDetails.hackerList.data.users.forEach(element => {
+                if (element.username !== this.userInformation.username) {
+                  this.hackerInformation.push(element);
+                }
+            });
+          }
+        console.log('IdeaDeatails: ' + this.hackerInformation);
       });
     });
     });

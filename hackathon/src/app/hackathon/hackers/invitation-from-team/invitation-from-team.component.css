@@ -98,3 +98,6 @@ input:checked + .slider:before {
     padding-left: 8px;
     margin-top: 10px;
 }
+button:disabled {
+    background: #dddddd;
+}

@@ -90,3 +90,12 @@ input:checked + .slider:before {
 .margin-top {
     margin-top: 50px;
 }
+td {
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    border-right: 1px solid #ddd;
+    text-align: center;
+}

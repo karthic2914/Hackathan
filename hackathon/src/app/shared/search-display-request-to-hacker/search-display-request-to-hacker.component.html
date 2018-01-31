@@ -7,7 +7,7 @@
             <div class="col-sm-7 col-sm-8 col-xs-9">
               <select [disabled]="disableDrop" class="form-control" [(ngModel)]="hackIdea" name="hackIdea" (ngModelChange)="changedOption(hackIdea)">
                 <option>Choose one</option>
-                <option *ngFor="let hack of HackerDetails?.hackerList?.data?.users">{{hack.username}}</option>
+                <option *ngFor="let hack of HackerDetails">{{hack.username}}</option>
               </select>
             </div>
           </div>
@@ -24,7 +24,7 @@
               </div>
               <div class="form-group">
                 <label>Primary Skill</label>
-                <input type="text" class="form-control" id="search" placeholder="Description" [(ngModel)]="skill" name="skill"
+                <input type="text" class="form-control" id="search" placeholder="Description" [(ngModel)]="hackerSkill" name="hackerSkill"
                   disabled>
               </div>
               <div class="form-group">

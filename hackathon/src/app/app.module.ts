@@ -71,10 +71,10 @@ import { SearchListRequestToHackerComponent } from './shared/search-list-request
 import { AuthInterceptor } from './store/services/authInterceptor';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { IdeaDetailsComponent } from './shared/idea-details/idea-details.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ToastModule } from "ng2-toastr";
-import { AlertService } from "./shared/alert/alert.service";
-import { AlertComponent } from "./shared/alert/alert.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr';
+import { AlertService } from './shared/alert/alert.service';
+import { AlertComponent } from './shared/alert/alert.component';
 
 export function instrumentOptions() {
   return {
