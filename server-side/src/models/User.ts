@@ -4,13 +4,13 @@ import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { skillSet, EXPIRATION_TIME, HACKER_ROLE } from '../utils/constant';
 
-export type UserModel = mongoose.Document & {
-    username: string,
-    email: string,
-    hashPassword: string,
-    isAdmin: boolean,
-    userRole: string,
-    confirmed: boolean,
+export interface UserModel extends mongoose.Document {
+    username: string;
+    email: string;
+    hashPassword: string;
+    isAdmin: boolean;
+    userRole: string;
+    confirmed: boolean;
     profile: {
         firstName: string,
         lastName: string,
@@ -20,11 +20,12 @@ export type UserModel = mongoose.Document & {
             url: string
         },
         contact: string
-    },
-
-    isValidPassword: (password: string) => boolean,
-    setPassword: (password: string) => void,
-};
+    };
+    isValidPassword: (password: string) => boolean;
+    setPassword: (password: string) => void;
+    toAuthJson: (isIdeaExist: boolean) => { [key: string]: string };
+    generateJWT: (isIdeaExist: boolean) => string;
+}
 
 const UserSchema = new mongoose.Schema({
     username: {type: String, required: true, unique: true},
@@ -51,22 +52,23 @@ UserSchema.methods.isValidPassword = function isValidPassword(password: string) 
     return bcrypt.compareSync(password, this.hashPassword);
 };
 
-UserSchema.methods.generateJWT = function generateJWT() {
+UserSchema.methods.generateJWT = function generateJWT(isIdeaExist: boolean) {
     return jwt.sign({
         email: this.email,
         username: this.username,
         isAdmin: this.isAdmin,
+        isIdeaExist: isIdeaExist,
         profile: {
-            skillSet: this.skillSet
+            skillSet: this.profile && this.profile.skillSet || []
         }
     }, process.env.SECRET_KEY, {
         expiresIn: EXPIRATION_TIME
     });
 };
 
-UserSchema.methods.toAuthJson = function toAuthJson() {
+UserSchema.methods.toAuthJson = function toAuthJson(isIdeaExist: boolean) {
     return {
-        token: this.generateJWT()
+        token: this.generateJWT(isIdeaExist)
     };
 };
 

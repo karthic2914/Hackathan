@@ -1,3 +1,18 @@
-<p>
-  news works!
-</p>
+<app-navigation [cms] = "cms.home"></app-navigation>
+
+<div class="col-md-12 margin-top">
+  <section>
+    <div class="content first-content wrapper">
+      <div class="primary-button card-deck mb-3 text-center">
+        <h1>Hackathon News </h1>
+        <div class="panel-row">
+          <div class="panel-column nature">
+            <app-news-card ></app-news-card>
+            <pagination-controls class="col-md-12" (pageChange)="pageNumber = $event"></pagination-controls>
+          </div>          
+        </div>  
+      </div>
+    </div>
+  </section>
+</div>
+  

@@ -1,0 +1,8 @@
+<div class="panel-column" *ngFor="let blog of newsObj?.blogs">
+    <div class="panel-content">
+      <img src="https://gcn.com/~/media/GIG/GCN/Redesign/Articles/2015/May/hackathon.png" alt="Avatar" style="width:100%">     
+      <h3>{{ blog.title }}</h3>
+      <a [routerLink]="['/read_news']" [queryParams]="{id:blog._id}">Read More</a>
+    </div>
+  </div>
+

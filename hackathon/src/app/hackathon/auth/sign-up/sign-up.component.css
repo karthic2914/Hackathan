@@ -1,0 +1,50 @@
+.signIn{
+    padding: 10px;
+    
+  }
+  
+  .signIn input{
+      margin-bottom: 20px;
+      padding-left: 15px;
+      max-width: 100%;
+      height: 40px;
+      display: inline-block;
+      line-height: 40px;
+      font-size: 13px;
+      color: #aaa;
+      background-color: #f4f4f4;
+      border: none;
+      outline: none;
+      border-radius: 0;
+      box-shadow: none;
+  
+  }
+  
+  .signIn button{
+    background-color: #ffbb05;
+    display: inline-block;
+    font-size: 13px;
+    padding: 12px 18px;
+    border-radius: 3px;
+    text-decoration: none;
+    outline: none;
+     margin-bottom: 0px;
+  }
+  .content1 {
+
+    background-color: #fff;
+    border-top: 15px solid #ffbb05;
+    -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.floatingPanel{
+    margin-top: 20px;
+    float: right;
+}
+.toptext {
+    display: inline-block;
+    font-size: 13px;
+    text-decoration: none;
+    margin-right: 35px;
+    cursor: pointer;
+}

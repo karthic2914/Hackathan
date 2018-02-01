@@ -1,3 +1,20 @@
-<p>
-  ideas works!
-</p>
+<app-navigation [cms]="cms.home">
+</app-navigation>
+
+
+<div class="col-md-12 margin-top">
+  <section>
+    <div class="content first-content wrapper">
+      <div class="primary-button card-deck mb-3 text-center">
+        <h1>Hackathon Ideas </h1>
+        <div class="panel-row" *ngIf="ideaCount!=0; else noideas">
+          <div class="panel-column nature">
+            <app-panel-expand *ngFor="let ideaCard of ideaObj?.ideas | paginate: { itemsPerPage: 3, currentPage: pageNumber }" [panelData]="ideaCard"></app-panel-expand>            
+          </div>
+          <pagination-controls class="col-md-12" (pageChange)="pageNumber = $event"></pagination-controls>
+        </div> 
+        <ng-template #noideas>No Ideas Found</ng-template> 
+      </div>
+    </div>
+  </section>
+</div>

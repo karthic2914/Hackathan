@@ -1,0 +1,42 @@
+.news-detail {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 0 10px;
+    height: auto;    
+}
+.row {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+}
+.wrapper{
+    width:1000px;
+    padding:0px 10px;
+    margin:0 auto;
+}
+
+.panel-row {
+    margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.panel-row,
+.panel-row > .panel-column {
+    padding: 8px;
+}
+
+/* Clear floats after rows */ 
+.panel-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

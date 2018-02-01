@@ -1,3 +1,59 @@
-<p>
-  master-list works!
-</p>
+<accordion>
+    <accordion-group class="log-container" isOpen=true style="text-align: left" heading="Idea Log">
+        <table class="table table-striped" [mfData]="dataObj?.ideas" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+            <thead>
+                <tr>
+                    <th style="width: 10%" by="ideaTitle">
+                        <mfDefaultSorter by="title">ACTION</mfDefaultSorter>
+                    </th>
+                    <th style="width: 10%" by="ideaTitle">
+                        <mfDefaultSorter by="title">TITLE</mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                        <mfDefaultSorter by="technologyTags">IDEA</mfDefaultSorter>
+                    </th>
+                    <th style="width: 40%">
+                        <mfDefaultSorter by="description">IDEA DESCRIPTION</mfDefaultSorter>
+                    </th>
+                    <th style="width: 10%">
+                        <mfDefaultSorter by="teamName">OWNER</mfDefaultSorter>
+                    </th>
+                    <th style="width: 20%">
+                        <mfDefaultSorter by="status">ACTION</mfDefaultSorter>
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of mf.data">
+                    <td>
+                        <button (click)="remove(item)" class="btn btn-danger">x</button>
+                    </td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.technologyTags}}</td>
+                    <td>
+                        <a href="#" (click)="openModal(template)" [innerHTML]="item.description | ellipsis: 50 | sanitizeHtml"></a>
+                    </td>
+                    <td>{{item.teamName}}</td>
+                    <td>{{item.status | uppercase}}</td>
+                    <ng-template #template>
+                        <div class="modal-dialog" style="margin-top: 0px;">
+                            <div class="modal-header" style=" background-color: #ffbb05;">
+                                <h4 class="modal-title pull-left">{{item.title}}</h4>
+                                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div [innerHtml]="item.description"></div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </accordion-group>
+    <accordion-group heading="Comments Log">
+
+    </accordion-group>
+</accordion>

@@ -1,3 +1,31 @@
-.margin-top {
-    margin-top: 50px;
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
 }
+.content{
+    margin-top: -115px
+}
+
+.margin-top {
+ margin-top: 75px;
+}
+::-webkit-input-placeholder {
+   text-align: center;
+   font-weight: bold;
+}
+.skillset {
+    text-align: center;
+    font-weight: bold;
+}
+form{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.publish-dock {
+    background-color: #f9a600;
+    letter-spacing: 1px;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    padding-left: 8px;
+    margin-top: 10px;
+}
+

@@ -1,3 +1,44 @@
-<p>
-  publish-list works!
-</p>
+<div class="panel-body table-responsive publish-list">
+    <table class="table table-bordered" [mfData]="newsObj?.blogs" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+        <thead class="tble-hd">
+            <tr>
+                <th>
+                    <mfDefaultSorter by="Date">Date</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="Header">News Header</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="Description" [by]="sortByWordLength">Description</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="age">Action </mfDefaultSorter>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of mf.data">
+                <td>{{item.date | date: format}}</td>
+                <td>{{item.title}}</td>
+                <td class="description" [innerHTML]="item.description | ellipsis: 150 | sanitizeHtml">{{item.description}}</td>
+                <td class="action">
+                    <!-- <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label> -->
+                    <div class="btn-group" role="group">
+                        <button (click)="Approve(item)" class="btn btn-primary">Approve</button>
+                        <button (click)="Reject(item)" class="btn btn-danger">Deny</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot style="position: absolute;width:100%;border:0PX;">
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

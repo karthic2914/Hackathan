@@ -1,0 +1,38 @@
+<div class="col-md-12 margin-top">
+    <section>
+      <div class="content first-content">
+        <form #search="ngForm">
+          <div class="form-group row col-md-12">
+            <label for="colFormLabelSm" class="labelClass col-md-2 col-sm-2 col-xs-2 col-form-label col-form-label-sm">Hacker list:</label>
+            <div class="col-sm-7 col-sm-8 col-xs-9">
+              <select [disabled]="disableDrop" class="form-control" [(ngModel)]="hackIdea" name="hackIdea" (ngModelChange)="changedOption(hackIdea)">
+                <option>Choose one</option>
+                <option *ngFor="let hack of HackerDetails">{{hack.username}}</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <img src="{{imgSrc}}">
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" id="search" placeholder="name of the team" [(ngModel)]="hackerEmail" name="hackerEmail"
+                  disabled>
+              </div>
+              <div class="form-group">
+                <label>Primary Skill</label>
+                <input type="text" class="form-control" id="search" placeholder="Description" [(ngModel)]="hackerSkill" name="hackerSkill"
+                  disabled>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary margin-bottom" [disabled] = "!flag" (click)="requestHacker()">Request</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>

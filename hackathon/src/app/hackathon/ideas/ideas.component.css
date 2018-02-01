@@ -1,0 +1,22 @@
+.wrapper{
+    width:1000px;
+    padding:0px 10px 20px;
+    margin:0 auto;
+}
+
+.panel-row {
+    margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.panel-row,
+.panel-row > .panel-column {
+    padding: 8px;
+}
+
+/* Clear floats after rows */ 
+.panel-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

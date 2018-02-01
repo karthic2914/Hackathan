@@ -1,0 +1,37 @@
+<app-navigation [cms]="cms.home"></app-navigation>
+
+<div class="col-md-4 col-md-offset-4">
+
+  <div class="content1  signIn  ivth-content">
+    <h3>Sign In </h3>
+
+    <form [formGroup]="authForm" (ngSubmit)="signIn()">
+      <fieldset [disabled]="isSubmit">
+        <div class="form-group" [ngClass]="{ 'has-error': authForm.controls['username'].invalid}">
+          <input id="username" type="text" class="form-control" formControlName="username" placeholder="Username"/>
+          <div *ngIf="authForm.controls['username'].errors && !authForm.controls['username'].pristine"
+               class="help-block">
+            <span *ngIf="authForm.controls['username'].invalid">
+              Please enter username
+            </span>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': authForm.controls['password'].invalid}">
+          <input type="password" class="form-control" formControlName="password" placeholder="Password"/>
+          <div *ngIf="authForm.controls['password'].errors && !authForm.controls['password'].pristine"
+               class="help-block">
+            <span *ngIf="authForm.controls['password'].invalid">
+              Please enter a password
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="!authForm.valid" class="btn btn-primary">Login</button>
+        </div>
+        <div *ngIf="loginFail" class="alert alert-danger">Invalid Username Or Password</div>
+        <div class="cursor">New User ? <a [routerLink]="['/signup']"> Register here ! </a></div>
+      </fieldset>
+    </form>
+  </div>
+
+</div>

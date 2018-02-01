@@ -1,0 +1,73 @@
+<app-navigation [cms]="cms.home"></app-navigation>
+
+<div class="col-md-4 col-md-offset-4">
+
+  <div class="content1  signIn  ivth-content">
+    <h3>Sign Up </h3>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <fieldset [disabled]="isSubmit">
+        <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['username'].invalid }">
+          <input type="text" class="form-control" placeholder="Username" formControlName="username"/>
+          <div *ngIf="signUpForm.controls['username'].errors && !signUpForm.controls['username'].pristine"
+               class="help-block">
+            <span *ngIf="signUpForm.controls['username'].invalid">
+              Please enter username
+            </span>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['password'].invalid }">
+          <input type="password" class="form-control" id="password" placeholder="password" formControlName="password"/>
+          <div *ngIf="signUpForm.controls['password'].errors && !signUpForm.controls['password'].pristine"
+               class="help-block">
+            <span *ngIf="signUpForm.controls['password'].invalid">
+              Please enter password
+            </span>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['confirmPassword'].invalid }">
+          <input type="password" class="form-control" id="confirmPassword" placeholder="confirmpassword" formControlName="confirmPassword"/>
+          <div *ngIf="signUpForm.controls['confirmPassword'].errors && !signUpForm.controls['confirmPassword'].pristine"
+               class="help-block">
+            <span *ngIf="signUpForm.controls['confirmPassword'].invalid">
+              please retype the same password above.
+            </span>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['email'].invalid }">
+          <input type="email" class="form-control" placeholder="email" formControlName="email"/>
+          <div *ngIf="signUpForm.controls['email'].errors && !signUpForm.controls['email'].pristine"
+               class="help-block">
+            <span *ngIf="signUpForm.controls['email'].invalid">
+              Please enter a valid email.
+            </span>
+          </div>
+        </div>
+          <div class="form-group" [ngClass]="{ 'has-error': signUpForm.controls['skillSet'].invalid && signUpForm.controls['skillSet'].touched}">
+          <select formControlName="skillSet" class="form-control">
+            <option value="" disabled selected>Your primary Skill</option>
+            <option *ngFor="let skill of skillset" [ngValue]="skill.name">{{skill.name}}</option>
+         </select>         
+          <div *ngIf="signUpForm.controls['skillSet'].errors && !signUpForm.controls['skillSet'].pristine"
+               class="help-block">
+            <span *ngIf="signUpForm.controls['skillSet'].invalid">
+              Please enter skill set.
+            </span>
+          </div>
+        </div>
+       <!--  <div class="form-group">
+          <label for="skillSet">Primary Skill</label>
+          <select formControlName="skillSet" class="form-control" placeholder="Primary Skill">
+             <option *ngFor="let skill of skillset" value="skill.name">{{skill.name}}</option>
+          </select>
+          <span *ngIf="!hackerProfileForm.get('skillSet').valid && hackerProfileForm.get('technologyTags').touched" class="help-block">Please select a Technology Tags</span>
+       </div> -->
+        <div class="form-group">
+          <button [disabled]="!signUpForm.valid" class="btn btn-primary">SignUp</button>
+        </div>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+

@@ -1,62 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div>&nbsp;</div>
-        <div class="panel panel-default panel-table" >
-            <div class="panel-heading publish-dock">
-              <h3 class="panel-title" style="background-color: #f9a600; color:#fff;" >
-                  Published News
-              </h3>
+<div class="container publish-form">
+    <div class="row">
+        <div class="col-xs-12">
+            <div>&nbsp;</div>
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading publish-dock">
+                    <h3 class="panel-title" style="background-color: #f9a600; color:#fff;">
+                        Published News
+                    </h3>
+                </div>
+                <br/>
+                <form (ngSubmit)="dataSubmit()">
+                    <div style="width:100%">
+                        <div class="form-group">
+                            <input type="text" autocomplete="off" name="title" [(ngModel)]="title" id="" placeholder="Enter News Title!!" class="form-control form-control-lg">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <textarea rows="10" name="description" [(ngModel)]="description" [froalaEditor]></textarea>
+                        </div>
+                        <button type="submit" [ngClass]="validateText()" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <br/>
+                <app-publish-list></app-publish-list>
             </div>
-            <div class="panel-body table-responsive">
-                <table class="table table-bordered">
-                  <thead class="tble-hd" style="background-color: 1px solid #66b0de">
-                    <tr>
-                      <th>Date</th>
-                      <th>News Header</th>
-                      <th>Description</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="td-ideas">10/01/2018</td>
-                      <td class="td-ideas">BNP Paribas announces new measures regarding the financing of tobacco companies</td>
-                      <td class="td-ideas">BNP Paribas is ceasing its financing and investment activities related to tobacco companies. This decision concerns all the professional players whose principal activity is linked/dedicated to tobacco. The World Health Organisation (WHO), United Nations’ agency specialised in Health, identified tobacco</td>
-                      <td class="td-ideas">
-                        <label class="switch">
-                          <input type="checkbox">
-                          <span class="slider"></span>
-                        </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="td-ideas">18/01/2018</td>
-                      <td class="td-ideas">BNP Paribas Group: Results as at 30 September 2017</td>
-                      <td class="td-ideas">The Board of Directors of BNP Paribas met on 30 October 2017. The meeting was chaired by Jean Lemierre and the Board examined the Group’s results for the third quarter 2017.   Read the press release “BNP Paribas Group</td>
-                      <td class="td-ideas">
-                          <label class="switch">
-                              <input type="checkbox">
-                              <span class="slider"></span>
-                            </label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="td-ideas">21/01/2018</td>
-                      <td class="td-ideas">BNP Paribas takes further measures to accelerate its support of the energy transition</td>
-                      <td class="td-ideas">BNP Paribas takes further measures to accelerate its support of the energy transition The BNP Paribas Group will no longer do business with companies whose principal business activity is the exploration, production, distribution, marketing or trading of oil and gas.</td>
-                      <td class="td-ideas">
-                          <label class="switch">
-                              <input type="checkbox">
-                              <span class="slider"></span>
-                            </label>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-        </div>
 
+        </div>
     </div>
-  </div>
+</div>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="margin-top: 0px;">
+        <div class="modal-content">
+            <div class="modal-header" style=" background-color: #ffbb05;">
+                <h4 class="modal-title pull-left">Success</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                News publish successfull !! <br> Approve to display in News Page
+            </div>
+        </div>
+    </div>
 </div>

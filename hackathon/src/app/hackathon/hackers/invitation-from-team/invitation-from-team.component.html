@@ -1,55 +1,47 @@
+
 <div class="col-md-12 margin-top">
   <section>
+    
     <div class="content ">
       <div class="primary-button card-deck mb-3 text-center">
-
-        <table class="table table-bordered">
-          <thead class="tble-hd" style="background-color: 1px solid #66b0de">
+          <div class="panel-heading publish-dock">
+              <h3 class="panel-title">
+                  Invitation From Teams
+              </h3>
+          </div>
+        <!-- grid start -->
+        <table class="table table-striped" [mfData]="dataObj" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
+          [(mfSortOrder)]="sortOrder">
+          <thead>
             <tr>
-              <th>Sl no</th>
-              <th>Team Name</th>
-              <th>Idea description</th>
-              <th>Action</th>
+              <th style="width: 20%">
+                <mfDefaultSorter by="ideaTitle">Team Name</mfDefaultSorter>
+              </th>
+              <th style="width: 20%">
+                <mfDefaultSorter by="email">Team idea</mfDefaultSorter>
+              </th>
+              <th style="width: 20%">
+                <mfDefaultSorter by="skillset">Technology</mfDefaultSorter>
+              </th>
+              <th style="width: 20%">
+                <mfDefaultSorter by="action">Action</mfDefaultSorter>
+              </th>
             </tr>
+
           </thead>
           <tbody>
-            <tr>
-              <td class="td-ideas">10/01/2018</td>
-              <td class="td-ideas">BNP Paribas announces new measures regarding the financing of tobacco companies</td>
-              <td class="td-ideas">BNP Paribas is ceasing its financing and investment activities related to tobacco companies. This decision concerns all the professional players whose principal activity is linked/dedicated to tobacco. The World Health Organisation (WHO), United Nations’ agency specialised in Health, identified tobacco</td>
-              <td class="td-ideas">
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider"></span>
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td class="td-ideas">18/01/2018</td>
-              <td class="td-ideas">BNP Paribas Group: Results as at 30 September 2017</td>
-              <td class="td-ideas">The Board of Directors of BNP Paribas met on 30 October 2017. The meeting was chaired by Jean Lemierre and the Board examined the Group’s results for the third quarter 2017.   Read the press release “BNP Paribas Group</td>
-              <td class="td-ideas">
-                  <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider"></span>
-                    </label>
-              </td>
-            </tr>
-            <tr>
-              <td class="td-ideas">21/01/2018</td>
-              <td class="td-ideas">BNP Paribas takes further measures to accelerate its support of the energy transition</td>
-              <td class="td-ideas">BNP Paribas takes further measures to accelerate its support of the energy transition The BNP Paribas Group will no longer do business with companies whose principal business activity is the exploration, production, distribution, marketing or trading of oil and gas.</td>
-              <td class="td-ideas">
-                  <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider"></span>
-                    </label>
+            <tr *ngFor="let team of teamDetails?.invitationFromTeam"> <!-- So far created skeleton, need to bind correct data once API call completed-->
+              <td>{{team.idea.teamName}}</td>
+              <td>{{team.idea.title}}</td>
+              <td>{{team.idea.technologyTags[0]}}</td>
+              <td>
+                <button class ="btn btn-light" (click)="joinTeam(team)" [disabled]="team.isPending === 'approved' ? 'true': null">{{team.isPending === 'approved' ? 'JOINED': 'JOIN TEAM'}}</button>
               </td>
             </tr>
           </tbody>
         </table>
-  
+        <!-- Grid End -->
       </div>
     </div>
   </section>
-  </div>
+</div>
