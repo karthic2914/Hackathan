@@ -14,6 +14,7 @@ export class NewsCardComponent implements OnInit, OnDestroy {
   public newsObj: any;
   private subscription: Subscription;
   private cms: any;
+  public pageNumber = 1;
 
   constructor(
     private store: Store<AppStore>,
@@ -25,7 +26,7 @@ export class NewsCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.newsService.getNews().then((response: any) => {
+    this.newsService.getActiveNews().then((response: any) => {
       this.newsSubscribe = this.store.subscribe((stores: AppStore) => {
         this.newsObj = stores.news;
       });
@@ -33,8 +34,7 @@ export class NewsCardComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.newsSubscribe.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

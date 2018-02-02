@@ -91,7 +91,7 @@ export let deleteIdea = (req: Request, res: Response) => {
             res.status(400).json(err);
             return;
         }
-        res.send('Comment Deleted Successfully');
+        res.send('Idea Deleted Successfully');
     });
 };
 

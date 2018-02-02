@@ -102,3 +102,9 @@ input:checked+.slider:before {
 .publish-list .table>tbody>tr>td.action{
     width:18%;
 }
+.publish-list .table-bordered>tfoot>tr>td {
+    border:none;
+}
+.first-content p{
+    margin:0px 30px;
+}

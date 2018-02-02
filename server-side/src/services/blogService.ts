@@ -10,6 +10,12 @@ export const saveBlog = (data: BlogModel, callback: any) => {
         .catch((blog: BlogModel) => callback(parseErrors(blog.errors), undefined));
 };
 
+export const getActiveBlogs = ({ }, callback: any) => {
+    Blog.find({isActive: true})
+        .then((blogs: BlogModel[]) => callback(undefined, blogs))
+        .catch((blogs: any) => callback(parseErrors(blogs.errors), undefined));
+};
+
 export const getAllBlogs = ({ }, callback: any) => {
     Blog.find()
         .then((blogs: BlogModel[]) => callback(undefined, blogs))

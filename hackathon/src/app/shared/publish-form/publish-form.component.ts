@@ -30,7 +30,8 @@ export class PublishFormComponent implements OnInit {
   dataSubmit() {
     this.newsObj = {
       title: this.title,
-      description: this.description
+      description: this.description,
+      isActive : false
     };
     this.newsStateService.postNews(this.newsObj).then((response: any) => {
       console.log('post response', response);

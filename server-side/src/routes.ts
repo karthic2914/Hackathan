@@ -1,5 +1,5 @@
 import * as route from './controllers';
-import { postBlog, getBlogs, updateblog } from './controllers/blog';
+import { postBlog, getBlogs, updateblog, getApprovedBlogs } from './controllers/blog';
 import * as express from 'express';
 import { postcomment, deletecomment } from './controllers/comment';
 
@@ -16,6 +16,7 @@ export class Routes {
         app.get('/user', route.listUser);
         app.post('/blog', postBlog);
         app.get('/getblog', getBlogs);
+        app.get('/getActiveblog', getApprovedBlogs);
         app.post('/updateblog', updateblog);
         app.delete('/comment', deletecomment);
         app.post('/comment', postcomment);

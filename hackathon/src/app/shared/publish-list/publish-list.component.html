@@ -3,7 +3,7 @@
         <thead class="tble-hd">
             <tr>
                 <th>
-                    <mfDefaultSorter by="Date">Date</mfDefaultSorter>
+                    <mfDefaultSorter by="Date">News Id</mfDefaultSorter>
                 </th>
                 <th>
                     <mfDefaultSorter by="Header">News Header</mfDefaultSorter>
@@ -12,15 +12,19 @@
                     <mfDefaultSorter by="Description" [by]="sortByWordLength">Description</mfDefaultSorter>
                 </th>
                 <th>
+                    <mfDefaultSorter by="age">Status </mfDefaultSorter>
+                </th>
+                <th>
                     <mfDefaultSorter by="age">Action </mfDefaultSorter>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of mf.data">
-                <td>{{item.date | date: format}}</td>
+                <td>{{item._id}}</td>
                 <td>{{item.title}}</td>
                 <td class="description" [innerHTML]="item.description | ellipsis: 150 | sanitizeHtml">{{item.description}}</td>
+                <td>{{item.isActive == true ? "Active" : "InActive" }}</td>
                 <td class="action">
                     <!-- <label class="switch">
                         <input type="checkbox">

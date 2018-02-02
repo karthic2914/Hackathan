@@ -15,6 +15,11 @@ export class NewsStateService {
     });
   }
 
+  public getActiveNews() {
+    return this.apiService.get('getActiveblog').then((response: any) => {
+      this.store.dispatch({type: 'LOAD_NEWS_DATA', payload: response});
+    });
+  }
 
   public postNews(value) {
    return this.apiService.post('blog', value).then((response: any) => {

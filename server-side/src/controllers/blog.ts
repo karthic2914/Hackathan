@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { saveBlog, getAllBlogs, updateBlog } from '../services/blogService';
+import { saveBlog, getAllBlogs, updateBlog, getActiveBlogs } from '../services/blogService';
 import { default as Blog, BlogModel } from '../models/Blog';
 import { UserModel } from '../models/User';
 import { fetchUserByEmail, isAuth } from '../services/authService';
@@ -20,7 +20,15 @@ export let postBlog = (req: Request, res: Response) => {
     });
 };
 
-
+export let getApprovedBlogs = (req: Request, res: Response) => {
+    getActiveBlogs({}, function (err: any, blogs: any) {
+        if (err) {
+            res.status(400).json(err);
+            return;
+        }
+        res.json({blogs});
+    });
+};
 
 export let getBlogs = (req: Request, res: Response) => {
     getAllBlogs({}, function (err: any, blogs: any) {
